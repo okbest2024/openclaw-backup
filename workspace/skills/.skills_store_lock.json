@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "skills": {
+    "self-improving-agent": {
+      "name": "self-improving-agent",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=self-improving-agent",
+      "source": "skillhub",
+      "version": "1.0.11"
+    },
+    "openai-whisper": {
+      "name": "Openai Whisper",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=openai-whisper",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "auto-updater": {
+      "name": "Auto-Updater Skill",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=auto-updater",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "find-skills": {
+      "name": "Find Skills",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=find-skills",
+      "source": "skillhub",
+      "version": "0.1.0"
+    },
+    "agent-browser": {
+      "name": "Agent Browser",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=agent-browser",
+      "source": "skillhub",
+      "version": "0.2.0"
+    },
+    "github": {
+      "name": "Github",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=github",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "proactive-agent": {
+      "name": "Proactive Agent",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=proactive-agent",
+      "source": "skillhub",
+      "version": "3.1.0"
+    },
+    "ontology-mapper": {
+      "name": "Ontology Mapper",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=ontology-mapper",
+      "source": "skillhub",
+      "version": "2.1.0"
+    },
+    "skill-vetter": {
+      "name": "Skill Vetter",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=skill-vetter",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "gog": {
+      "name": "Gog",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=gog",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "xiaohongshu-mcp": {
+      "name": "Xiaohongshu (小红书) Automation",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=xiaohongshu-mcp",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "tavily-search": {
+      "name": "Tavily Web Search",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=tavily-search",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "summarize": {
+      "name": "Summarize",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=summarize",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "n8n-workflow-automation": {
+      "name": "n8n workflow automation",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=n8n-workflow-automation",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "claw-backup": {
+      "name": "Claw Backup",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=claw-backup",
+      "source": "skillhub",
+      "version": "1.0.7"
+    },
+    "memory-git-sync": {
+      "name": "Smart Git Backup",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=memory-git-sync",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "ping-model": {
+      "name": "Ping Model",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=ping-model",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "consciousness-framework": {
+      "name": "Consciousness Framework",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=consciousness-framework",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "whisper-stt": {
+      "name": "Whisper STT",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=whisper-stt",
+      "source": "skillhub",
+      "version": "1.0.0"
+    }
+  }
+}

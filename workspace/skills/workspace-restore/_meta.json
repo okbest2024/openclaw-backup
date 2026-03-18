@@ -1,0 +1,10 @@
+{
+  "name": "workspace-restore",
+  "version": "1.0.0",
+  "description": "一键恢复 OpenClaw 工作区的完整技能",
+  "author": "盖世 baby",
+  "license": "MIT",
+  "keywords": ["restore", "backup", "workspace", "recovery"],
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
+}

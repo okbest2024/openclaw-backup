@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 音频播放器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Web 音频播放器</h1>
+
+        <!-- 上传区域 -->
+        <div class="upload-section">
+            <label for="audio-upload" class="upload-label">
+                <span class="upload-icon">📁</span>
+                <span>点击选择音频文件</span>
+                <span class="upload-hint">支持多选，格式：MP3, WAV, OGG, FLAC</span>
+            </label>
+            <input type="file" id="audio-upload" accept="audio/*" multiple hidden>
+        </div>
+
+        <!-- 当前播放信息 -->
+        <div class="now-playing">
+            <div class="track-info">
+                <div class="track-icon">🎧</div>
+                <div class="track-details">
+                    <div class="track-name" id="track-name">未选择曲目</div>
+                    <div class="track-status" id="track-status">就绪</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <span class="time" id="current-time">00:00</span>
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress" id="progress"></div>
+                <div class="progress-handle" id="progress-handle"></div>
+            </div>
+            <span class="time" id="duration">00:00</span>
+        </div>
+
+        <!-- 播放控制 -->
+        <div class="controls">
+            <button class="control-btn" id="prev-btn" title="上一首">
+                <span>⏮</span>
+            </button>
+            <button class="control-btn play-btn" id="play-btn" title="播放/暂停">
+                <span id="play-icon">▶</span>
+            </button>
+            <button class="control-btn" id="next-btn" title="下一首">
+                <span>⏭</span>
+            </button>
+            <button class="control-btn" id="stop-btn" title="停止">
+                <span>⏹</span>
+            </button>
+        </div>
+
+        <!-- 音量控制 -->
+        <div class="volume-container">
+            <span class="volume-icon" id="volume-icon">🔊</span>
+            <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="80">
+        </div>
+
+        <!-- 播放列表 -->
+        <div class="playlist-section">
+            <div class="playlist-header">
+                <h2>播放列表</h2>
+                <button class="clear-btn" id="clear-playlist" title="清空播放列表">🗑 清空</button>
+            </div>
+            <ul class="playlist" id="playlist">
+                <li class="empty-playlist">暂无曲目，请上传音频文件</li>
+            </ul>
+        </div>
+    </div>
+
+    <audio id="audio-player"></audio>
+    <script src="app.js"></script>
+</body>
+</html>
