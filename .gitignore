@@ -1,0 +1,46 @@
+# OpenClaw 备份 - .gitignore
+
+# 依赖
+node_modules/
+package-lock.json
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+temp/
+tmp/
+*.tmp
+
+# 缓存
+.cache/
+**/cache/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 敏感信息（可选）
+# .env
+# *.key
+# *.pem
+
+# 大型媒体文件（可选）
+# *.mp4
+# *.avi
+# *.mov
+
+# 音频文件（如果需要备份则注释掉）
+# *.mp3
+# *.wav
+# *.ogg
+
+# 数据库文件
+*.db
+*.sqlite
+
+# 构建输出
+dist/
+build/
