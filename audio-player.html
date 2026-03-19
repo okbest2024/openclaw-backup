@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频播放器 - 断点播放</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .upload-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .upload-area {
+            border: 2px dashed #00d4ff;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #7b2cbf;
+        }
+        
+        .upload-area.dragover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #7b2cbf;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        .playlist-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .playlist-header h2 {
+            font-size: 1.2em;
+        }
+        
+        .clear-btn {
+            background: #ff4757;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .playlist-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .playlist-item.active {
+            background: rgba(0, 212, 255, 0.2);
+            border-left: 3px solid #00d4ff;
+        }
+        
+        .playlist-item.playing {
+            background: rgba(123, 44, 191, 0.2);
+        }
+        
+        .item-index {
+            width: 30px;
+            color: #888;
+        }
+        
+        .item-name {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .item-duration {
+            color: #888;
+            margin-left: 10px;
+        }
+        
+        .item-remove {
+            background: none;
+            border: none;
+            color: #ff4757;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 1.2em;
+        }
+        
+        .player-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .now-playing {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .now-playing h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .now-playing p {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .progress-container {
+            margin-bottom: 20px;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px;
+            transition: all 0.2s;
+        }
+        
+        .control-btn:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+        
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .volume-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        
+        .volume-slider {
+            width: 100px;
+            height: 6px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .mode-btn {
+            font-size: 1em;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .mode-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+        }
+        
+        .empty-playlist {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff4757;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 音频播放器</h1>
+        
+        <!-- 上传区域 -->
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p>点击或拖拽音频文件到此处上传</p>
+                <p style="font-size: 0.9em; color: #888; margin-top: 10px;">支持批量上传，单个文件最大 1GB</p>
+                <input type="file" class="file-input" id="fileInput" multiple accept="audio/*">
+            </div>
+            <div class="file-info" id="fileInfo"></div>
+        </div>
+        
+        <!-- 播放列表 -->
+        <div class="playlist-section">
+            <div class="playlist-header">
+                <h2>📋 播放列表 (<span id="playlistCount">0</span>)</h2>
+                <button class="clear-btn" id="clearBtn">清空列表</button>
+            </div>
+            <div id="playlist">
+                <div class="empty-playlist">暂无音频文件</div>
+            </div>
+        </div>
+        
+        <!-- 播放器 -->
+        <div class="player-section">
+            <div class="now-playing">
+                <h3 id="currentTrack">未选择音频</h3>
+                <p id="currentArtist"></p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="prevBtn">⏮️</button>
+                <button class="control-btn play-btn" id="playBtn">▶️</button>
+                <button class="control-btn" id="nextBtn">⏭️</button>
+            </div>
+            
+            <div class="volume-container">
+                <button class="volume-btn" id="muteBtn">🔊</button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
+                <button class="mode-btn" id="modeBtn" title="播放模式">🔁 列表循环</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    
+    <audio id="audioPlayer"></audio>
+    
+    <script>
+        // 播放器状态
+        const state = {
+            playlist: [],
+            currentIndex: -1,
+            isPlaying: false,
+            playMode: 'loop', // loop, random, single
+            volume: 100,
+            isMuted: false
+        };
+        
+        // DOM 元素
+        const audioPlayer = document.getElementById('audioPlayer');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const playlistEl = document.getElementById('playlist');
+        const playlistCount = document.getElementById('playlistCount');
+        const currentTrack = document.getElementById('currentTrack');
+        const currentTime = document.getElementById('currentTime');
+        const duration = document.getElementById('duration');
+        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const muteBtn = document.getElementById('muteBtn');
+        const modeBtn = document.getElementById('modeBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const toast = document.getElementById('toast');
+        
+        // 常量
+        const MAX_FILE_SIZE = 1024 * 1024 * 1024; // 1GB
+        const STORAGE_KEY = 'audio_player_state';
+        
+        // 初始化
+        function init() {
+            loadState();
+            setupEventListeners();
+            renderPlaylist();
+            updateUI();
+        }
+        
+        // 加载保存的状态
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    state.volume = data.volume || 100;
+                    state.playMode = data.playMode || 'loop';
+                    state.currentIndex = data.currentIndex || -1;
+                    
+                    // 恢复音量
+                    audioPlayer.volume = state.volume / 100;
+                    volumeSlider.value = state.volume;
+                    
+                    // 恢复播放模式
+                    updateModeButton();
+                }
+            } catch (e) {
+                console.error('加载状态失败:', e);
+            }
+        }
+        
+        // 保存状态
+        function saveState() {
+            try {
+                const data = {
+                    volume: state.volume,
+                    playMode: state.playMode,
+                    currentIndex: state.currentIndex,
+                    // 保存每个文件的播放进度
+                    positions: {}
+                };
+                
+                state.playlist.forEach((track, index) => {
+                    if (track.position > 0) {
+                        data.positions[track.id] = track.position;
+                    }
+                });
+                
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch (e) {
+                console.error('保存状态失败:', e);
+            }
+        }
+        
+        // 设置事件监听
+        function setupEventListeners() {
+            // 文件上传
+            uploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // 拖拽上传
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFileSelect({ target: { files: e.dataTransfer.files } });
+            });
+            
+            // 播放控制
+            playBtn.addEventListener('click', togglePlay);
+            prevBtn.addEventListener('click', playPrev);
+            nextBtn.addEventListener('click', playNext);
+            
+            // 进度条
+            progressBar.addEventListener('click', seekTo);
+            
+            // 音量控制
+            volumeSlider.addEventListener('input', changeVolume);
+            muteBtn.addEventListener('click', toggleMute);
+            
+            // 播放模式
+            modeBtn.addEventListener('click', togglePlayMode);
+            
+            // 清空列表
+            clearBtn.addEventListener('click', clearPlaylist);
+            
+            // 音频事件
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+            audioPlayer.addEventListener('loadedmetadata', updateDuration);
+            audioPlayer.addEventListener('ended', handleEnded);
+            audioPlayer.addEventListener('play', () => updatePlayButton(true));
+            audioPlayer.addEventListener('pause', () => updatePlayButton(false));
+        }
+        
+        // 处理文件选择
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            let addedCount = 0;
+            let errorCount = 0;
+            
+            files.forEach(file => {
+                // 验证文件类型
+                if (!file.type.startsWith('audio/')) {
+                    showToast(`跳过非音频文件: ${file.name}`);
+                    errorCount++;
+                    return;
+                }
+                
+                // 验证文件大小
+                if (file.size > MAX_FILE_SIZE) {
+                    showToast(`文件过大: ${file.name} (超过1GB)`);
+                    errorCount++;
+                    return;
+                }
+                
+                // 检查是否已存在
+                const exists = state.playlist.some(t => t.name === file.name && t.size === file.size);
+                if (exists) {
+                    showToast(`文件已存在: ${file.name}`);
+                    errorCount++;
+                    return;
+                }
+                
+                // 添加到播放列表
+                const track = {
+                    id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                    name: file.name,
+                    size: file.size,
+                    file: file,
+                    url: URL.createObjectURL(file),
+                    duration: 0,
+                    position: 0
+                };
+                
+                state.playlist.push(track);
+                addedCount++;
+            });
+            
+            if (addedCount > 0) {
+                showToast(`成功添加 ${addedCount} 个音频文件`);
+                renderPlaylist();
+                saveState();
+                
+                // 如果当前没有播放的曲目，选择第一个
+                if (state.currentIndex === -1 && state.playlist.length > 0) {
+                    selectTrack(0);
+                }
+            }
+            
+            // 更新文件信息
+            fileInfo.textContent = `已添加 ${state.playlist.length} 个音频文件`;
+            
+            // 清空文件输入
+            fileInput.value = '';
+        }
+        
+        // 渲染播放列表
+        function renderPlaylist() {
+            playlistCount.textContent = state.playlist.length;
+            
+            if (state.playlist.length === 0) {
+                playlistEl.innerHTML = '<div class="empty-playlist">暂无音频文件</div>';
+                return;
+            }
+            
+            playlistEl.innerHTML = state.playlist.map((track, index) => `
+                <div class="playlist-item ${index === state.currentIndex ? 'active' : ''} ${state.isPlaying && index === state.currentIndex ? 'playing' : ''}" 
+                     data-index="${index}">
+                    <span class="item-index">${index + 1}</span>
+                    <span class="item-name" title="${track.name}">${track.name}</span>
+                    <span class="item-duration">${formatTime(track.duration)}</span>
+                    <button class="item-remove" data-index="${index}" title="移除">✕</button>
+                </div>
+            `).join('');
+            
+            // 绑定点击事件
+            playlistEl.querySelectorAll('.playlist-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('item-remove')) {
+                        selectTrack(parseInt(item.dataset.index));
+                        play();
+                    }
+                });
+            });
+            
+            // 绑定移除按钮
+            playlistEl.querySelectorAll('.item-remove').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    removeTrack(parseInt(btn.dataset.index));
+                });
+            });
+        }
+        
+        // 选择曲目
+        function selectTrack(index) {
+            if (index < 0 || index >= state.playlist.length) return;
+            
+            state.currentIndex = index;
+            const track = state.playlist[index];
+            
+            audioPlayer.src = track.url;
+            currentTrack.textContent = track.name;
+            
+            // 恢复播放位置
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.positions && data.positions[track.id]) {
+                    audioPlayer.currentTime = data.positions[track.id];
+                }
+            }
+            
+            renderPlaylist();
+            saveState();
+        }
+        
+        // 移除曲目
+        function removeTrack(index) {
+            const track = state.playlist[index];
+            
+            // 释放 URL
+            URL.revokeObjectURL(track.url);
+            
+            state.playlist.splice(index, 1);
+            
+            // 调整当前索引
+            if (index === state.currentIndex) {
+                if (state.playlist.length > 0) {
+                    state.currentIndex = Math.min(index, state.playlist.length - 1);
+                    selectTrack(state.currentIndex);
+                } else {
+                    state.currentIndex = -1;
+                    audioPlayer.src = '';
+                    currentTrack.textContent = '未选择音频';
+                }
+            } else if (index < state.currentIndex) {
+                state.currentIndex--;
+            }
+            
+            renderPlaylist();
+            saveState();
+        }
+        
+        // 清空播放列表
+        function clearPlaylist() {
+            if (!confirm('确定要清空播放列表吗？')) return;
+            
+            state.playlist.forEach(track => URL.revokeObjectURL(track.url));
+            state.playlist = [];
+            state.currentIndex = -1;
+            audioPlayer.src = '';
+            currentTrack.textContent = '未选择音频';
+            
+            renderPlaylist();
+            saveState();
+            showToast('播放列表已清空');
+        }
+        
+        // 播放/暂停
+        function togglePlay() {
+            if (state.playlist.length === 0) {
+                showToast('请先添加音频文件');
+                return;
+            }
+            
+            if (state.currentIndex === -1) {
+                selectTrack(0);
+            }
+            
+            if (state.isPlaying) {
+                pause();
+            } else {
+                play();
+            }
+        }
+        
+        function play() {
+            audioPlayer.play();
+            state.isPlaying = true;
+        }
+        
+        function pause() {
+            audioPlayer.pause();
+            state.isPlaying = false;
+            saveProgress();
+        }
+        
+        // 上一曲
+        function playPrev() {
+            if (state.playlist.length === 0) return;
+            
+            let newIndex = state.currentIndex - 1;
+            if (newIndex < 0) newIndex = state.playlist.length - 1;
+            
+            selectTrack(newIndex);
+            play();
+        }
+        
+        // 下一曲
+        function playNext() {
+            if (state.playlist.length === 0) return;
+            
+            let newIndex;
+            switch (state.playMode) {
+                case 'random':
+                    newIndex = Math.floor(Math.random() * state.playlist.length);
+                    break;
+                case 'single':
+                    newIndex = state.currentIndex;
+                    break;
+                default: // loop
+                    newIndex = (state.currentIndex + 1) % state.playlist.length;
+            }
+            
+            selectTrack(newIndex);
+            play();
+        }
+        
+        // 处理播放结束
+        function handleEnded() {
+            saveProgress();
+            
+            switch (state.playMode) {
+                case 'single':
+                    audioPlayer.currentTime = 0;
+                    play();
+                    break;
+                case 'random':
+                    playNext();
+                    break;
+                default: // loop
+                    if (state.currentIndex < state.playlist.length - 1) {
+                        playNext();
+                    } else {
+                        selectTrack(0);
+                        play();
+                    }
+            }
+        }
+        
+        // 更新进度
+        function updateProgress() {
+            const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100 || 0;
+            progressFill.style.width = percent + '%';
+            currentTime.textContent = formatTime(audioPlayer.currentTime);
+            
+            // 定期保存进度
+            if (Math.floor(audioPlayer.currentTime) % 5 === 0) {
+                saveProgress();
+            }
+        }
+        
+        // 保存播放进度
+        function saveProgress() {
+            if (state.currentIndex >= 0 && audioPlayer.currentTime > 0) {
+                state.playlist[state.currentIndex].position = audioPlayer.currentTime;
+                saveState();
+            }
+        }
+        
+        // 更新时长
+        function updateDuration() {
+            duration.textContent = formatTime(audioPlayer.duration);
+            
+            if (state.currentIndex >= 0) {
+                state.playlist[state.currentIndex].duration = audioPlayer.duration;
+                renderPlaylist();
+            }
+        }
+        
+        // 跳转到指定位置
+        function seekTo(e) {
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audioPlayer.currentTime = percent * audioPlayer.duration;
+        }
+        
+        // 更新播放按钮
+        function updatePlayButton(playing) {
+            playBtn.textContent = playing ? '⏸️' : '▶️';
+            state.isPlaying = playing;
+            renderPlaylist();
+        }
+        
+        // 改变音量
+        function changeVolume(e) {
+            const value = e.target.value;
+            audioPlayer.volume = value / 100;
+            state.volume = value;
+            state.isMuted = value === 0;
+            updateMuteButton();
+            saveState();
+        }
+        
+        // 切换静音
+        function toggleMute() {
+            state.isMuted = !state.isMuted;
+            audioPlayer.muted = state.isMuted;
+            updateMuteButton();
+        }
+        
+        function updateMuteButton() {
+            if (state.isMuted || state.volume === 0) {
+                muteBtn.textContent = '🔇';
+            } else if (state.volume < 50) {
+                muteBtn.textContent = '🔉';
+            } else {
+                muteBtn.textContent = '🔊';
+            }
+        }
+        
+        // 切换播放模式
+        function togglePlayMode() {
+            const modes = ['loop', 'random', 'single'];
+            const currentIndex = modes.indexOf(state.playMode);
+            state.playMode = modes[(currentIndex + 1) % modes.length];
+            updateModeButton();
+            saveState();
+        }
+        
+        function updateModeButton() {
+            const modeLabels = {
+                loop: '🔁 列表循环',
+                random: '🔀 随机播放',
+                single: '🔂 单曲循环'
+            };
+            modeBtn.textContent = modeLabels[state.playMode];
+            modeBtn.classList.toggle('active', state.playMode !== 'loop');
+        }
+        
+        // 更新 UI
+        function updateUI() {
+            updateModeButton();
+            updateMuteButton();
+        }
+        
+        // 格式化时间
+        function formatTime(seconds) {
+            if (isNaN(seconds) || seconds === 0) return '0:00';
+            
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // 显示提示
+        function showToast(message) {
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 页面卸载前保存状态
+        window.addEventListener('beforeunload', saveProgress);
+        
+        // 初始化
+        init();
+    </script>
+</body>
+</html>

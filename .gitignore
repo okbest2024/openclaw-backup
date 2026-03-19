@@ -1,0 +1,25 @@
+# 依赖
+node_modules/
+
+# 音频播放器上传文件
+audio-player/uploads/
+audio-player/logs/
+audio-player/data/
+
+# OpenClaw 数据
+package/
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.tgz
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 环境变量
+.env
