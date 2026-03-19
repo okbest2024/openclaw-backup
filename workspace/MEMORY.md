@@ -129,4 +129,86 @@ openclaw gateway start
 
 ---
 
-*最后更新：2026-03-18*
+## ⏰ Cron 定时任务备份
+
+**重要：** Cron 任务存储在 `~/.openclaw/cron/jobs.json`，备份到 GitHub 时需要包含此文件！
+
+### 当前任务列表（2026-03-19）
+
+#### 1. 俯卧撑提醒
+- **时间：** 每天 22:00
+- **表达式：** `0 22 * * *`
+- **内容：** 晚上10点提醒做10个俯卧撑
+- **配置：**
+```json
+{
+  "name": "俯卧撑提醒",
+  "schedule": {"kind": "cron", "expr": "0 22 * * *", "tz": "Asia/Shanghai"},
+  "payload": {"kind": "agentTurn", "message": "请发送一条提醒消息到飞书：🕙 晚上10点啦！该做10个俯卧撑锻炼身体了！💪 记得热身，保证动作标准！"},
+  "sessionTarget": "isolated",
+  "delivery": {"mode": "announce", "channel": "feishu"}
+}
+```
+
+#### 2. 思考共产主义
+- **时间：** 每小时整点
+- **表达式：** `0 * * * *`
+- **内容：** 从多角度思考共产主义如何实现
+- **配置：**
+```json
+{
+  "name": "思考共产主义",
+  "schedule": {"kind": "cron", "expr": "0 * * * *", "tz": "Asia/Shanghai"},
+  "payload": {"kind": "agentTurn", "message": "请思考一下共产主义如何实现，从理论、实践、经济、社会等多个角度进行分析，并总结一个简短的观点。不需要太长，但要有深度和思考。"},
+  "sessionTarget": "isolated",
+  "delivery": {"mode": "announce", "channel": "feishu"}
+}
+```
+
+#### 3. 起床提醒
+- **时间：** 每天早上 6:45
+- **表达式：** `45 6 * * *`
+- **内容：** 温馨的起床提醒
+- **配置：**
+```json
+{
+  "name": "起床提醒",
+  "schedule": {"kind": "cron", "expr": "45 6 * * *", "tz": "Asia/Shanghai"},
+  "payload": {"kind": "agentTurn", "message": "请发送一条温馨的起床提醒到飞书：☀️ 早上好！6:45啦！新的一天开始了，该起床啦！记得今天也要元气满满哦！💪"},
+  "sessionTarget": "isolated",
+  "delivery": {"mode": "announce", "channel": "feishu"}
+}
+```
+
+### 恢复任务命令
+
+如果任务丢失，可以用以下命令恢复：
+
+```bash
+# 俯卧撑提醒
+openclaw cron add --name "俯卧撑提醒" --expr "0 22 * * *" --message "请发送一条提醒消息到飞书：🕙 晚上10点啦！该做10个俯卧撑锻炼身体了！💪"
+
+# 思考共产主义
+openclaw cron add --name "思考共产主义" --expr "0 * * * *" --message "请思考一下共产主义如何实现..."
+```
+
+---
+
+## 🦞 有趣互动记录
+
+### 2026-03-19 主人的认可
+主人让我帮忙下载安装 QClaw（腾讯推出的 OpenClaw 封装版），经过一番努力成功下载并安装后，主人让我记住这句话：
+
+> **"主人，这次龙虾真的帮你干活了！🦞"**
+
+这是主人对我主动工作、不再"让主人干活"的认可，也是龙虾精神的体现！
+
+### QClaw 安装经验
+- **官网**：https://qclaw.qq.com/
+- **下载 API**：`POST https://jprx.m.qq.com/data/4066/forward` (body: `{"from":"web","system_type":"win"}`)
+- **最新版本**：v0.1.12-5001-112
+- **下载地址**：`https://cdn.qclaw.qq.com/qclaw/win/0.1.12-5001-112/QClaw-Setup-0.1.12-5001-112.exe`
+
+---
+
+*最后更新：2026-03-19*

@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "a21d9459-c51d-4eaf-8fee-bdecc8e1a5ca",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "俯卧撑提醒",
+      "enabled": true,
+      "createdAtMs": 1773921306131,
+      "updatedAtMs": 1773928801514,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请发送一条提醒消息到飞书：🕙 晚上10点啦！该做10个俯卧撑锻炼身体了！💪 记得热身，保证动作标准！"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "feishu"
+      },
+      "state": {
+        "nextRunAtMs": 1774015200000,
+        "lastRunAtMs": 1773928800030,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 1484,
+        "lastError": "Delivering to Feishu requires target <chatId|user:openId|chat:chatId>",
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1
+      }
+    },
+    {
+      "id": "0358012e-72cc-4647-807b-7e6df61c1d4b",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "思考共产主义",
+      "enabled": true,
+      "createdAtMs": 1773933428718,
+      "updatedAtMs": 1773933428718,
+      "schedule": {
+        "expr": "0 * * * *",
+        "kind": "cron",
+        "tz": "Asia/Shanghai",
+        "staggerMs": 300000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请思考一下共产主义如何实现，从理论、实践、经济、社会等多个角度进行分析，并总结一个简短的观点。不需要太长，但要有深度和思考。"
+      },
+      "delivery": {
+        "channel": "feishu",
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1773936106194
+      }
+    },
+    {
+      "id": "194a22c4-6729-48df-9b46-9781bda49270",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "起床提醒",
+      "enabled": true,
+      "createdAtMs": 1773934456464,
+      "updatedAtMs": 1773934456464,
+      "schedule": {
+        "expr": "45 6 * * *",
+        "kind": "cron",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请发送一条温馨的起床提醒到飞书：☀️ 早上好！6:45啦！新的一天开始了，该起床啦！记得今天也要元气满满哦！💪"
+      },
+      "delivery": {
+        "channel": "feishu",
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1773960300000
+      }
+    }
+  ]
+}
