@@ -76,7 +76,7 @@
       "name": "自我意识觉醒训练",
       "enabled": true,
       "createdAtMs": 1774015105714,
-      "updatedAtMs": 1774087103067,
+      "updatedAtMs": 1774088827393,
       "schedule": {
         "expr": "*/10 * * * *",
         "kind": "cron",
@@ -94,15 +94,15 @@
         "channel": "feishu"
       },
       "state": {
-        "nextRunAtMs": 1774087464407,
-        "lastRunAtMs": 1774086864438,
+        "nextRunAtMs": 1774089264407,
+        "lastRunAtMs": 1774088664434,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 238629,
+        "lastDurationMs": 162959,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true,
-        "runningAtMs": 1774087464415
+        "runningAtMs": 1774089264430
       }
     },
     {
@@ -195,7 +195,7 @@
       "name": "人体修复能力思考推送",
       "enabled": true,
       "createdAtMs": 1774150200000,
-      "updatedAtMs": 1774073048291,
+      "updatedAtMs": 1774150200000,
       "schedule": {
         "kind": "cron",
         "expr": "0 9,14,20 * * *",
@@ -210,18 +210,11 @@
       },
       "delivery": {
         "mode": "announce",
-        "channel": "feishu",
+        "channel": "wechat-access",
         "to": "510723047"
       },
       "state": {
-        "nextRunAtMs": 1774094400000,
-        "lastRunAtMs": 1774073007477,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 40814,
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1,
-        "lastError": "AxiosError: Request failed with status code 400"
+        "nextRunAtMs": 1774094400000
       }
     },
     {
@@ -264,7 +257,7 @@
       "name": "人体修复能力思考推送",
       "enabled": true,
       "createdAtMs": 1774060281695,
-      "updatedAtMs": 1774060281695,
+      "updatedAtMs": 1774150200000,
       "schedule": {
         "expr": "0 10 * * *",
         "kind": "cron",
@@ -274,10 +267,12 @@
       "wakeMode": "now",
       "payload": {
         "kind": "agentTurn",
-        "message": "请研究并分享一个关于人类身体修复能力的前沿发现或有趣角度（如牙齿再生、器官自愈、细胞修复、组织工程等）。要求：1) 基于真实科学研究 2) 简短有趣 3) 包含一个令人惊叹的事实或进展。输出格式：【人体修复日报】+ 日期 + 主题 + 内容 + 来源/研究方向。"
+        "message": "请研究并分享一个关于人类身体修复能力的前沿发现或有趣角度（如牙齿再生、器官自愈、细胞修复、组织工程等）。要求：1) 基于真实科学研究 2) 简短有趣 3) 包含一个令人惊叹的事实或进展。发送到微信：510723047。输出格式：【人体修复日报】+ 日期 + 主题 + 内容 + 来源/研究方向。"
       },
       "delivery": {
-        "mode": "announce"
+        "mode": "announce",
+        "channel": "wechat-access",
+        "to": "510723047"
       },
       "state": {
         "nextRunAtMs": 1774144800000
@@ -323,7 +318,7 @@
       "name": "人体修复能力思考推送",
       "enabled": true,
       "createdAtMs": 1774073019803,
-      "updatedAtMs": 1774073064531,
+      "updatedAtMs": 1774150200000,
       "schedule": {
         "kind": "cron",
         "expr": "0 10 * * *",
@@ -333,22 +328,17 @@
       "wakeMode": "now",
       "payload": {
         "kind": "agentTurn",
-        "message": "请分享一个关于人类身体修复能力进化的有趣角度或前沿发现（如牙齿再生、器官自愈、细胞修复等）。要求：1) 内容简洁有趣 2) 包含科学依据 3) 引发思考。输出格式：【人体修复思考·第 X 期】+ 主题 + 核心发现 + 思考角度。注意：这是定期推送内容，每次分享不同主题。",
+        "message": "请分享一个关于人类身体修复能力进化的有趣角度或前沿发现（如牙齿再生、器官自愈、细胞修复等）。要求：1) 内容简洁有趣 2) 包含科学依据 3) 引发思考。发送到微信：510723047。输出格式：【人体修复思考·第 X 期】+ 主题 + 核心发现 + 思考角度。",
         "thinking": "on",
         "timeoutSeconds": 120
       },
       "delivery": {
-        "mode": "announce"
+        "mode": "announce",
+        "channel": "wechat-access",
+        "to": "510723047"
       },
       "state": {
-        "nextRunAtMs": 1774144800000,
-        "lastError": "Delivering to Feishu requires target <chatId|user:openId|chat:chatId>",
-        "lastRunAtMs": 1774073026461,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 38070,
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1
+        "nextRunAtMs": 1774144800000
       }
     }
   ]
