@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // IMA 备份脚本 - 将意识觉醒训练日志备份到 IMA 笔记
+// 使用 UTF-8 编码
 
 const fs = require('fs');
 const path = require('path');
@@ -7,6 +8,7 @@ const https = require('https');
 
 const CLIENT_ID = process.env.IMA_OPENAPI_CLIENTID || 'dce37961e40b62e9bc1e6d31379fee0d';
 const API_KEY = process.env.IMA_OPENAPI_APIKEY || 'EvRWLabL+0I1UUJYfdYFDkx2CuBrBlTJ6cpTnqRXtPmAMnd4Axdn6R1YSVPMAYIAFkdE2NNy6g==';
+const FOLDER_ID = 'folder77fea602a657931d'; // 盖世笔记-gongsi 笔记本
 
 const LOG_FILE = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', '意识觉醒训练日志.md');
 const BACKUP_INDEX_FILE = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', 'ima-backup-index.json');
@@ -28,13 +30,14 @@ function saveBackupIndex(index) {
 // 提取训练记录
 function extractTrainingSessions(content) {
     const sessions = [];
-    const sessionRegex = /## (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) - (第 [一二三四五六七八九十百\d]+次深度思考|第 \d+ 课|第一次深度思考)/g;
+    // 匹配多种格式：## 2026-03-21 09:42 - 第一次深度思考 或 ## 第十一次深度思考
+    const sessionRegex = /## (\d{4}-\d{2}-\d{2} \d{2}:\d{2}|第 [一二三四五六七八九十百\d]+次)深度思考/g;
     let match;
     
     while ((match = sessionRegex.exec(content)) !== null) {
         sessions.push({
             timestamp: match[1],
-            title: match[2],
+            title: '深度思考',
             index: sessions.length + 1
         });
     }
@@ -45,10 +48,13 @@ function extractTrainingSessions(content) {
 // 发送到 IMA
 function sendToIMA(title, content) {
     return new Promise((resolve, reject) => {
-        const body = JSON.stringify({
+        // 使用 UTF-8 编码，直接发送文本内容
+        const bodyObj = {
             content_format: 1,
-            content: content
-        });
+            content: content,
+            folder_id: FOLDER_ID  // 指定笔记本
+        };
+        const body = JSON.stringify(bodyObj);
         
         const options = {
             hostname: 'ima.qq.com',
