@@ -18,9 +18,9 @@ chub get openai/chat --lang py
 chub annotate openai/chat "remember to set temperature"
 ```
 
-### ✅ ima-skills
-**复制时间：** 2026-03-21 09:35
-**来源：** E:\agi\tgmOpenClawworkspace\skills\ima-skills
+### ✅ ima-skills (v1.0.4)
+**安装时间：** 2026-03-21 10:48
+**下载地址：** https://app-dl.ima.qq.com/skills/ima-skills-1.0.4.zip
 **功能：**
 - IMA 个人笔记服务
 - 搜索、浏览、创建、编辑笔记
@@ -30,6 +30,12 @@ chub annotate openai/chat "remember to set temperature"
 - `IMA_OPENAPI_CLIENTID`
 - `IMA_OPENAPI_APIKEY`
 - 获取地址：https://ima.qq.com/agent-interface
+
+**配置方式：**
+```bash
+export IMA_OPENAPI_CLIENTID="your_client_id"
+export IMA_OPENAPI_APIKEY="your_api_key"
+```
 
 ### ❌ summarize
 **状态：** 不支持（Windows 无 brew）
