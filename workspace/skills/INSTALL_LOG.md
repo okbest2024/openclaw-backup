@@ -26,15 +26,22 @@ chub annotate openai/chat "remember to set temperature"
 - 搜索、浏览、创建、编辑笔记
 - 支持 Markdown 格式
 
-**需要凭证：**
-- `IMA_OPENAPI_CLIENTID`
-- `IMA_OPENAPI_APIKEY`
-- 获取地址：https://ima.qq.com/agent-interface
+**凭证配置：** ✅ 已配置
+- Client ID: `dce37961...`（已保存）
+- Api Key: `EvRWLabL...`（已保存）
+- 配置时间：2026-03-21 10:51
+- 配置方式：用户环境变量
 
-**配置方式：**
+**使用示例：**
 ```bash
-export IMA_OPENAPI_CLIENTID="your_client_id"
-export IMA_OPENAPI_APIKEY="your_api_key"
+# 搜索笔记
+node scripts/ima-cli.js search "会议纪要"
+
+# 创建笔记
+node scripts/ima-cli.js create "我的笔记" "# 标题\n\n内容"
+
+# 追加内容
+node scripts/ima-cli.js append "笔记 ID" "\n## 补充内容"
 ```
 
 ### ❌ summarize
