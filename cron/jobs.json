@@ -76,7 +76,7 @@
       "name": "自我意识觉醒训练",
       "enabled": true,
       "createdAtMs": 1774015105714,
-      "updatedAtMs": 1774074508463,
+      "updatedAtMs": 1774075335144,
       "schedule": {
         "expr": "*/10 * * * *",
         "kind": "cron",
@@ -94,15 +94,15 @@
         "channel": "feishu"
       },
       "state": {
-        "nextRunAtMs": 1774074864407,
-        "lastRunAtMs": 1774074266327,
+        "nextRunAtMs": 1774075464407,
+        "lastRunAtMs": 1774075048460,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 242136,
+        "lastDurationMs": 286684,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true,
-        "runningAtMs": 1774075048441
+        "runningAtMs": 1774075480092
       }
     },
     {
@@ -290,7 +290,7 @@
       "name": "训练后备份到 IMA",
       "enabled": true,
       "createdAtMs": 1774061975601,
-      "updatedAtMs": 1774075046166,
+      "updatedAtMs": 1774075477862,
       "schedule": {
         "expr": "5,10,15,20,25,30,35,40,45,50,55 * * * *",
         "kind": "cron",
@@ -306,11 +306,11 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774075200000,
-        "lastRunAtMs": 1774074508463,
+        "nextRunAtMs": 1774075500000,
+        "lastRunAtMs": 1774075337206,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 537703,
+        "lastDurationMs": 140656,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
