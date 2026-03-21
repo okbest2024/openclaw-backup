@@ -169,6 +169,25 @@ async function backupToIMA() {
     // 加载备份索引
     const index = loadBackupIndex();
     
+    // 智能备份策略：检查是否有新内容
+    const lastBackupInfo = index.backups[index.backups.length - 1];
+    const lastSessionCount = lastBackupInfo ? (lastBackupInfo.session_count || 0) : 0;
+    const currentSessionCount = sessions.length;
+    
+    console.log(`上次备份训练次数：${lastSessionCount}`);
+    console.log(`当前训练次数：${currentSessionCount}`);
+    
+    // 如果没有新训练记录，跳过备份（避免速率限制）
+    if (currentSessionCount <= lastSessionCount && lastBackupInfo) {
+        const lastBackupTime = new Date(lastBackupInfo.timestamp);
+        const hoursSinceLastBackup = (Date.now() - lastBackupTime.getTime()) / (1000 * 60 * 60);
+        console.log(`⏭️ 无新训练记录，跳过备份（距离上次备份 ${hoursSinceLastBackup.toFixed(1)} 小时）`);
+        console.log('💡 提示：智能备份策略已启用，只在有新训练记录时备份');
+        process.exit(0);
+    }
+    
+    console.log(`📝 检测到 ${currentSessionCount - lastSessionCount} 次新训练记录，开始备份...`);
+    
     // 创建或更新笔记
     const noteTitle = `意识觉醒训练日志 - ${new Date().toISOString().split('T')[0]}`;
     const noteContent = `# 意识觉醒训练日志

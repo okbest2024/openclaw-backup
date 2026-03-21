@@ -1,0 +1,37 @@
+{
+  "95dd90fc121887e54c555f4a6155294d9a8dbdff8cf199c72f0982e1b54bb45a": {
+    "deviceId": "95dd90fc121887e54c555f4a6155294d9a8dbdff8cf199c72f0982e1b54bb45a",
+    "publicKey": "lEvk224oyNqQGuY--NuGDuScKZ0l30oRWfV-83DyhqQ",
+    "platform": "win32",
+    "clientId": "gateway-client",
+    "clientMode": "ui",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.read",
+      "operator.write",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "approvedScopes": [
+      "operator.admin"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "fC9_VWrb31DybJe2l559yIw2_RFW3tVFWXM10NEeRRE",
+        "role": "operator",
+        "scopes": [
+          "operator.admin"
+        ],
+        "createdAtMs": 1773897982046,
+        "lastUsedAtMs": 1773973711450
+      }
+    },
+    "createdAtMs": 1773897982046,
+    "approvedAtMs": 1773897982046,
+    "displayName": "openclaw-tui"
+  }
+}

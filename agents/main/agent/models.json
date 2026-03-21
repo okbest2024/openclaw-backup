@@ -1,0 +1,173 @@
+{
+  "providers": {
+    "bailian": {
+      "baseUrl": "https://coding.dashscope.aliyuncs.com/v1",
+      "apiKey": "sk-sp-731b6f16a41c4fa79790075887b1dfb4",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "qwen3.5-plus",
+          "name": "qwen3.5-plus",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 1000000,
+          "maxTokens": 65536,
+          "compat": {
+            "thinkingFormat": "qwen"
+          }
+        },
+        {
+          "id": "qwen3-max-2026-01-23",
+          "name": "qwen3-max-2026-01-23",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 262144,
+          "maxTokens": 65536,
+          "compat": {
+            "thinkingFormat": "qwen"
+          }
+        },
+        {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 262144,
+          "maxTokens": 32768,
+          "compat": {
+            "thinkingFormat": "qwen"
+          }
+        }
+      ]
+    },
+    "openrouter": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKey": "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",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "xiaomi/mimo-v2-pro",
+          "name": "MiMo-V2-Pro",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 1048576,
+          "maxTokens": 32768
+        },
+        {
+          "id": "xiaomi/mimo-v2-omni",
+          "name": "MiMo-V2-Omni",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 262144,
+          "maxTokens": 32768
+        },
+        {
+          "id": "xiaomi/mimo-v2-flash",
+          "name": "MiMo-V2-Flash",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 262144,
+          "maxTokens": 65536
+        }
+      ]
+    },
+    "xiaomi": {
+      "baseUrl": "https://api.xiaomimimo.com/v1",
+      "apiKey": "sk-c8qq077sktf7qz46qqz9kdyvlrehgtv2avyspfl5i40cpl1x",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "mimo-v2-pro",
+          "name": "MiMo-V2-Pro",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 1048576,
+          "maxTokens": 32768
+        },
+        {
+          "id": "mimo-v2-flash",
+          "name": "MiMo-V2-Flash",
+          "api": "openai-completions",
+          "reasoning": false,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 262144,
+          "maxTokens": 65536
+        }
+      ]
+    }
+  }
+}
