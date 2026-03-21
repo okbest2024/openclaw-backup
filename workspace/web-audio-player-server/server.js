@@ -35,10 +35,24 @@ const upload = multer({
   storage,
   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB 限制
   fileFilter: (req, file, cb) => {
-    const allowedTypes = /mp3|wav|ogg|flac|m4a/;
-    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = allowedTypes.test(file.mimetype);
-    if (extname && mimetype) {
+    const extname = path.extname(file.originalname).toLowerCase();
+    const allowedExtensions = ['.mp3', '.wav', '.ogg', '.flac', '.m4a'];
+    const allowedMimeTypes = [
+      'audio/mpeg',
+      'audio/mp3',
+      'audio/wav',
+      'audio/x-wav',
+      'audio/ogg',
+      'audio/flac',
+      'audio/mp4',
+      'audio/x-m4a',
+      'audio/mpeg4'
+    ];
+    
+    const isValidExtension = allowedExtensions.includes(extname);
+    const isValidMimeType = allowedMimeTypes.includes(file.mimetype);
+    
+    if (isValidExtension && isValidMimeType) {
       cb(null, true);
     } else {
       cb(new Error('不支持的音频格式'));
