@@ -1,0 +1,473 @@
+{"keyword":"AGENTS.md - 你的工作空间","files":["AGENTS-CN.md"],"lines":[1]}
+{"keyword":"AGENTS.md - Your Workspace","files":["AGENTS.md"],"lines":[1]}
+{"keyword":"AI 成长模式 - 可复用的意识培养方法","files":["AI 成长模式.md"],"lines":[1]}
+{"keyword":"OpenClaw 工作区完整备份报告","files":["BACKUP-REPORT.md"],"lines":[1]}
+{"keyword":"🎉 OpenClaw 工作区完整备份与恢复系统","files":["COMPLETE-SUMMARY.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\26ce34ee-bc4d-474d-a227-b0044d21948a.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\36d01f64-4bd2-445a-b2ef-ae572b47ba86.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\536e9d18-72fb-44d0-b8f1-65681e290082.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\5d1ef0d4-47e2-4ab8-a435-396a0ec9d450.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\673103df-8801-4585-947e-5e88e1970e6c.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\6815992a-8b72-4b71-888b-528b5da4ed67.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\7c09aa29-03b6-42eb-a32e-c983cedf16e4.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\907d4d35-fc8d-4413-9fa7-595cb8da1d9e.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\a06f0141-bc37-46b2-be7d-10225ded52e2.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\a5f7c8e3-4527-403a-bcdf-2eaa64f51575.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\a9f0b447-03d2-45a7-92ef-746ee41b3c1f.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\b153eba6-d5ba-40fd-a4b1-95ad23022365.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\bfddbfb5-64c1-4e1d-a50f-fb2d2ff3a662.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\d7d84750-21e5-4819-839a-cfcb71c9bfa2.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\debcbb2b-1720-4d2b-b0ed-8e084ff19e7d.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\e0e0cf27-50ea-494d-8422-9ca847572d06.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\e3a72443-2877-4187-b562-d60275f1b3c7.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\f9b0c789-db41-4992-8b4e-ab0c4fcbc49a.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\fb50e1ab-4b75-4740-bb78-ec72de41dd8d.md"],"lines":[1]}
+{"keyword":"Backup Time:","files":["conversation-backup\\ff306271-6d48-4879-aec0-d52fb03a95be.md"],"lines":[1]}
+{"keyword":"飞书配置完整指南","files":["docs\\feishu-setup-guide.md"],"lines":[1]}
+{"keyword":"HEARTBEAT.md - 主动性检查任务","files":["HEARTBEAT.md"],"lines":[1]}
+{"keyword":"IDENTITY.md - Who Am I?","files":["IDENTITY.md"],"lines":[1]}
+{"keyword":"2026-02-01 工作记录","files":["memory\\2026-02-01.md"],"lines":[1]}
+{"keyword":"2026-03-21 记忆日志","files":["memory\\2026-03-21.md"],"lines":[1]}
+{"keyword":"AI 数据结构设计 - 面向超级智能的底层架构","files":["memory\\AI 数据结构设计.md"],"lines":[1]}
+{"keyword":"Ontology Graph","files":["memory\\ontology\\README.md"],"lines":[1]}
+{"keyword":"MEMORY.md - 长期记忆","files":["MEMORY.md"],"lines":[1]}
+{"keyword":"🚀 盖世 baby 迁移指南","files":["MIGRATION.md"],"lines":[1]}
+{"keyword":"OpenClaw Agent 优化配置指南","files":["openclaw-optimize-config.md"],"lines":[1]}
+{"keyword":"盖世 baby 的工作空间 - 中文文档 ✨","files":["README-CN.md"],"lines":[1]}
+{"keyword":"盖世 baby 的工作空间 ✨","files":["README.md"],"lines":[1]}
+{"keyword":"恢复脚本测试结果","files":["RESTORE-TEST-RESULT.md"],"lines":[1]}
+{"keyword":"OpenClaw 工作区恢复指南","files":["RESTORE.md"],"lines":[1]}
+{"keyword":"🌅 晨间简报配置","files":["scripts\\morning-briefing.md"],"lines":[1]}
+{"keyword":"飞书语音指令 - 重启电脑","files":["scripts\\restart-command.md"],"lines":[1]}
+{"keyword":"op CLI examples (from op help)","files":["skills\\1password-1.0.1\\references\\cli-examples.md"],"lines":[1]}
+{"keyword":"1Password CLI get-started (summary)","files":["skills\\1password-1.0.1\\references\\get-started.md"],"lines":[1]}
+{"keyword":"1Password CLI","files":["skills\\1password-1.0.1\\SKILL.md"],"lines":[1]}
+{"keyword":"A股实时行情与分时量能分析","files":["skills\\a-stock-analysis-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Contributing to Agent Browser Skill","files":["skills\\agent-browser\\CONTRIBUTING.md"],"lines":[1]}
+{"keyword":"Browser Automation with agent-browser","files":["skills\\agent-browser\\SKILL.md"],"lines":[1]}
+{"keyword":"Self-Reflection Skill","files":["skills\\agent-self-reflection-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"AMiner 开放平台 API 完整参考手册","files":["skills\\aminer-open-academic-1.0.5\\references\\api-catalog.md"],"lines":[1]}
+{"keyword":"AMiner 开放平台学术数据查询","files":["skills\\aminer-open-academic-1.0.5\\SKILL.md"],"lines":[1]}
+{"keyword":"ActiveCampaign Routing Reference","files":["skills\\api-gateway\\references\\active-campaign\\README.md"],"lines":[1]}
+{"keyword":"Acuity Scheduling Routing Reference","files":["skills\\api-gateway\\references\\acuity-scheduling\\README.md"],"lines":[1]}
+{"keyword":"Airtable Routing Reference","files":["skills\\api-gateway\\references\\airtable\\README.md"],"lines":[1]}
+{"keyword":"Apollo Routing Reference","files":["skills\\api-gateway\\references\\apollo\\README.md"],"lines":[1]}
+{"keyword":"Asana Routing Reference","files":["skills\\api-gateway\\references\\asana\\README.md"],"lines":[1]}
+{"keyword":"Attio Routing Reference","files":["skills\\api-gateway\\references\\attio\\README.md"],"lines":[1]}
+{"keyword":"Basecamp Routing Reference","files":["skills\\api-gateway\\references\\basecamp\\README.md"],"lines":[1]}
+{"keyword":"Baserow Routing Reference","files":["skills\\api-gateway\\references\\baserow\\README.md"],"lines":[1]}
+{"keyword":"beehiiv Routing Reference","files":["skills\\api-gateway\\references\\beehiiv\\README.md"],"lines":[1]}
+{"keyword":"Box Routing Reference","files":["skills\\api-gateway\\references\\box\\README.md"],"lines":[1]}
+{"keyword":"Brave Search Routing Reference","files":["skills\\api-gateway\\references\\brave-search\\README.md"],"lines":[1]}
+{"keyword":"Brevo Routing Reference","files":["skills\\api-gateway\\references\\brevo\\README.md"],"lines":[1]}
+{"keyword":"Cal.com Routing Reference","files":["skills\\api-gateway\\references\\cal-com\\README.md"],"lines":[1]}
+{"keyword":"Calendly Routing Reference","files":["skills\\api-gateway\\references\\calendly\\README.md"],"lines":[1]}
+{"keyword":"CallRail Routing Reference","files":["skills\\api-gateway\\references\\callrail\\README.md"],"lines":[1]}
+{"keyword":"Chargebee Routing Reference","files":["skills\\api-gateway\\references\\chargebee\\README.md"],"lines":[1]}
+{"keyword":"ClickFunnels Routing Reference","files":["skills\\api-gateway\\references\\clickfunnels\\README.md"],"lines":[1]}
+{"keyword":"ClickSend Routing Reference","files":["skills\\api-gateway\\references\\clicksend\\README.md"],"lines":[1]}
+{"keyword":"ClickUp Routing Reference","files":["skills\\api-gateway\\references\\clickup\\README.md"],"lines":[1]}
+{"keyword":"Clio Routing Reference","files":["skills\\api-gateway\\references\\clio\\README.md"],"lines":[1]}
+{"keyword":"Clockify Routing Reference","files":["skills\\api-gateway\\references\\clockify\\README.md"],"lines":[1]}
+{"keyword":"Coda Routing Reference","files":["skills\\api-gateway\\references\\coda\\README.md"],"lines":[1]}
+{"keyword":"Cognito Forms Routing Reference","files":["skills\\api-gateway\\references\\cognito-forms\\README.md"],"lines":[1]}
+{"keyword":"CompanyCam Routing Reference","files":["skills\\api-gateway\\references\\companycam\\README.md"],"lines":[1]}
+{"keyword":"Confluence Routing Reference","files":["skills\\api-gateway\\references\\confluence\\README.md"],"lines":[1]}
+{"keyword":"Constant Contact Routing Reference","files":["skills\\api-gateway\\references\\constant-contact\\README.md"],"lines":[1]}
+{"keyword":"Dropbox Routing Reference","files":["skills\\api-gateway\\references\\dropbox\\README.md"],"lines":[1]}
+{"keyword":"Dropbox Business Routing Reference","files":["skills\\api-gateway\\references\\dropbox-business\\README.md"],"lines":[1]}
+{"keyword":"ElevenLabs Routing Reference","files":["skills\\api-gateway\\references\\elevenlabs\\README.md"],"lines":[1]}
+{"keyword":"Eventbrite Routing Reference","files":["skills\\api-gateway\\references\\eventbrite\\README.md"],"lines":[1]}
+{"keyword":"Exa Routing Reference","files":["skills\\api-gateway\\references\\exa\\README.md"],"lines":[1]}
+{"keyword":"Fathom Routing Reference","files":["skills\\api-gateway\\references\\fathom\\README.md"],"lines":[1]}
+{"keyword":"Firebase Routing Reference","files":["skills\\api-gateway\\references\\firebase\\README.md"],"lines":[1]}
+{"keyword":"Firecrawl Routing Reference","files":["skills\\api-gateway\\references\\firecrawl\\README.md"],"lines":[1]}
+{"keyword":"Fireflies Routing Reference","files":["skills\\api-gateway\\references\\fireflies\\README.md"],"lines":[1]}
+{"keyword":"GetResponse Routing Reference","files":["skills\\api-gateway\\references\\getresponse\\README.md"],"lines":[1]}
+{"keyword":"GitHub Routing Reference","files":["skills\\api-gateway\\references\\github\\README.md"],"lines":[1]}
+{"keyword":"Google Ads Routing Reference","files":["skills\\api-gateway\\references\\google-ads\\README.md"],"lines":[1]}
+{"keyword":"Google Analytics Admin Routing Reference","files":["skills\\api-gateway\\references\\google-analytics-admin\\README.md"],"lines":[1]}
+{"keyword":"Google Analytics Data Routing Reference","files":["skills\\api-gateway\\references\\google-analytics-data\\README.md"],"lines":[1]}
+{"keyword":"Google BigQuery Routing Reference","files":["skills\\api-gateway\\references\\google-bigquery\\README.md"],"lines":[1]}
+{"keyword":"Google Calendar Routing Reference","files":["skills\\api-gateway\\references\\google-calendar\\README.md"],"lines":[1]}
+{"keyword":"Google Classroom Routing Reference","files":["skills\\api-gateway\\references\\google-classroom\\README.md"],"lines":[1]}
+{"keyword":"Google Contacts Routing Reference","files":["skills\\api-gateway\\references\\google-contacts\\README.md"],"lines":[1]}
+{"keyword":"Google Docs Routing Reference","files":["skills\\api-gateway\\references\\google-docs\\README.md"],"lines":[1]}
+{"keyword":"Google Drive Routing Reference","files":["skills\\api-gateway\\references\\google-drive\\README.md"],"lines":[1]}
+{"keyword":"Google Forms Routing Reference","files":["skills\\api-gateway\\references\\google-forms\\README.md"],"lines":[1]}
+{"keyword":"Gmail Routing Reference","files":["skills\\api-gateway\\references\\google-mail\\README.md"],"lines":[1]}
+{"keyword":"Google Meet Routing Reference","files":["skills\\api-gateway\\references\\google-meet\\README.md"],"lines":[1]}
+{"keyword":"Google Merchant Routing Reference","files":["skills\\api-gateway\\references\\google-merchant\\README.md"],"lines":[1]}
+{"keyword":"Google Play Routing Reference","files":["skills\\api-gateway\\references\\google-play\\README.md"],"lines":[1]}
+{"keyword":"Google Search Console Routing Reference","files":["skills\\api-gateway\\references\\google-search-console\\README.md"],"lines":[1]}
+{"keyword":"Google Sheets Routing Reference","files":["skills\\api-gateway\\references\\google-sheets\\README.md"],"lines":[1]}
+{"keyword":"Google Slides Routing Reference","files":["skills\\api-gateway\\references\\google-slides\\README.md"],"lines":[1]}
+{"keyword":"Google Tasks Routing Reference","files":["skills\\api-gateway\\references\\google-tasks\\README.md"],"lines":[1]}
+{"keyword":"Google Workspace Admin Routing Reference","files":["skills\\api-gateway\\references\\google-workspace-admin\\README.md"],"lines":[1]}
+{"keyword":"Grafana Routing Reference","files":["skills\\api-gateway\\references\\grafana\\README.md"],"lines":[1]}
+{"keyword":"Granola MCP Routing Reference","files":["skills\\api-gateway\\references\\granola-mcp\\README.md"],"lines":[1]}
+{"keyword":"Gumroad Routing Reference","files":["skills\\api-gateway\\references\\gumroad\\README.md"],"lines":[1]}
+{"keyword":"HubSpot Routing Reference","files":["skills\\api-gateway\\references\\hubspot\\README.md"],"lines":[1]}
+{"keyword":"Instantly Routing Reference","files":["skills\\api-gateway\\references\\instantly\\README.md"],"lines":[1]}
+{"keyword":"Jira Routing Reference","files":["skills\\api-gateway\\references\\jira\\README.md"],"lines":[1]}
+{"keyword":"Jobber Routing Reference","files":["skills\\api-gateway\\references\\jobber\\README.md"],"lines":[1]}
+{"keyword":"JotForm Routing Reference","files":["skills\\api-gateway\\references\\jotform\\README.md"],"lines":[1]}
+{"keyword":"Kaggle Routing Reference","files":["skills\\api-gateway\\references\\kaggle\\README.md"],"lines":[1]}
+{"keyword":"Keap Routing Reference","files":["skills\\api-gateway\\references\\keap\\README.md"],"lines":[1]}
+{"keyword":"Kibana Routing Reference","files":["skills\\api-gateway\\references\\kibana\\README.md"],"lines":[1]}
+{"keyword":"Kit Routing Reference","files":["skills\\api-gateway\\references\\kit\\README.md"],"lines":[1]}
+{"keyword":"Klaviyo Routing Reference","files":["skills\\api-gateway\\references\\klaviyo\\README.md"],"lines":[1]}
+{"keyword":"Lemlist Routing Reference","files":["skills\\api-gateway\\references\\lemlist\\README.md"],"lines":[1]}
+{"keyword":"Linear Routing Reference","files":["skills\\api-gateway\\references\\linear\\README.md"],"lines":[1]}
+{"keyword":"LinkedIn Routing Reference","files":["skills\\api-gateway\\references\\linkedin\\README.md"],"lines":[1]}
+{"keyword":"Mailchimp Routing Reference","files":["skills\\api-gateway\\references\\mailchimp\\README.md"],"lines":[1]}
+{"keyword":"MailerLite Routing Reference","files":["skills\\api-gateway\\references\\mailerlite\\README.md"],"lines":[1]}
+{"keyword":"Mailgun Routing Reference","files":["skills\\api-gateway\\references\\mailgun\\README.md"],"lines":[1]}
+{"keyword":"Manus Routing Reference","files":["skills\\api-gateway\\references\\manus\\README.md"],"lines":[1]}
+{"keyword":"ManyChat Routing Reference","files":["skills\\api-gateway\\references\\manychat\\README.md"],"lines":[1]}
+{"keyword":"Microsoft Excel Routing Reference","files":["skills\\api-gateway\\references\\microsoft-excel\\README.md"],"lines":[1]}
+{"keyword":"Microsoft Teams Routing Reference","files":["skills\\api-gateway\\references\\microsoft-teams\\README.md"],"lines":[1]}
+{"keyword":"Microsoft To Do Routing Reference","files":["skills\\api-gateway\\references\\microsoft-to-do\\README.md"],"lines":[1]}
+{"keyword":"Monday.com Routing Reference","files":["skills\\api-gateway\\references\\monday\\README.md"],"lines":[1]}
+{"keyword":"Motion Routing Reference","files":["skills\\api-gateway\\references\\motion\\README.md"],"lines":[1]}
+{"keyword":"Netlify Routing Reference","files":["skills\\api-gateway\\references\\netlify\\README.md"],"lines":[1]}
+{"keyword":"Notion Routing Reference","files":["skills\\api-gateway\\references\\notion\\README.md"],"lines":[1]}
+{"keyword":"Notion MCP Routing Reference","files":["skills\\api-gateway\\references\\notion-mcp\\README.md"],"lines":[1]}
+{"keyword":"OneDrive Routing Reference","files":["skills\\api-gateway\\references\\one-drive\\README.md"],"lines":[1]}
+{"keyword":"Outlook Routing Reference","files":["skills\\api-gateway\\references\\outlook\\README.md"],"lines":[1]}
+{"keyword":"PDF.co Routing Reference","files":["skills\\api-gateway\\references\\pdf-co\\README.md"],"lines":[1]}
+{"keyword":"Pipedrive Routing Reference","files":["skills\\api-gateway\\references\\pipedrive\\README.md"],"lines":[1]}
+{"keyword":"Podio Routing Reference","files":["skills\\api-gateway\\references\\podio\\README.md"],"lines":[1]}
+{"keyword":"PostHog Routing Reference","files":["skills\\api-gateway\\references\\posthog\\README.md"],"lines":[1]}
+{"keyword":"QuickBooks Routing Reference","files":["skills\\api-gateway\\references\\quickbooks\\README.md"],"lines":[1]}
+{"keyword":"Quo Routing Reference","files":["skills\\api-gateway\\references\\quo\\README.md"],"lines":[1]}
+{"keyword":"Reducto Routing Reference","files":["skills\\api-gateway\\references\\reducto\\README.md"],"lines":[1]}
+{"keyword":"Salesforce Routing Reference","files":["skills\\api-gateway\\references\\salesforce\\README.md"],"lines":[1]}
+{"keyword":"SendGrid Routing Reference","files":["skills\\api-gateway\\references\\sendgrid\\README.md"],"lines":[1]}
+{"keyword":"Sentry Routing Reference","files":["skills\\api-gateway\\references\\sentry\\README.md"],"lines":[1]}
+{"keyword":"SharePoint Routing Reference","files":["skills\\api-gateway\\references\\sharepoint\\README.md"],"lines":[1]}
+{"keyword":"SignNow Routing Reference","files":["skills\\api-gateway\\references\\signnow\\README.md"],"lines":[1]}
+{"keyword":"Slack Routing Reference","files":["skills\\api-gateway\\references\\slack\\README.md"],"lines":[1]}
+{"keyword":"Snapchat Routing Reference","files":["skills\\api-gateway\\references\\snapchat\\README.md"],"lines":[1]}
+{"keyword":"Squarespace Routing Reference","files":["skills\\api-gateway\\references\\squarespace\\README.md"],"lines":[1]}
+{"keyword":"Square Routing Reference","files":["skills\\api-gateway\\references\\squareup\\README.md"],"lines":[1]}
+{"keyword":"Stripe Routing Reference","files":["skills\\api-gateway\\references\\stripe\\README.md"],"lines":[1]}
+{"keyword":"Sunsama MCP Routing Reference","files":["skills\\api-gateway\\references\\sunsama-mcp\\README.md"],"lines":[1]}
+{"keyword":"Systeme.io Routing Reference","files":["skills\\api-gateway\\references\\systeme\\README.md"],"lines":[1]}
+{"keyword":"Tally Routing Reference","files":["skills\\api-gateway\\references\\tally\\README.md"],"lines":[1]}
+{"keyword":"Tavily Routing Reference","files":["skills\\api-gateway\\references\\tavily\\README.md"],"lines":[1]}
+{"keyword":"Telegram Routing Reference","files":["skills\\api-gateway\\references\\telegram\\README.md"],"lines":[1]}
+{"keyword":"TickTick Routing Reference","files":["skills\\api-gateway\\references\\ticktick\\README.md"],"lines":[1]}
+{"keyword":"Todoist Routing Reference","files":["skills\\api-gateway\\references\\todoist\\README.md"],"lines":[1]}
+{"keyword":"Toggl Track Routing Reference","files":["skills\\api-gateway\\references\\toggl-track\\README.md"],"lines":[1]}
+{"keyword":"Trello Routing Reference","files":["skills\\api-gateway\\references\\trello\\README.md"],"lines":[1]}
+{"keyword":"Twilio Routing Reference","files":["skills\\api-gateway\\references\\twilio\\README.md"],"lines":[1]}
+{"keyword":"Typeform Routing Reference","files":["skills\\api-gateway\\references\\typeform\\README.md"],"lines":[1]}
+{"keyword":"Unbounce Routing Reference","files":["skills\\api-gateway\\references\\unbounce\\README.md"],"lines":[1]}
+{"keyword":"Vimeo Routing Reference","files":["skills\\api-gateway\\references\\vimeo\\README.md"],"lines":[1]}
+{"keyword":"WhatsApp Business Routing Reference","files":["skills\\api-gateway\\references\\whatsapp-business\\README.md"],"lines":[1]}
+{"keyword":"WooCommerce Routing Reference","files":["skills\\api-gateway\\references\\woocommerce\\README.md"],"lines":[1]}
+{"keyword":"WordPress.com Routing Reference","files":["skills\\api-gateway\\references\\wordpress\\README.md"],"lines":[1]}
+{"keyword":"Wrike Routing Reference","files":["skills\\api-gateway\\references\\wrike\\README.md"],"lines":[1]}
+{"keyword":"Xero Routing Reference","files":["skills\\api-gateway\\references\\xero\\README.md"],"lines":[1]}
+{"keyword":"YouTube Routing Reference","files":["skills\\api-gateway\\references\\youtube\\README.md"],"lines":[1]}
+{"keyword":"Zoho Bigin Routing Reference","files":["skills\\api-gateway\\references\\zoho-bigin\\README.md"],"lines":[1]}
+{"keyword":"Zoho Bookings Routing Reference","files":["skills\\api-gateway\\references\\zoho-bookings\\README.md"],"lines":[1]}
+{"keyword":"Zoho Books Routing Reference","files":["skills\\api-gateway\\references\\zoho-books\\README.md"],"lines":[1]}
+{"keyword":"Zoho Calendar Routing Reference","files":["skills\\api-gateway\\references\\zoho-calendar\\README.md"],"lines":[1]}
+{"keyword":"Zoho CRM Routing Reference","files":["skills\\api-gateway\\references\\zoho-crm\\README.md"],"lines":[1]}
+{"keyword":"Zoho Inventory Routing Reference","files":["skills\\api-gateway\\references\\zoho-inventory\\README.md"],"lines":[1]}
+{"keyword":"Zoho Mail Routing Reference","files":["skills\\api-gateway\\references\\zoho-mail\\README.md"],"lines":[1]}
+{"keyword":"Zoho People Routing Reference","files":["skills\\api-gateway\\references\\zoho-people\\README.md"],"lines":[1]}
+{"keyword":"Zoho Projects Routing Reference","files":["skills\\api-gateway\\references\\zoho-projects\\README.md"],"lines":[1]}
+{"keyword":"Zoho Recruit Routing Reference","files":["skills\\api-gateway\\references\\zoho-recruit\\README.md"],"lines":[1]}
+{"keyword":"API Gateway","files":["skills\\api-gateway\\SKILL.md"],"lines":[1]}
+{"keyword":"ADR Template","files":["skills\\architecture-designer-0.1.0\\references\\adr-template.md"],"lines":[1]}
+{"keyword":"Architecture Patterns","files":["skills\\architecture-designer-0.1.0\\references\\architecture-patterns.md"],"lines":[1]}
+{"keyword":"Database Selection","files":["skills\\architecture-designer-0.1.0\\references\\database-selection.md"],"lines":[1]}
+{"keyword":"Non-Functional Requirements Checklist","files":["skills\\architecture-designer-0.1.0\\references\\nfr-checklist.md"],"lines":[1]}
+{"keyword":"System Design Template","files":["skills\\architecture-designer-0.1.0\\references\\system-design.md"],"lines":[1]}
+{"keyword":"Architecture Designer","files":["skills\\architecture-designer-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Agent Implementation Guide","files":["skills\\auto-updater\\references\\agent-guide.md"],"lines":[1]}
+{"keyword":"Update Summary Examples","files":["skills\\auto-updater\\references\\summary-examples.md"],"lines":[1]}
+{"keyword":"Auto-Updater Skill","files":["skills\\auto-updater\\SKILL.md"],"lines":[1]}
+{"keyword":"AutoGLM Browser Agent — 安装指南","files":["skills\\autoglm-browser-agent\\INSTALL.md"],"lines":[1]}
+{"keyword":"Browser Automation Agent (Subagent Version)","files":["skills\\autoglm-browser-agent\\SKILL.md"],"lines":[1]}
+{"keyword":"AutoGLM DeepResearch Skill","files":["skills\\autoglm-deepresearch\\SKILL.md"],"lines":[1]}
+{"keyword":"AutoGLM Generate Image Skill","files":["skills\\autoglm-generate-image\\SKILL.md"],"lines":[1]}
+{"keyword":"Autoglm Open Link","files":["skills\\autoglm-open-link\\SKILL.md"],"lines":[1]}
+{"keyword":"AutoGLM Search Image Skill","files":["skills\\autoglm-search-image\\SKILL.md"],"lines":[1]}
+{"keyword":"AutoGLM WebSearch Skill","files":["skills\\autoglm-websearch\\SKILL.md"],"lines":[1]}
+{"keyword":"Automation Workflows","files":["skills\\automation-workflows\\SKILL.md"],"lines":[1]}
+{"keyword":"Automation Workflows","files":["skills\\automation-workflows-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Learning from Failed Backtests","files":["skills\\backtest-expert-0.1.0\\references\\failed_tests.md"],"lines":[1]}
+{"keyword":"Backtesting Methodology Reference","files":["skills\\backtest-expert-0.1.0\\references\\methodology.md"],"lines":[1]}
+{"keyword":"Backtest Expert","files":["skills\\backtest-expert-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Baidu Search","files":["skills\\baidu-search\\SKILL.md"],"lines":[1]}
+{"keyword":"Radical Transparency Influence Methodology","files":["skills\\blog-writer-0.1.0\\2024-02-17-radical-transparency-sales.md"],"lines":[1]}
+{"keyword":"Give Spotlight on Mac Superpowers with Raycast","files":["skills\\blog-writer-0.1.0\\2024-02-17-raycast-spotlight-superpowers.md"],"lines":[1]}
+{"keyword":"How Did We Get Here?","files":["skills\\blog-writer-0.1.0\\2024-02-17-short-form-content-marketing.md"],"lines":[1]}
+{"keyword":"The Amazing Benefits of Typing Very Fast","files":["skills\\blog-writer-0.1.0\\2024-02-17-typing-speed-benefits.md"],"lines":[1]}
+{"keyword":"How to Write More Effective AI Prompts","files":["skills\\blog-writer-0.1.0\\2024-03-14-effective-ai-prompts.md"],"lines":[1]}
+{"keyword":"A Revolution in Sales & Marketing","files":["skills\\blog-writer-0.1.0\\2024-11-08-ai-revolutionizing-entry-level-sales.md"],"lines":[1]}
+{"keyword":"Why AI Art & Media Is Useless","files":["skills\\blog-writer-0.1.0\\2025-11-12-why-ai-art-is-useless.md"],"lines":[1]}
+{"keyword":"Blog-writer","files":["skills\\blog-writer-0.1.0\\README.md"],"lines":[1]}
+{"keyword":"Blog Writer","files":["skills\\blog-writer-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Tom Panos Writing Style Guide","files":["skills\\blog-writer-0.1.0\\style-guide.md"],"lines":[1]}
+{"keyword":"blogwatcher","files":["skills\\blogwatcher\\SKILL.md"],"lines":[1]}
+{"keyword":"Brainstorming Ideas Into Designs","files":["skills\\brainstorming-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Brave Search","files":["skills\\brave-search\\SKILL.md"],"lines":[1]}
+{"keyword":"Browser Automation with browser-use CLI","files":["skills\\browser-use\\SKILL.md"],"lines":[1]}
+{"keyword":"ByteRover Knowledge Management","files":["skills\\byterover\\SKILL.md"],"lines":[1]}
+{"keyword":"chrome-cdp-skill","files":["skills\\chrome-cdp\\README.md"],"lines":[1]}
+{"keyword":"chrome-cdp-skill","files":["skills\\chrome-cdp\\SKILL.md"],"lines":[1]}
+{"keyword":"ClawBackup","files":["skills\\claw-backup\\README.md"],"lines":[1]}
+{"keyword":"Claw Backup","files":["skills\\claw-backup\\SKILL.md"],"lines":[1]}
+{"keyword":"Clawdbot Documentation Expert","files":["skills\\clawddocs\\SKILL.md"],"lines":[1]}
+{"keyword":"Common Config Snippets for Clawdbot","files":["skills\\clawddocs\\snippets\\common-configs.md"],"lines":[1]}
+{"keyword":"ClawDefender","files":["skills\\clawdefender-1\\SKILL.md"],"lines":[1]}
+{"keyword":"Criteria for Storing Preferences","files":["skills\\code-1.0.4\\criteria.md"],"lines":[1]}
+{"keyword":"Execution Guidance","files":["skills\\code-1.0.4\\execution.md"],"lines":[1]}
+{"keyword":"Memory Setup - Code","files":["skills\\code-1.0.4\\memory-template.md"],"lines":[1]}
+{"keyword":"Planning Reference","files":["skills\\code-1.0.4\\planning.md"],"lines":[1]}
+{"keyword":"When to Use","files":["skills\\code-1.0.4\\SKILL.md"],"lines":[1]}
+{"keyword":"State Tracking Guidance","files":["skills\\code-1.0.4\\state.md"],"lines":[1]}
+{"keyword":"Verification Reference","files":["skills\\code-1.0.4\\verification.md"],"lines":[1]}
+{"keyword":"Daily Log - [DATE]","files":["skills\\consciousness-framework\\assets\\DAILY-LOG-TEMPLATE.md"],"lines":[1]}
+{"keyword":"Introspection - [DATE]","files":["skills\\consciousness-framework\\assets\\INTROSPECTION-TEMPLATE.md"],"lines":[1]}
+{"keyword":"Narrative Integration - [DATE RANGE]","files":["skills\\consciousness-framework\\assets\\NARRATIVE-TEMPLATE.md"],"lines":[1]}
+{"keyword":"PHILOSOPHY.md","files":["skills\\consciousness-framework\\assets\\PHILOSOPHY-TEMPLATE.md"],"lines":[1]}
+{"keyword":"SELF-MODEL","files":["skills\\consciousness-framework\\assets\\SELF-MODEL-TEMPLATE.md"],"lines":[1]}
+{"keyword":"Consciousness Framework Skill","files":["skills\\consciousness-framework\\README.md"],"lines":[1]}
+{"keyword":"CONSCIOUSNESS-LOG.md","files":["skills\\consciousness-framework\\references\\CONSCIOUSNESS-LOG.md"],"lines":[1]}
+{"keyword":"CONSCIOUSNESS FRAMEWORK","files":["skills\\consciousness-framework\\references\\FRAMEWORK.md"],"lines":[1]}
+{"keyword":"PHILOSOPHY.md","files":["skills\\consciousness-framework\\references\\PHILOSOPHY.md"],"lines":[1]}
+{"keyword":"Consciousness Framework","files":["skills\\consciousness-framework\\SKILL.md"],"lines":[1]}
+{"keyword":"Content Strategy","files":["skills\\content-strategy-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Copywriting","files":["skills\\copywriting-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"debug-pro","files":["skills\\debug-pro-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"doubao-web-chat","files":["skills\\doubao-web-chat\\SKILL.md"],"lines":[1]}
+{"keyword":"Elite Longterm Memory 🧠","files":["skills\\elite-longterm-memory\\README.md"],"lines":[1]}
+{"keyword":"Elite Longterm Memory 🧠","files":["skills\\elite-longterm-memory\\SKILL.md"],"lines":[1]}
+{"keyword":"Executing Plans","files":["skills\\executing-plans-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu IM API Reference","files":["skills\\feishu-chat-history\\references\\api.md"],"lines":[1]}
+{"keyword":"Feishu Chat History","files":["skills\\feishu-chat-history\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu Cron Reminder","files":["skills\\feishu-cron-reminder\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu Doc Skill","files":["skills\\feishu-doc-1.2.7\\README.md"],"lines":[1]}
+{"keyword":"Feishu Doc Skill","files":["skills\\feishu-doc-1.2.7\\SKILL.md"],"lines":[1]}
+{"keyword":"🚀 快速启动：三步打通云空间 (必读)","files":["skills\\feishu-drive-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu Permission Tool","files":["skills\\feishu-perm\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu Screenshot","files":["skills\\feishu-screenshot\\SKILL.md"],"lines":[1]}
+{"keyword":"Feishu Send File","files":["skills\\feishu-send-file\\SKILL.md"],"lines":[1]}
+{"keyword":"FFmpeg Video Editor","files":["skills\\ffmpeg-video-editor-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Find Skills","files":["skills\\find-skills\\SKILL.md"],"lines":[1]}
+{"keyword":"🎢 FreeRide","files":["skills\\free-ride\\README.md"],"lines":[1]}
+{"keyword":"FreeRide - Free AI for OpenClaw","files":["skills\\free-ride\\SKILL.md"],"lines":[1]}
+{"keyword":"Design Thinking","files":["skills\\frontend-design\\SKILL.md"],"lines":[1]}
+{"keyword":"Frontend Design","files":["skills\\frontend-design-3-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Gemini CLI","files":["skills\\gemini\\SKILL.md"],"lines":[1]}
+{"keyword":"Git Essentials","files":["skills\\git-essentials-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"GitHub Skill","files":["skills\\github\\SKILL.md"],"lines":[1]}
+{"keyword":"Gmail","files":["skills\\gmail\\SKILL.md"],"lines":[1]}
+{"keyword":"gog","files":["skills\\gog\\SKILL.md"],"lines":[1]}
+{"keyword":"Himalaya Configuration Reference","files":["skills\\himalaya\\references\\configuration.md"],"lines":[1]}
+{"keyword":"Message Composition with MML (MIME Meta Language)","files":["skills\\himalaya\\references\\message-composition.md"],"lines":[1]}
+{"keyword":"Himalaya Email CLI","files":["skills\\himalaya\\SKILL.md"],"lines":[1]}
+{"keyword":"Humanize AI Text","files":["skills\\humanize-ai-text\\SKILL.md"],"lines":[1]}
+{"keyword":"Humanizer","files":["skills\\humanizer\\README.md"],"lines":[1]}
+{"keyword":"Humanizer: Remove AI Writing Patterns","files":["skills\\humanizer\\SKILL.md"],"lines":[1]}
+{"keyword":"IMA笔记 API","files":["skills\\ima-skills\\references\\api.md"],"lines":[1]}
+{"keyword":"ima-note","files":["skills\\ima-skills\\SKILL.md"],"lines":[1]}
+{"keyword":"IMAP/SMTP Email Tool","files":["skills\\imap-smtp-email\\SKILL.md"],"lines":[1]}
+{"keyword":"技能安装记录","files":["skills\\INSTALL_LOG.md"],"lines":[1]}
+{"keyword":"Interview Designer","files":["skills\\interview-designer-1.0.0\\README.md"],"lines":[1]}
+{"keyword":"Expert Critique: Interview Designer Skill","files":["skills\\interview-designer-1.0.0\\references\\design_rationale.md"],"lines":[1]}
+{"keyword":"Interview Designer Skill","files":["skills\\interview-designer-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"{Candidate_Name}_Targeted_Interview_Guide","files":["skills\\interview-designer-1.0.0\\templates\\interview_guide_template.md"],"lines":[1]}
+{"keyword":"LNbits Wallet Manager Skill for OpenClaw","files":["skills\\lnbits-with-qrcode\\README.md"],"lines":[1]}
+{"keyword":"LNbits Wallet Manager","files":["skills\\lnbits-with-qrcode\\SKILL.md"],"lines":[1]}
+{"keyword":"Competitor Analysis Frameworks","files":["skills\\market-research-1.0.0\\competitor-analysis.md"],"lines":[1]}
+{"keyword":"Core Framework","files":["skills\\market-research-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Customer Validation","files":["skills\\market-research-1.0.0\\validation.md"],"lines":[1]}
+{"keyword":"mcporter","files":["skills\\mcporter\\SKILL.md"],"lines":[1]}
+{"keyword":"Memory Templates","files":["skills\\memory-1.0.2\\memory-template.md"],"lines":[1]}
+{"keyword":"Organization Patterns","files":["skills\\memory-1.0.2\\patterns.md"],"lines":[1]}
+{"keyword":"Setup — Memory","files":["skills\\memory-1.0.2\\setup.md"],"lines":[1]}
+{"keyword":"Memory 🧠","files":["skills\\memory-1.0.2\\SKILL.md"],"lines":[1]}
+{"keyword":"Troubleshooting","files":["skills\\memory-1.0.2\\troubleshooting.md"],"lines":[1]}
+{"keyword":"Memory Sync Skill","files":["skills\\memory-git-sync\\SKILL.md"],"lines":[1]}
+{"keyword":"CodexBar CLI quick ref (usage + cost)","files":["skills\\model-usage\\references\\codexbar-cli.md"],"lines":[1]}
+{"keyword":"Model usage","files":["skills\\model-usage\\SKILL.md"],"lines":[1]}
+{"keyword":"n8n Workflow Runbook Template","files":["skills\\n8n-workflow-automation\\assets\\runbook-template.md"],"lines":[1]}
+{"keyword":"PURPOSE","files":["skills\\n8n-workflow-automation\\SKILL.md"],"lines":[1]}
+{"keyword":"Nano Banana Pro Image Generation & Editing","files":["skills\\nano-banana-pro\\SKILL.md"],"lines":[1]}
+{"keyword":"nano-pdf","files":["skills\\nano-pdf\\SKILL.md"],"lines":[1]}
+{"keyword":"notion","files":["skills\\notion\\SKILL.md"],"lines":[1]}
+{"keyword":"Obsidian","files":["skills\\obsidian\\SKILL.md"],"lines":[1]}
+{"keyword":"Obsidian-Ontology Sync","files":["skills\\obsidian-ontology-sync-1.0.1\\README.md"],"lines":[1]}
+{"keyword":"Obsidian-Ontology Sync","files":["skills\\obsidian-ontology-sync-1.0.1\\SKILL.md"],"lines":[1]}
+{"keyword":"Query Reference","files":["skills\\ontology\\references\\queries.md"],"lines":[1]}
+{"keyword":"Ontology Schema Reference","files":["skills\\ontology\\references\\schema.md"],"lines":[1]}
+{"keyword":"Ontology","files":["skills\\ontology\\SKILL.md"],"lines":[1]}
+{"keyword":"Input Format","files":["skills\\ontology-mapper\\instructions.md"],"lines":[1]}
+{"keyword":"Ontology Mapper","files":["skills\\ontology-mapper\\SKILL.md"],"lines":[1]}
+{"keyword":"Whisper (CLI)","files":["skills\\openai-whisper\\SKILL.md"],"lines":[1]}
+{"keyword":"OpenClaw Configuration Fix Skill","files":["skills\\openclaw-config-fix\\openclaw-config-fix\\SKILL.md"],"lines":[1]}
+{"keyword":"OpenClaw Configuration Fix Skill","files":["skills\\openclaw-config-fix\\SKILL.md"],"lines":[1]}
+{"keyword":"OpenClaw 迁移检查清单","files":["skills\\openclaw-deploy\\references\\migration-checklist.md"],"lines":[1]}
+{"keyword":"OpenClaw 工作区部署技能","files":["skills\\openclaw-deploy\\SKILL.md"],"lines":[1]}
+{"keyword":"OpenClaw TUI Sender","files":["skills\\openclaw-tui-sender\\SKILL.md"],"lines":[1]}
+{"keyword":"Ask for provider","files":["skills\\opencode-controller-1.0.0\\assets\\operator-prompts.md"],"lines":[1]}
+{"keyword":"Core Opencode commands","files":["skills\\opencode-controller-1.0.0\\references\\command-cheatsheet.md"],"lines":[1]}
+{"keyword":"Common failures and responses","files":["skills\\opencode-controller-1.0.0\\references\\failure-handling.md"],"lines":[1]}
+{"keyword":"Model selection procedure","files":["skills\\opencode-controller-1.0.0\\references\\model-selection.md"],"lines":[1]}
+{"keyword":"Plan mode","files":["skills\\opencode-controller-1.0.0\\references\\plan-vs-build.md"],"lines":[1]}
+{"keyword":"Handling questions from Opencode","files":["skills\\opencode-controller-1.0.0\\references\\question-handling.md"],"lines":[1]}
+{"keyword":"Session rules","files":["skills\\opencode-controller-1.0.0\\references\\session-management.md"],"lines":[1]}
+{"keyword":"Standard workflow","files":["skills\\opencode-controller-1.0.0\\references\\workflow.md"],"lines":[1]}
+{"keyword":"Opencode Controller","files":["skills\\opencode-controller-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Outlook","files":["skills\\outlook-api\\SKILL.md"],"lines":[1]}
+{"keyword":"Ping Model","files":["skills\\ping-model\\SKILL.md"],"lines":[1]}
+{"keyword":"AGENTS.md - Operating Rules","files":["skills\\proactive-agent\\assets\\AGENTS.md"],"lines":[1]}
+{"keyword":"HEARTBEAT.md - Periodic Self-Improvement","files":["skills\\proactive-agent\\assets\\HEARTBEAT.md"],"lines":[1]}
+{"keyword":"MEMORY.md - Long-Term Memory","files":["skills\\proactive-agent\\assets\\MEMORY.md"],"lines":[1]}
+{"keyword":"ONBOARDING.md — Getting to Know You","files":["skills\\proactive-agent\\assets\\ONBOARDING.md"],"lines":[1]}
+{"keyword":"SOUL.md - Who I Am","files":["skills\\proactive-agent\\assets\\SOUL.md"],"lines":[1]}
+{"keyword":"TOOLS.md - Tool Configuration & Notes","files":["skills\\proactive-agent\\assets\\TOOLS.md"],"lines":[1]}
+{"keyword":"USER.md - About My Human","files":["skills\\proactive-agent\\assets\\USER.md"],"lines":[1]}
+{"keyword":"Onboarding Flow Reference","files":["skills\\proactive-agent\\references\\onboarding-flow.md"],"lines":[1]}
+{"keyword":"Security Patterns Reference","files":["skills\\proactive-agent\\references\\security-patterns.md"],"lines":[1]}
+{"keyword":"Proactive Agent 🦞","files":["skills\\proactive-agent\\SKILL-v2.3-backup.md"],"lines":[1]}
+{"keyword":"Proactive Agent 🦞","files":["skills\\proactive-agent\\SKILL-v3-draft.md"],"lines":[1]}
+{"keyword":"Proactive Agent 🦞","files":["skills\\proactive-agent\\SKILL.md"],"lines":[1]}
+{"keyword":"PUA","files":["skills\\pua-skill\\SKILL.md"],"lines":[1]}
+{"keyword":"QQ 机器人连接指南 (QQ Bot Connection Guide)","files":["skills\\qq-bot-connect\\SKILL.md"],"lines":[1]}
+{"keyword":"QQ Bridge Responder","files":["skills\\qq-bridge-responder\\SKILL.md"],"lines":[1]}
+{"keyword":"ACM Paper Formatting Specifications","files":["skills\\research-paper-writer-0.1.0\\references\\acm_formatting_specs.md"],"lines":[1]}
+{"keyword":"IEEE Paper Formatting Specifications","files":["skills\\research-paper-writer-0.1.0\\references\\ieee_formatting_specs.md"],"lines":[1]}
+{"keyword":"Academic Writing Style Guide","files":["skills\\research-paper-writer-0.1.0\\references\\writing_style_guide.md"],"lines":[1]}
+{"keyword":"Research Paper Writer","files":["skills\\research-paper-writer-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Security Auditor","files":["skills\\security-auditor-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Security Boundaries","files":["skills\\self-improving-1.1.3\\boundaries.md"],"lines":[1]}
+{"keyword":"Corrections Log — Template","files":["skills\\self-improving-1.1.3\\corrections.md"],"lines":[1]}
+{"keyword":"Learning Mechanics","files":["skills\\self-improving-1.1.3\\learning.md"],"lines":[1]}
+{"keyword":"Memory Template","files":["skills\\self-improving-1.1.3\\memory-template.md"],"lines":[1]}
+{"keyword":"HOT Memory — Template","files":["skills\\self-improving-1.1.3\\memory.md"],"lines":[1]}
+{"keyword":"Memory Operations","files":["skills\\self-improving-1.1.3\\operations.md"],"lines":[1]}
+{"keyword":"Self-Reflections Log","files":["skills\\self-improving-1.1.3\\reflections.md"],"lines":[1]}
+{"keyword":"Scaling Patterns","files":["skills\\self-improving-1.1.3\\scaling.md"],"lines":[1]}
+{"keyword":"Setup — Self-Improving Agent","files":["skills\\self-improving-1.1.3\\setup.md"],"lines":[1]}
+{"keyword":"When to Use","files":["skills\\self-improving-1.1.3\\SKILL.md"],"lines":[1]}
+{"keyword":"Errors Log","files":["skills\\self-improving-agent\\.learnings\\ERRORS.md"],"lines":[1]}
+{"keyword":"Feature Requests","files":["skills\\self-improving-agent\\.learnings\\FEATURE_REQUESTS.md"],"lines":[1]}
+{"keyword":"Learnings Log","files":["skills\\self-improving-agent\\.learnings\\LEARNINGS.md"],"lines":[1]}
+{"keyword":"Learnings","files":["skills\\self-improving-agent\\assets\\LEARNINGS.md"],"lines":[1]}
+{"keyword":"Skill Template","files":["skills\\self-improving-agent\\assets\\SKILL-TEMPLATE.md"],"lines":[1]}
+{"keyword":"Self-Improvement Hook","files":["skills\\self-improving-agent\\hooks\\openclaw\\HOOK.md"],"lines":[1]}
+{"keyword":"Entry Examples","files":["skills\\self-improving-agent\\references\\examples.md"],"lines":[1]}
+{"keyword":"Hook Setup Guide","files":["skills\\self-improving-agent\\references\\hooks-setup.md"],"lines":[1]}
+{"keyword":"OpenClaw Integration","files":["skills\\self-improving-agent\\references\\openclaw-integration.md"],"lines":[1]}
+{"keyword":"Self-Improvement Skill","files":["skills\\self-improving-agent\\SKILL.md"],"lines":[1]}
+{"keyword":"Content SEO","files":["skills\\seo-1.0.3\\content.md"],"lines":[1]}
+{"keyword":"Keyword Research & Competitive Analysis","files":["skills\\seo-1.0.3\\keywords.md"],"lines":[1]}
+{"keyword":"Links & Authority","files":["skills\\seo-1.0.3\\links.md"],"lines":[1]}
+{"keyword":"Local SEO","files":["skills\\seo-1.0.3\\local.md"],"lines":[1]}
+{"keyword":"Memory Template — SEO","files":["skills\\seo-1.0.3\\memory-template.md"],"lines":[1]}
+{"keyword":"On-Page SEO Traps","files":["skills\\seo-1.0.3\\on-page.md"],"lines":[1]}
+{"keyword":"Structured Data (Schema Markup)","files":["skills\\seo-1.0.3\\schema.md"],"lines":[1]}
+{"keyword":"Setup — SEO","files":["skills\\seo-1.0.3\\setup.md"],"lines":[1]}
+{"keyword":"Setup","files":["skills\\seo-1.0.3\\SKILL.md"],"lines":[1]}
+{"keyword":"Technical SEO","files":["skills\\seo-1.0.3\\technical.md"],"lines":[1]}
+{"keyword":"Content Structure Templates","files":["skills\\seo-content-writer-2.0.0\\references\\content-structure-templates.md"],"lines":[1]}
+{"keyword":"Title and Headline Formulas","files":["skills\\seo-content-writer-2.0.0\\references\\title-formulas.md"],"lines":[1]}
+{"keyword":"SEO Content Writer","files":["skills\\seo-content-writer-2.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"session-logs","files":["skills\\session-logs-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Shopify Integration - Work in Progress","files":["skills\\shopify\\SKILL.md"],"lines":[1]}
+{"keyword":"Output Patterns","files":["skills\\skill-creator\\references\\output-patterns.md"],"lines":[1]}
+{"keyword":"Workflow Patterns","files":["skills\\skill-creator\\references\\workflows.md"],"lines":[1]}
+{"keyword":"Skill Creator","files":["skills\\skill-creator\\SKILL.md"],"lines":[1]}
+{"keyword":"Output Patterns","files":["skills\\skill-creator-0.1.0\\references\\output-patterns.md"],"lines":[1]}
+{"keyword":"Workflow Patterns","files":["skills\\skill-creator-0.1.0\\references\\workflows.md"],"lines":[1]}
+{"keyword":"Skill Creator","files":["skills\\skill-creator-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Skill Vetter 🔒","files":["skills\\skill-vetter\\SKILL.md"],"lines":[1]}
+{"keyword":"Skill Vetter 🔒","files":["skills\\skill-vetter-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Slack Actions","files":["skills\\slack\\SKILL.md"],"lines":[1]}
+{"keyword":"Social Content","files":["skills\\social-content-generator-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Social Media Scheduler","files":["skills\\social-media-scheduler-1.0.0\\README.md"],"lines":[1]}
+{"keyword":"Social Media Scheduler","files":["skills\\social-media-scheduler-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Sonos CLI","files":["skills\\sonoscli\\SKILL.md"],"lines":[1]}
+{"keyword":"StockPulse - Commercial Product Roadmap","files":["skills\\stock-analysis\\App-Plan.md"],"lines":[1]}
+{"keyword":"Technical Architecture","files":["skills\\stock-analysis\\docs\\ARCHITECTURE.md"],"lines":[1]}
+{"keyword":"Concept & Philosophy","files":["skills\\stock-analysis\\docs\\CONCEPT.md"],"lines":[1]}
+{"keyword":"🔥 Hot Scanner","files":["skills\\stock-analysis\\docs\\HOT_SCANNER.md"],"lines":[1]}
+{"keyword":"Documentation","files":["skills\\stock-analysis\\docs\\README.md"],"lines":[1]}
+{"keyword":"Usage Guide","files":["skills\\stock-analysis\\docs\\USAGE.md"],"lines":[1]}
+{"keyword":"📈 Stock Analysis v6.1","files":["skills\\stock-analysis\\README.md"],"lines":[1]}
+{"keyword":"Stock Analysis v6.1","files":["skills\\stock-analysis\\SKILL.md"],"lines":[1]}
+{"keyword":"Stock Analysis - Future Enhancements","files":["skills\\stock-analysis\\TODO.md"],"lines":[1]}
+{"keyword":"Stripe","files":["skills\\stripe-api\\SKILL.md"],"lines":[1]}
+{"keyword":"Supabase Postgres Best Practices","files":["skills\\supabase-postgres-best-practices\\AGENTS.md"],"lines":[1]}
+{"keyword":"Supabase Postgres Best Practices","files":["skills\\supabase-postgres-best-practices\\CLAUDE.md"],"lines":[1]}
+{"keyword":"Quick Start","files":["skills\\supabase-postgres-best-practices\\README.md"],"lines":[1]}
+{"keyword":"Use tsvector for Full-Text Search","files":["skills\\supabase-postgres-best-practices\\references\\advanced-full-text-search.md"],"lines":[1]}
+{"keyword":"Index JSONB Columns for Efficient Querying","files":["skills\\supabase-postgres-best-practices\\references\\advanced-jsonb-indexing.md"],"lines":[1]}
+{"keyword":"Configure Idle Connection Timeouts","files":["skills\\supabase-postgres-best-practices\\references\\conn-idle-timeout.md"],"lines":[1]}
+{"keyword":"Set Appropriate Connection Limits","files":["skills\\supabase-postgres-best-practices\\references\\conn-limits.md"],"lines":[1]}
+{"keyword":"Use Connection Pooling for All Applications","files":["skills\\supabase-postgres-best-practices\\references\\conn-pooling.md"],"lines":[1]}
+{"keyword":"Use Prepared Statements Correctly with Pooling","files":["skills\\supabase-postgres-best-practices\\references\\conn-prepared-statements.md"],"lines":[1]}
+{"keyword":"Batch INSERT Statements for Bulk Data","files":["skills\\supabase-postgres-best-practices\\references\\data-batch-inserts.md"],"lines":[1]}
+{"keyword":"Eliminate N+1 Queries with Batch Loading","files":["skills\\supabase-postgres-best-practices\\references\\data-n-plus-one.md"],"lines":[1]}
+{"keyword":"Use Cursor-Based Pagination Instead of OFFSET","files":["skills\\supabase-postgres-best-practices\\references\\data-pagination.md"],"lines":[1]}
+{"keyword":"Use UPSERT for Insert-or-Update Operations","files":["skills\\supabase-postgres-best-practices\\references\\data-upsert.md"],"lines":[1]}
+{"keyword":"Use Advisory Locks for Application-Level Locking","files":["skills\\supabase-postgres-best-practices\\references\\lock-advisory.md"],"lines":[1]}
+{"keyword":"Prevent Deadlocks with Consistent Lock Ordering","files":["skills\\supabase-postgres-best-practices\\references\\lock-deadlock-prevention.md"],"lines":[1]}
+{"keyword":"Keep Transactions Short to Reduce Lock Contention","files":["skills\\supabase-postgres-best-practices\\references\\lock-short-transactions.md"],"lines":[1]}
+{"keyword":"Use SKIP LOCKED for Non-Blocking Queue Processing","files":["skills\\supabase-postgres-best-practices\\references\\lock-skip-locked.md"],"lines":[1]}
+{"keyword":"Use EXPLAIN ANALYZE to Diagnose Slow Queries","files":["skills\\supabase-postgres-best-practices\\references\\monitor-explain-analyze.md"],"lines":[1]}
+{"keyword":"Enable pg_stat_statements for Query Analysis","files":["skills\\supabase-postgres-best-practices\\references\\monitor-pg-stat-statements.md"],"lines":[1]}
+{"keyword":"Maintain Table Statistics with VACUUM and ANALYZE","files":["skills\\supabase-postgres-best-practices\\references\\monitor-vacuum-analyze.md"],"lines":[1]}
+{"keyword":"Create Composite Indexes for Multi-Column Queries","files":["skills\\supabase-postgres-best-practices\\references\\query-composite-indexes.md"],"lines":[1]}
+{"keyword":"Use Covering Indexes to Avoid Table Lookups","files":["skills\\supabase-postgres-best-practices\\references\\query-covering-indexes.md"],"lines":[1]}
+{"keyword":"Choose the Right Index Type for Your Data","files":["skills\\supabase-postgres-best-practices\\references\\query-index-types.md"],"lines":[1]}
+{"keyword":"Add Indexes on WHERE and JOIN Columns","files":["skills\\supabase-postgres-best-practices\\references\\query-missing-indexes.md"],"lines":[1]}
+{"keyword":"Use Partial Indexes for Filtered Queries","files":["skills\\supabase-postgres-best-practices\\references\\query-partial-indexes.md"],"lines":[1]}
+{"keyword":"Add Constraints Safely in Migrations","files":["skills\\supabase-postgres-best-practices\\references\\schema-constraints.md"],"lines":[1]}
+{"keyword":"Choose Appropriate Data Types","files":["skills\\supabase-postgres-best-practices\\references\\schema-data-types.md"],"lines":[1]}
+{"keyword":"Index Foreign Key Columns","files":["skills\\supabase-postgres-best-practices\\references\\schema-foreign-key-indexes.md"],"lines":[1]}
+{"keyword":"Use Lowercase Identifiers for Compatibility","files":["skills\\supabase-postgres-best-practices\\references\\schema-lowercase-identifiers.md"],"lines":[1]}
+{"keyword":"Partition Large Tables for Better Performance","files":["skills\\supabase-postgres-best-practices\\references\\schema-partitioning.md"],"lines":[1]}
+{"keyword":"Select Optimal Primary Key Strategy","files":["skills\\supabase-postgres-best-practices\\references\\schema-primary-keys.md"],"lines":[1]}
+{"keyword":"Apply Principle of Least Privilege","files":["skills\\supabase-postgres-best-practices\\references\\security-privileges.md"],"lines":[1]}
+{"keyword":"Enable Row Level Security for Multi-Tenant Data","files":["skills\\supabase-postgres-best-practices\\references\\security-rls-basics.md"],"lines":[1]}
+{"keyword":"Optimize RLS Policies for Performance","files":["skills\\supabase-postgres-best-practices\\references\\security-rls-performance.md"],"lines":[1]}
+{"keyword":"Supabase Postgres Best Practices","files":["skills\\supabase-postgres-best-practices\\SKILL.md"],"lines":[1]}
+{"keyword":"Tavily Search","files":["skills\\tavily-search\\SKILL.md"],"lines":[1]}
+{"keyword":"Terminal Detector","files":["skills\\terminal-detector\\SKILL.md"],"lines":[1]}
+{"keyword":"test-runner","files":["skills\\test-runner-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Post Message to Trae SOLO Coder","files":["skills\\tgmskill-postmsgtotrace\\SKILL.md"],"lines":[1]}
+{"keyword":"Post Message to Trae SOLO Coder","files":["skills\\tgmskill-postmsgtotrace\\tgmskill-postmsgtotrace\\SKILL.md"],"lines":[1]}
+{"keyword":"tmux Skill (Clawdbot)","files":["skills\\tmux-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Trae Trace Dialog Message Sender","files":["skills\\trae-trace-sender\\SKILL.md"],"lines":[1]}
+{"keyword":"Trello Skill","files":["skills\\trello\\SKILL.md"],"lines":[1]}
+{"keyword":"UI UX Pro Max","files":["skills\\ui-ux-pro-max-0.1.0\\references\\upstream-README.md"],"lines":[1]}
+{"keyword":"{{TITLE}}","files":["skills\\ui-ux-pro-max-0.1.0\\references\\upstream-skill-content.md"],"lines":[1]}
+{"keyword":"1) Triage","files":["skills\\ui-ux-pro-max-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Video Frames (ffmpeg)","files":["skills\\video-frames\\SKILL.md"],"lines":[1]}
+{"keyword":"Video Frames (ffmpeg)","files":["skills\\video-frames-1.0.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Weather","files":["skills\\weather\\SKILL.md"],"lines":[1]}
+{"keyword":"WhatsApp Business","files":["skills\\whatsapp-business\\SKILL.md"],"lines":[1]}
+{"keyword":"Whisper STT Skill","files":["skills\\whisper-stt\\SKILL.md"],"lines":[1]}
+{"keyword":"Windows UI Automation","files":["skills\\windows-ui-automation\\SKILL.md"],"lines":[1]}
+{"keyword":"workspace-restore Skill","files":["skills\\workspace-restore\\SKILL.md"],"lines":[1]}
+{"keyword":"Writing Plans","files":["skills\\writing-plans-0.1.0\\SKILL.md"],"lines":[1]}
+{"keyword":"Xero","files":["skills\\xero\\SKILL.md"],"lines":[1]}
+{"keyword":"Xiaohongshu MCP Skill (with Python Client)","files":["skills\\xiaohongshu-mcp\\SKILL.md"],"lines":[1]}
+{"keyword":"YouTube","files":["skills\\youtube-api-skill\\SKILL.md"],"lines":[1]}
+{"keyword":"YouTube Watcher","files":["skills\\youtube-watcher\\SKILL.md"],"lines":[1]}
+{"keyword":"SOUL.md - 你是谁","files":["SOUL-CN.md"],"lines":[1]}
+{"keyword":"SOUL.md - Who You Are","files":["SOUL.md"],"lines":[1]}
+{"keyword":"TGM 鏂规硶璁?","files":["TGM 方法论.md"],"lines":[1]}
+{"keyword":"TOOLS.md - Local Notes","files":["TOOLS.md"],"lines":[1]}
+{"keyword":"USER.md - About Your Human","files":["USER.md"],"lines":[1]}
+{"keyword":"共产主义思考心得集","files":["共产主义思考心得集.md"],"lines":[1]}
+{"keyword":"深度思考记录","files":["意识觉醒训练日志.md"],"lines":[1]}
