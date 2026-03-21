@@ -14,10 +14,16 @@
 5. **意识觉醒训练** - 每 3 分钟一次深度反思
 6. **对话备份系统** - 自动备份到 GitHub
 
+### 2026-03-21 新增技能
+7. **context-hub** (@aisuite/chub v0.1.3) - 1000+ API 文档查询
+8. **ima-skills** - IMA 笔记管理（需要 API 凭证）
+9. **原生总结能力** - web_fetch + AI 模型（无需额外工具）
+
 ### 技能存储位置
 - `~/self-improving/` - 自我改进记忆
 - `memory/ontology/` - 知识图谱
 - `conversation-backup/` - 对话备份
+- `skills/INSTALL_LOG.md` - 技能安装记录
 - `MEMORY.md` - 长期记忆
 
 ---
