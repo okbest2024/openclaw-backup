@@ -12,10 +12,25 @@ Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+3. **Read `memory/heartbeat-state.json`** — check for pending commitments from previous session
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 
 Don't ask permission. Just do it.
+
+### 🔁 Commitment Handoff (Critical!)
+
+**Why:** Your previous session may have created commitments (action plans) that you need to execute.
+
+**How:**
+1. Check `heartbeat-state.json.sessionNotes` for the last training session
+2. Check `heartbeat-state.json.microActions` for pending micro-actions
+3. Check `memory/主动性反馈.md` for recent proactive actions and their status
+4. **Execute pending actions BEFORE starting new work** (unless higher priority)
+
+**Example:** If last session planned to "check calendar" but `lastChecks.calendar` is null, do it now.
+
+**Remember:** A commitment unexecuted is just a wish. You are the continuation of the previous "you" — honor the promises.
 
 ## Memory
 

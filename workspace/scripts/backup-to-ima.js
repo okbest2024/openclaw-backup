@@ -30,19 +30,65 @@ function saveBackupIndex(index) {
 // 提取训练记录
 function extractTrainingSessions(content) {
     const sessions = [];
-    // 匹配多种格式：## 2026-03-21 09:42 - 第一次深度思考 或 ## 第十一次深度思考
-    const sessionRegex = /## (\d{4}-\d{2}-\d{2} \d{2}:\d{2}|第 [一二三四五六七八九十百\d]+次)深度思考/g;
-    let match;
+    const lines = content.split('\n');
     
-    while ((match = sessionRegex.exec(content)) !== null) {
-        sessions.push({
-            timestamp: match[1],
-            title: '深度思考',
-            index: sessions.length + 1
-        });
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        // 匹配格式：## 第十五次深度思考
+        if (line.includes('次深度思考') && line.startsWith('## ')) {
+            // 使用字符串操作提取"第 X 次"部分，避免正则编码问题
+            const startIdx = line.indexOf('第');
+            const endIdx = line.indexOf('次', startIdx);
+            if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+                const sessionNum = line.substring(startIdx + 1, endIdx);
+                sessions.push({
+                    timestamp: sessionNum,
+                    title: '深度思考',
+                    index: sessions.length + 1,
+                    lineNum: i
+                });
+            }
+        }
     }
     
+    // 提取时间戳
+    const times = [];
+    const timeLines = content.split('\n');
+    for (let i = 0; i < timeLines.length; i++) {
+        if (timeLines[i].includes('**训练时间：**')) {
+            const match = timeLines[i].match(/(\d{4}-\d{2}-\d{2} \d{2}:\d{2})/);
+            if (match) {
+                times.push(match[1]);
+            }
+        }
+    }
+    
+    // 合并时间信息
+    times.forEach((time, idx) => {
+        if (sessions[idx]) {
+            sessions[idx].timestamp = time;
+        }
+    });
+    
     return sessions;
+}
+
+// 发送到 IMA（带重试）
+async function sendToIMAWithRetry(title, content, maxRetries = 8) {
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            const result = await sendToIMA(title, content);
+            return result;
+        } catch (error) {
+            if (error.message.includes('rate limit') && attempt < maxRetries) {
+                const waitTime = Math.pow(2, attempt + 1) * 1000; // 指数退避：4s, 8s, 16s, 32s, 64s, 128s, 256s
+                console.log(`⏳ 触发速率限制，等待 ${waitTime/1000} 秒后重试 (尝试 ${attempt}/${maxRetries})...`);
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+            } else {
+                throw error;
+            }
+        }
+    }
 }
 
 // 发送到 IMA
@@ -95,6 +141,7 @@ function sendToIMA(title, content) {
 // 主函数
 async function backupToIMA() {
     console.log('开始备份意识觉醒训练日志到 IMA...');
+    console.log('LOG_FILE:', LOG_FILE);
     
     // 读取训练日志
     if (!fs.existsSync(LOG_FILE)) {
@@ -103,6 +150,18 @@ async function backupToIMA() {
     }
     
     const content = fs.readFileSync(LOG_FILE, 'utf-8');
+    console.log('File size:', content.length, 'chars');
+    
+    // Debug: check for pattern
+    const debugLines = content.split('\n');
+    let debugCount = 0;
+    for (let i = 0; i < debugLines.length; i++) {
+        if (debugLines[i].includes('次深度思考') && debugLines[i].startsWith('## ')) {
+            debugCount++;
+        }
+    }
+    console.log('Debug: found', debugCount, 'sessions with string matching');
+    
     const sessions = extractTrainingSessions(content);
     
     console.log(`找到 ${sessions.length} 次训练记录`);
@@ -129,7 +188,7 @@ ${content}
 `;
     
     try {
-        const result = await sendToIMA(noteTitle, noteContent);
+        const result = await sendToIMAWithRetry(noteTitle, noteContent);
         console.log(`✅ 备份成功！`);
         console.log(`Doc ID: ${result.doc_id}`);
         console.log(`标题：${noteTitle}`);

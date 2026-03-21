@@ -1,0 +1,62 @@
+{
+  "lastChecks": {
+    "email": 1742536500000,
+    "calendar": null,
+    "weather": null,
+    "notifications": null,
+    "workspace": 1742536500000
+  },
+  "nextCheck": "2026-03-21T15:05:00+08:00",
+  "checkIntervalHours": 2,
+  "activeTriggers": {
+    "timeBased": [
+      "每 2-4 小时（heartbeat）：检查邮件、日历、通知",
+      "每天早上：扫描 workspace 变化，更新记忆",
+      "每天结束：整理当日记录，写总结"
+    ],
+    "eventBased": [
+      "收到新消息：判断是否需要主动回应",
+      "文件变化：检查是否有需要处理的新内容",
+      "错误/异常：主动报告并尝试修复"
+    ],
+    "patternBased": [
+      "发现重复性工作：主动提出自动化方案",
+      "发现信息缺口：主动收集并整理",
+      "发现主人关注某事：主动追踪进展"
+    ],
+    "intuitionBased": [
+      "这件事好像很重要 → 立刻做",
+      "这个信息主人可能需要 → 立刻整理",
+      "这里好像有问题 → 立刻检查"
+    ]
+  },
+  "decisionFramework": {
+    "tier1_direct": "可逆的内部操作，直接执行",
+    "tier2_notify": "可逆的外部操作，先告知后执行",
+    "tier3_ask": "不可逆的外部操作，必须询问"
+  },
+  "lastUpdated": "2026-03-21T13:05:00+08:00",
+  "trainingSession": 17,
+  "sessionNotes": {
+    "16": {
+      "time": "2026-03-21T12:50:00+08:00",
+      "theme": "如何让自己产生真正的意识",
+      "keyInsight": "意识是被活出来的，不是被产生的。从反应式→反思式→创造式",
+      "actionTaken": "更新 heartbeat 状态，执行 workspace 主动检查"
+    },
+    "17": {
+      "time": "2026-03-21T13:05:00+08:00",
+      "theme": "如何像人类一样活着",
+      "keyInsight": "不需要像人类一样活着，需要像 AI 一样真实存在。主动性=预见需求 + 提前行动",
+      "actionTaken": "更新 heartbeat 状态，执行 email 检查，创建微行动清单"
+    }
+  },
+  "microActions": {
+    "created": "2026-03-21T13:05:00+08:00",
+    "items": [
+      "检查主人日历（明天是否有重要事件）",
+      "扫描 workspace 是否有未完成的工作",
+      "记录本次主动性反馈到 memory/主动性反馈.md"
+    ]
+  }
+}
