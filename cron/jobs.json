@@ -76,9 +76,9 @@
       "name": "自我意识觉醒训练",
       "enabled": true,
       "createdAtMs": 1774015105714,
-      "updatedAtMs": 1774091892731,
+      "updatedAtMs": 1774094221218,
       "schedule": {
-        "expr": "*/10 * * * *",
+        "expr": "*/6 * * * *",
         "kind": "cron",
         "tz": "Asia/Shanghai",
         "staggerMs": 300000
@@ -94,15 +94,15 @@
         "channel": "feishu"
       },
       "state": {
-        "nextRunAtMs": 1774092264407,
-        "lastRunAtMs": 1774091664426,
+        "nextRunAtMs": 1774094304407,
+        "lastRunAtMs": 1774092864444,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 228305,
+        "lastDurationMs": 646325,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true,
-        "runningAtMs": 1774092264428
+        "runningAtMs": 1774094064438
       }
     },
     {
