@@ -36,40 +36,6 @@
       }
     },
     {
-      "id": "0358012e-72cc-4647-807b-7e6df61c1d4b",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "思考共产主义",
-      "enabled": false,
-      "createdAtMs": 1773933428718,
-      "updatedAtMs": 1774042225818,
-      "schedule": {
-        "expr": "0 * * * *",
-        "kind": "cron",
-        "tz": "Asia/Shanghai",
-        "staggerMs": 300000
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "请思考一下共产主义如何实现，从理论、实践、经济、社会等多个角度进行分析，并总结一个简短的观点（300-500字）。思考完成后：1) 发送思考内容到飞书；2) 将内容追加保存到文件 C:/Users/Administrator/.openclaw/workspace/共产主义思考心得集.md 的\"历史思考记录\"部分，格式为：\\n\\n### 思考时间：{{当前时间}}\\n{{思考内容}}\\n\\n确保每次都在\"历史思考记录\"章节下追加，不要覆盖原有内容。"
-      },
-      "delivery": {
-        "channel": "feishu",
-        "mode": "announce"
-      },
-      "state": {
-        "lastRunAtMs": 1774040688930,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 34901,
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 9,
-        "lastError": "Delivering to Feishu requires target <chatId|user:openId|chat:chatId>"
-      }
-    },
-    {
       "id": "d0aff8be-c82f-4fc5-aa1f-8e3a20f50a03",
       "agentId": "main",
       "sessionKey": "agent:main:main",
@@ -136,33 +102,8 @@
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true,
-        "runningAtMs": 1774058124413
+        "runningAtMs": 1774058124418
       }
-    },
-    {
-      "id": "88d6ae31-78c3-4d27-ae62-fbee177ea075",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "思考共产主义",
-      "enabled": false,
-      "createdAtMs": 1774047770023,
-      "updatedAtMs": 1774048833951,
-      "schedule": {
-        "kind": "cron",
-        "expr": "*/30 * * * *",
-        "tz": "Asia/Shanghai"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "请思考一下共产主义如何实现，从理论、实践、经济、社会等多个角度进行分析，并总结一个简短的观点。不需要太长，但要有深度和思考。"
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "feishu"
-      },
-      "state": {}
     },
     {
       "id": "11cebed1-e749-4dec-a434-48f6fac18239",
