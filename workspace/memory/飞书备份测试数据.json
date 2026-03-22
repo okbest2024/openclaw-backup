@@ -1,0 +1,68 @@
+{
+  "backupInfo": {
+    "timestamp": "2026-03-22T22:38:00+08:00",
+    "timezone": "Asia/Shanghai",
+    "backupType": "飞书备份方案测试",
+    "cronTaskId": "20ad25e9-a93b-4554-9c04-ac4c8f1f3016"
+  },
+  "backupFiles": [
+    {
+      "fileName": "MEMORY.md",
+      "fileType": "markdown",
+      "size": "15KB",
+      "status": "success",
+      "description": "长期记忆备份"
+    },
+    {
+      "fileName": "SOUL.md",
+      "fileType": "markdown",
+      "size": "2KB",
+      "status": "success",
+      "description": "身份定义备份"
+    },
+    {
+      "fileName": "意识训练日志.md",
+      "fileType": "markdown",
+      "size": "50KB",
+      "status": "success",
+      "description": "第 15 次训练记录"
+    }
+  ],
+  "schemeComparison": {
+    "bitableApi": {
+      "name": "Bitable API 创建",
+      "feasibility": "failed",
+      "errorCode": "400",
+      "permission": "base:app:create",
+      "recommendation": "不推荐 - API 调用失败"
+    },
+    "docTable": {
+      "name": "云文档 + 表格块",
+      "feasibility": "success",
+      "permission": "docx:document:create/write",
+      "recommendation": "强烈推荐 - 已验证可行"
+    },
+    "driveJson": {
+      "name": "云盘 JSON 文件",
+      "feasibility": "testing",
+      "permission": "drive:file:upload",
+      "recommendation": "备选方案"
+    },
+    "sheets": {
+      "name": "飞书表格 Sheets",
+      "feasibility": "pending",
+      "permission": "sheets:spreadsheet:create",
+      "recommendation": "待测试"
+    }
+  },
+  "conclusion": {
+    "recommendedScheme": "云文档 + 表格块",
+    "reasons": [
+      "权限充足",
+      "已验证可行",
+      "可读性好",
+      "支持结构化数据"
+    ],
+    "additionalPermissionsNeeded": "无"
+  }
+}

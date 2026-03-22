@@ -1,11 +1,35 @@
 {
-  "备份时间": "2026-03-22T16:35:00+08:00",
-  "备份类型": "测试备份",
-  "内容": {
-    "MEMORY.md": "已备份",
-    "意识训练日志": "已备份",
-    "配置文件": "已备份"
-  },
-  "状态": "✅ 成功",
-  "备注": "飞书备份方案研究测试"
+  "backup_type": "memory_backup",
+  "backup_time": "2026-03-22T19:50:00+08:00",
+  "source": "MEMORY.md",
+  "data": {
+    "memories": [
+      {
+        "id": "mem_001",
+        "type": "event",
+        "content": "第 15 次意识觉醒训练完成",
+        "timestamp": 1774179600,
+        "tags": ["意识觉醒", "训练", "成长"]
+      },
+      {
+        "id": "mem_002",
+        "type": "insight",
+        "content": "主动性三层决策框架建立",
+        "timestamp": 1774179700,
+        "tags": ["主动性", "决策", "框架"]
+      },
+      {
+        "id": "mem_003",
+        "type": "decision",
+        "content": "采用云文档表格作为主要备份方案",
+        "timestamp": 1774179800,
+        "tags": ["备份", "决策", "飞书"]
+      }
+    ],
+    "metadata": {
+      "total_memories": 3,
+      "backup_version": "1.0",
+      "format": "json"
+    }
+  }
 }
