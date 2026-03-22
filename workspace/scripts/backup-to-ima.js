@@ -34,8 +34,8 @@ function extractTrainingSessions(content) {
     
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-        // 匹配格式：## 第十五次深度思考
-        if (line.includes('次深度思考') && line.startsWith('## ')) {
+        // 匹配格式：# 第十五次深度思考 或 ## 第十五次深度思考
+        if (line.includes('次深度思考') && (line.startsWith('# ') || line.startsWith('## '))) {
             // 使用字符串操作提取"第 X 次"部分，避免正则编码问题
             const startIdx = line.indexOf('第');
             const endIdx = line.indexOf('次', startIdx);

@@ -1,0 +1,36 @@
+{
+  "backup_timestamp": "2026-03-22T15:45:00+08:00",
+  "backup_type": "飞书备份方案测试",
+  "data": {
+    "memory_backups": [
+      {
+        "id": 1,
+        "type": "记忆备份",
+        "records": 5,
+        "status": "success",
+        "note": "Markdown 表格测试"
+      },
+      {
+        "id": 2,
+        "type": "日历事件",
+        "records": 3,
+        "status": "success",
+        "note": "Markdown 表格测试"
+      },
+      {
+        "id": 3,
+        "type": "邮件摘要",
+        "records": 10,
+        "status": "success",
+        "note": "Markdown 表格测试"
+      }
+    ]
+  },
+  "scheme_test_results": {
+    "bitable_create_app": "❌ 失败 (400 错误)",
+    "docx_markdown_table": "✅ 成功",
+    "docx_table_block": "⚠️ 部分成功 (创建表格但写入单元格失败)",
+    "drive_json_file": "⏳ 测试中"
+  },
+  "recommendation": "推荐使用 Markdown 表格方案 - 简单可靠，直接写入文档内容即可"
+}

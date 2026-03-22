@@ -124,8 +124,8 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "bailian/qwen3.5-plus",
-        "fallbacks": ["bailian/qwen3-max-2026-01-23", "openrouter/xiaomi/mimo-v2-pro"]
+        "primary": "openrouter/xiaomi/mimo-v2-pro",
+        "fallbacks": ["bailian/qwen3.5-plus", "bailian/qwen3-max-2026-01-23"]
       },
       "models": {
         "bailian/qwen3.5-plus": {},
