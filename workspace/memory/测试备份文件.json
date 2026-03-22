@@ -1,17 +1,18 @@
 {
-  "backupTime": "2026-03-22T10:32:00+08:00",
   "backupType": "test",
-  "files": [
-    {
-      "path": "MEMORY.md",
-      "size": 15360,
-      "status": "success"
-    },
-    {
-      "path": "memory/2026-03-22.md",
-      "size": 25600,
-      "status": "success"
-    }
-  ],
-  "note": "这是测试备份文件，用于验证飞书文件上传功能"
+  "timestamp": "2026-03-23T05:20:00+08:00",
+  "source": "memory/2026-03-23.md",
+  "content": {
+    "test": "这是测试备份数据",
+    "items": [
+      {"id": 1, "name": "项目 A", "status": "完成"},
+      {"id": 2, "name": "项目 B", "status": "进行中"},
+      {"id": 3, "name": "项目 C", "status": "待开始"}
+    ]
+  },
+  "metadata": {
+    "backupId": "test-20260323-0520",
+    "version": "1.0",
+    "format": "json"
+  }
 }

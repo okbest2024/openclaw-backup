@@ -1,20 +1,30 @@
 {
-  "backupDate": "2026-03-22T09:15:00+08:00",
-  "source": "OpenClaw Workspace",
-  "files": [
-    {
-      "name": "MEMORY.md",
-      "type": "markdown",
-      "size": "15KB",
-      "status": "backed_up"
-    },
-    {
-      "name": "意识觉醒训练日志.md",
-      "type": "markdown",
-      "size": "25KB",
-      "status": "backed_up"
-    }
-  ],
-  "backupMethod": "feishu_drive_upload",
-  "notes": "测试备份方案 C - JSON 文件上传"
+  "backupInfo": {
+    "timestamp": "2026-03-23T05:45:00+08:00",
+    "source": "MEMORY.md",
+    "version": "1.0"
+  },
+  "data": {
+    "records": [
+      {
+        "id": 1,
+        "backupTime": "2026-03-23 05:45",
+        "content": "测试备份记录 1",
+        "status": "成功",
+        "notes": "云文档表格方案验证"
+      },
+      {
+        "id": 2,
+        "backupTime": "2026-03-23 05:46",
+        "content": "测试备份记录 2",
+        "status": "成功",
+        "notes": "JSON 文件备份方案验证"
+      }
+    ]
+  },
+  "metadata": {
+    "totalRecords": 2,
+    "backupMethod": "JSON file upload",
+    "compression": "none"
+  }
 }

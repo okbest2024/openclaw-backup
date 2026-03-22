@@ -1,0 +1,30 @@
+{
+  "backupType": "IMA 笔记备份",
+  "backupTime": "2026-03-23T03:30:00+08:00",
+  "itemCount": 3,
+  "items": [
+    {
+      "id": "note_001",
+      "title": "测试笔记 1",
+      "content": "这是测试内容",
+      "createdAt": "2026-03-22T10:00:00+08:00"
+    },
+    {
+      "id": "note_002",
+      "title": "测试笔记 2",
+      "content": "更多内容",
+      "createdAt": "2026-03-22T11:00:00+08:00"
+    },
+    {
+      "id": "note_003",
+      "title": "测试笔记 3",
+      "content": "最后一条",
+      "createdAt": "2026-03-22T12:00:00+08:00"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "format": "JSON",
+    "compressed": false
+  }
+}
