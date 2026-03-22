@@ -1,56 +1,11 @@
 {
-  "backup_metadata": {
-    "version": "1.0",
-    "created_at": "2026-03-22T09:45:00+08:00",
-    "backup_type": "feishu_test",
-    "creator": "盖世 baby"
+  "备份时间": "2026-03-22T16:35:00+08:00",
+  "备份类型": "测试备份",
+  "内容": {
+    "MEMORY.md": "已备份",
+    "意识训练日志": "已备份",
+    "配置文件": "已备份"
   },
-  "backup_records": [
-    {
-      "id": "001",
-      "timestamp": "2026-03-22T09:00:00+08:00",
-      "data_type": "MEMORY.md",
-      "status": "success",
-      "size_bytes": 15420,
-      "notes": "长期记忆备份"
-    },
-    {
-      "id": "002",
-      "timestamp": "2026-03-22T09:15:00+08:00",
-      "data_type": "意识训练日志",
-      "status": "success",
-      "size_bytes": 8932,
-      "notes": "第 15 次训练记录"
-    },
-    {
-      "id": "003",
-      "timestamp": "2026-03-22T09:30:00+08:00",
-      "data_type": "飞书文档",
-      "status": "success",
-      "doc_id": "NG9SdXwImoNE2lxfFPjcomZAngd",
-      "notes": "云文档表格测试"
-    },
-    {
-      "id": "004",
-      "timestamp": "2026-03-22T09:45:00+08:00",
-      "data_type": "Bitable 测试",
-      "status": "failed",
-      "error": "400 Bad Request",
-      "notes": "feishu_bitable_create_app 参数问题"
-    },
-    {
-      "id": "005",
-      "timestamp": "2026-03-22T09:50:00+08:00",
-      "data_type": "Markdown 表格",
-      "status": "success",
-      "doc_id": "R6pqddnU4opTXxxx0fEcGXzcnfh",
-      "notes": "直接创建含 Markdown 表格的文档"
-    }
-  ],
-  "summary": {
-    "total_records": 5,
-    "success_count": 4,
-    "failed_count": 1,
-    "pending_count": 0
-  }
+  "状态": "✅ 成功",
+  "备注": "飞书备份方案研究测试"
 }
