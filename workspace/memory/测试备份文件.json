@@ -1,0 +1,17 @@
+{
+  "backupTime": "2026-03-22T10:32:00+08:00",
+  "backupType": "test",
+  "files": [
+    {
+      "path": "MEMORY.md",
+      "size": 15360,
+      "status": "success"
+    },
+    {
+      "path": "memory/2026-03-22.md",
+      "size": 25600,
+      "status": "success"
+    }
+  ],
+  "note": "这是测试备份文件，用于验证飞书文件上传功能"
+}
