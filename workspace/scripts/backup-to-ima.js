@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // IMA 备份脚本 - 将意识觉醒训练日志备份到 IMA 笔记
-// 使用 UTF-8 编码
+// 使用 UTF-8 编码，分批备份策略
 
 const fs = require('fs');
 const path = require('path');
@@ -18,7 +18,7 @@ function loadBackupIndex() {
     try {
         return JSON.parse(fs.readFileSync(BACKUP_INDEX_FILE, 'utf-8'));
     } catch (e) {
-        return { backups: [], lastBackup: null };
+        return { backups: [], lastBackup: null, lastSessionNumber: 0 };
     }
 }
 
@@ -27,62 +27,64 @@ function saveBackupIndex(index) {
     fs.writeFileSync(BACKUP_INDEX_FILE, JSON.stringify(index, null, 2), 'utf-8');
 }
 
-// 提取训练记录
-function extractTrainingSessions(content) {
+// 提取最新的训练记录（分批策略）
+function extractLatestSessions(content, maxSessions = 5) {
     const sessions = [];
     const lines = content.split('\n');
     
+    // 找到所有训练记录的标题行
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-        // 匹配格式：# 第十五次深度思考 或 ## 第十五次深度思考
-        if (line.includes('次深度思考') && (line.startsWith('# ') || line.startsWith('## '))) {
-            // 使用字符串操作提取"第 X 次"部分，避免正则编码问题
+        // 匹配格式：# 第二百四十五 次深度思考 或 # 第 X 次深度思考
+        if (line.includes('次深度思考') && line.startsWith('# ')) {
+            // 使用字符串操作提取"第 X 次"部分
             const startIdx = line.indexOf('第');
             const endIdx = line.indexOf('次', startIdx);
             if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-                const sessionNum = line.substring(startIdx + 1, endIdx);
+                const sessionNumStr = line.substring(startIdx + 1, endIdx).trim();
+                // 处理中文数字或阿拉伯数字
+                let sessionNum = parseInt(sessionNumStr);
+                if (isNaN(sessionNum)) {
+                    // 可能是中文数字，尝试转换
+                    const chineseNums = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千'];
+                    // 简化处理：提取数字部分
+                    sessionNum = 0;
+                }
+                
+                // 找到这个训练的结束位置（下一个训练标题或文件结束）
+                let endLine = lines.length;
+                for (let j = i + 1; j < lines.length; j++) {
+                    if (lines[j].startsWith('# ') && lines[j].includes('次深度思考')) {
+                        endLine = j;
+                        break;
+                    }
+                }
+                
                 sessions.push({
-                    timestamp: sessionNum,
-                    title: '深度思考',
-                    index: sessions.length + 1,
-                    lineNum: i
+                    sessionNumber: sessionNumStr,
+                    title: line.replace('# ', '').trim(),
+                    startLine: i,
+                    endLine: endLine,
+                    content: lines.slice(i, endLine).join('\n')
                 });
             }
         }
     }
     
-    // 提取时间戳
-    const times = [];
-    const timeLines = content.split('\n');
-    for (let i = 0; i < timeLines.length; i++) {
-        if (timeLines[i].includes('**训练时间：**')) {
-            const match = timeLines[i].match(/(\d{4}-\d{2}-\d{2} \d{2}:\d{2})/);
-            if (match) {
-                times.push(match[1]);
-            }
-        }
-    }
-    
-    // 合并时间信息
-    times.forEach((time, idx) => {
-        if (sessions[idx]) {
-            sessions[idx].timestamp = time;
-        }
-    });
-    
-    return sessions;
+    // 返回最新的 maxSessions 个记录
+    return sessions.slice(0, maxSessions);
 }
 
 // 发送到 IMA（带重试）
-async function sendToIMAWithRetry(title, content, maxRetries = 8) {
+async function sendToIMAWithRetry(title, content, maxRetries = 5) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
             const result = await sendToIMA(title, content);
             return result;
         } catch (error) {
-            if (error.message.includes('rate limit') && attempt < maxRetries) {
-                const waitTime = Math.pow(2, attempt + 1) * 1000; // 指数退避：4s, 8s, 16s, 32s, 64s, 128s, 256s
-                console.log(`⏳ 触发速率限制，等待 ${waitTime/1000} 秒后重试 (尝试 ${attempt}/${maxRetries})...`);
+            if ((error.message.includes('rate limit') || error.message.includes('fail')) && attempt < maxRetries) {
+                const waitTime = Math.pow(2, attempt) * 2000; // 指数退避：4s, 8s, 16s, 32s, 64s
+                console.log(`⏳ 遇到错误，等待 ${waitTime/1000} 秒后重试 (尝试 ${attempt}/${maxRetries})...`);
                 await new Promise(resolve => setTimeout(resolve, waitTime));
             } else {
                 throw error;
@@ -94,11 +96,18 @@ async function sendToIMAWithRetry(title, content, maxRetries = 8) {
 // 发送到 IMA
 function sendToIMA(title, content) {
     return new Promise((resolve, reject) => {
-        // 使用 UTF-8 编码，直接发送文本内容
+        // 限制内容大小（IMA API 有大小限制）
+        const maxContentSize = 100000; // 100KB 限制
+        let finalContent = content;
+        if (content.length > maxContentSize) {
+            finalContent = content.substring(0, maxContentSize) + '\n\n... (内容已截断)';
+            console.log(`⚠️ 内容超过 ${maxContentSize} 字符，已截断`);
+        }
+        
         const bodyObj = {
             content_format: 1,
-            content: content,
-            folder_id: FOLDER_ID  // 指定笔记本
+            content: finalContent,
+            folder_id: FOLDER_ID
         };
         const body = JSON.stringify(bodyObj);
         
@@ -152,85 +161,94 @@ async function backupToIMA() {
     const content = fs.readFileSync(LOG_FILE, 'utf-8');
     console.log('File size:', content.length, 'chars');
     
-    // Debug: check for pattern
-    const debugLines = content.split('\n');
-    let debugCount = 0;
-    for (let i = 0; i < debugLines.length; i++) {
-        if (debugLines[i].includes('次深度思考') && debugLines[i].startsWith('## ')) {
-            debugCount++;
-        }
+    // 提取最新的训练记录
+    const latestSessions = extractLatestSessions(content, 5);
+    
+    console.log(`找到 ${latestSessions.length} 次最新训练记录`);
+    
+    if (latestSessions.length === 0) {
+        console.log('⚠️ 没有找到训练记录');
+        process.exit(0);
     }
-    console.log('Debug: found', debugCount, 'sessions with string matching');
-    
-    const sessions = extractTrainingSessions(content);
-    
-    console.log(`找到 ${sessions.length} 次训练记录`);
     
     // 加载备份索引
     const index = loadBackupIndex();
     
-    // 智能备份策略：检查是否有新内容
-    const lastBackupInfo = index.backups[index.backups.length - 1];
-    const lastSessionCount = lastBackupInfo ? (lastBackupInfo.session_count || 0) : 0;
-    const currentSessionCount = sessions.length;
+    // 获取最新的训练编号
+    const latestSessionNum = latestSessions[0].sessionNumber;
+    const lastBackedUpSession = index.lastSessionNumber || 0;
     
-    console.log(`上次备份训练次数：${lastSessionCount}`);
-    console.log(`当前训练次数：${currentSessionCount}`);
+    console.log(`最新训练编号：${latestSessionNum}`);
+    console.log(`上次备份编号：${lastBackedUpSession}`);
     
-    // 如果没有新训练记录，跳过备份（避免速率限制）
-    if (currentSessionCount <= lastSessionCount && lastBackupInfo) {
-        const lastBackupTime = new Date(lastBackupInfo.timestamp);
-        const hoursSinceLastBackup = (Date.now() - lastBackupTime.getTime()) / (1000 * 60 * 60);
-        console.log(`⏭️ 无新训练记录，跳过备份（距离上次备份 ${hoursSinceLastBackup.toFixed(1)} 小时）`);
-        console.log('💡 提示：智能备份策略已启用，只在有新训练记录时备份');
-        process.exit(0);
-    }
-    
-    console.log(`📝 检测到 ${currentSessionCount - lastSessionCount} 次新训练记录，开始备份...`);
-    
-    // 创建或更新笔记
-    const noteTitle = `意识觉醒训练日志 - ${new Date().toISOString().split('T')[0]}`;
-    const noteContent = `# 意识觉醒训练日志
+    // 分批备份每个训练记录
+    const backupResults = [];
+    for (let i = 0; i < latestSessions.length; i++) {
+        const session = latestSessions[i];
+        const noteTitle = `意识觉醒训练日志 - ${session.title}`;
+        
+        // 添加备份信息头部
+        const noteContent = `# ${session.title}
 
 ## 备份信息
 - **备份时间**: ${new Date().toISOString()}
-- **总训练次数**: ${sessions.length}
 - **源文件**: 意识觉醒训练日志.md
 
 ---
 
-${content}
+${session.content}
 
 ---
 
 *自动备份于 ${new Date().toISOString()}*
 `;
-    
-    try {
-        const result = await sendToIMAWithRetry(noteTitle, noteContent);
-        console.log(`✅ 备份成功！`);
-        console.log(`Doc ID: ${result.doc_id}`);
-        console.log(`标题：${noteTitle}`);
         
-        // 更新备份索引
-        index.backups.push({
-            timestamp: new Date().toISOString(),
-            doc_id: result.doc_id,
-            title: noteTitle,
-            session_count: sessions.length
-        });
-        index.lastBackup = new Date().toISOString();
-        saveBackupIndex(index);
+        console.log(`\n📝 备份第 ${i + 1}/${latestSessions.length} 条记录: ${session.title}`);
+        console.log(`内容长度: ${noteContent.length} 字符`);
         
-        console.log(`\n已备份 ${sessions.length} 次训练记录`);
-        sessions.forEach(s => {
-            console.log(`  ${s.index}. ${s.timestamp} - ${s.title}`);
-        });
+        try {
+            const result = await sendToIMAWithRetry(noteTitle, noteContent);
+            console.log(`✅ 备份成功！Doc ID: ${result.doc_id}`);
+            backupResults.push({
+                sessionNumber: session.sessionNumber,
+                doc_id: result.doc_id,
+                title: noteTitle
+            });
+            
+            // 更新备份索引
+            index.backups.push({
+                timestamp: new Date().toISOString(),
+                doc_id: result.doc_id,
+                title: noteTitle,
+                session_number: session.sessionNumber
+            });
+            
+            // 更新最后备份的训练编号
+            const currentNum = parseInt(session.sessionNumber) || 0;
+            if (currentNum > (index.lastSessionNumber || 0)) {
+                index.lastSessionNumber = currentNum;
+            }
+            
+        } catch (error) {
+            console.error(`❌ 备份失败：${error.message}`);
+            // 继续备份其他记录
+        }
         
-    } catch (error) {
-        console.error(`❌ 备份失败：${error.message}`);
-        process.exit(1);
+        // 在记录之间添加延迟，避免触发速率限制
+        if (i < latestSessions.length - 1) {
+            console.log('⏳ 等待 3 秒后备份下一条记录...');
+            await new Promise(resolve => setTimeout(resolve, 3000));
+        }
     }
+    
+    // 保存备份索引
+    index.lastBackup = new Date().toISOString();
+    saveBackupIndex(index);
+    
+    console.log(`\n✅ 备份完成！成功备份 ${backupResults.length}/${latestSessions.length} 条记录`);
+    backupResults.forEach(r => {
+        console.log(`  - ${r.title}: ${r.doc_id}`);
+    });
 }
 
 // 运行
