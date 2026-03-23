@@ -1,30 +1,38 @@
 {
-  "backupInfo": {
-    "timestamp": "2026-03-23T05:45:00+08:00",
-    "source": "MEMORY.md",
-    "version": "1.0"
-  },
+  "backup_timestamp": "2026-03-23T07:08:00+08:00",
+  "backup_type": "test",
   "data": {
-    "records": [
+    "memory_entries": [
       {
-        "id": 1,
-        "backupTime": "2026-03-23 05:45",
-        "content": "测试备份记录 1",
-        "status": "成功",
-        "notes": "云文档表格方案验证"
+        "date": "2026-03-23",
+        "type": "MEMORY.md",
+        "size_kb": 15,
+        "status": "success"
       },
       {
-        "id": 2,
-        "backupTime": "2026-03-23 05:46",
-        "content": "测试备份记录 2",
-        "status": "成功",
-        "notes": "JSON 文件备份方案验证"
+        "date": "2026-03-23",
+        "type": "意识训练日志",
+        "size_kb": 25,
+        "status": "success"
+      }
+    ],
+    "config_files": [
+      {
+        "name": "SOUL.md",
+        "size_kb": 2,
+        "status": "success"
+      },
+      {
+        "name": "IDENTITY.md",
+        "size_kb": 1,
+        "status": "success"
       }
     ]
   },
-  "metadata": {
-    "totalRecords": 2,
-    "backupMethod": "JSON file upload",
-    "compression": "none"
+  "summary": {
+    "total_files": 4,
+    "total_size_kb": 43,
+    "success_count": 4,
+    "failure_count": 0
   }
 }

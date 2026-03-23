@@ -1,22 +1,41 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T13:43:45.938Z"
+    "lastTouchedAt": "2026-03-23T02:55:10.807Z"
   },
   "models": {
     "mode": "merge",
     "providers": {
       "openrouter": {
         "baseUrl": "https://openrouter.ai/api/v1",
-        "apiKey": "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",
+        "apiKey": "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",
         "api": "openai-completions",
         "models": [
+          {
+            "id": "stepfun/step-3.5-flash:free",
+            "name": "Step 3.5 Flash (Free)",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 32768
+          },
           {
             "id": "xiaomi/mimo-v2-pro",
             "name": "MiMo-V2-Pro",
             "api": "openai-completions",
             "reasoning": true,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -27,26 +46,13 @@
             "maxTokens": 32768
           },
           {
-            "id": "xiaomi/mimo-v2-omni",
-            "name": "MiMo-V2-Omni",
-            "api": "openai-completions",
-            "reasoning": false,
-            "input": ["text", "image"],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 262144,
-            "maxTokens": 32768
-          },
-          {
             "id": "xiaomi/mimo-v2-flash",
             "name": "MiMo-V2-Flash",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -68,7 +74,10 @@
             "name": "qwen3.5-plus",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text", "image"],
+            "input": [
+              "text",
+              "image"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -86,7 +95,9 @@
             "name": "qwen3-max-2026-01-23",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -104,7 +115,10 @@
             "name": "kimi-k2.5",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text", "image"],
+            "input": [
+              "text",
+              "image"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -124,16 +138,19 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/xiaomi/mimo-v2-pro",
-        "fallbacks": ["bailian/qwen3.5-plus", "bailian/qwen3-max-2026-01-23"]
+        "primary": "bailian/qwen3.5-plus",
+        "fallbacks": [
+          "bailian/kimi-k2.5",
+          "bailian/qwen3-max-2026-01-23"
+        ]
       },
       "models": {
+        "openrouter/stepfun/step-3.5-flash:free": {},
+        "openrouter/xiaomi/mimo-v2-pro": {},
+        "openrouter/xiaomi/mimo-v2-flash": {},
         "bailian/qwen3.5-plus": {},
         "bailian/qwen3-max-2026-01-23": {},
-        "bailian/kimi-k2.5": {},
-        "openrouter/xiaomi/mimo-v2-pro": {},
-        "openrouter/xiaomi/mimo-v2-omni": {},
-        "openrouter/xiaomi/mimo-v2-flash": {}
+        "bailian/kimi-k2.5": {}
       },
       "compaction": {
         "mode": "safeguard"
@@ -171,11 +188,30 @@
   },
   "plugins": {
     "allow": [
-      "feishu"
+      "feishu",
+      "openclaw-weixin"
     ],
     "entries": {
       "feishu": {
         "enabled": true
+      },
+      "openclaw-weixin": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "openclaw-weixin": {
+        "source": "npm",
+        "spec": "@tencent-weixin/openclaw-weixin",
+        "installPath": "C:\\Users\\Administrator\\.openclaw\\extensions\\openclaw-weixin",
+        "version": "1.0.2",
+        "resolvedName": "@tencent-weixin/openclaw-weixin",
+        "resolvedVersion": "1.0.2",
+        "resolvedSpec": "@tencent-weixin/openclaw-weixin@1.0.2",
+        "integrity": "sha512-kYPEowHB/0VWt9nQFee/AS6Fb+jbnu38wjkgZDBdKTuJoBL0IBW2obQ0ymgFKBFJJL9rDwnFrb/17ORGZD/X8Q==",
+        "shasum": "244baf0a873683a9c350d0f0b5bc055c07b0eb39",
+        "resolvedAt": "2026-03-23T02:54:47.208Z",
+        "installedAt": "2026-03-23T02:55:07.738Z"
       }
     }
   }

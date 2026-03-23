@@ -1,11 +1,69 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-17T22:37:56.576Z"
+    "lastTouchedAt": "2026-03-19T04:53:20.805Z"
   },
   "models": {
     "mode": "merge",
     "providers": {
+      "openrouter": {
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "apiKey": "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",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "stepfun/step-3.5-flash:free",
+            "name": "Step 3.5 Flash (Free)",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 32768
+          },
+          {
+            "id": "xiaomi/mimo-v2-pro",
+            "name": "MiMo-V2-Pro",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 32768
+          },
+          {
+            "id": "xiaomi/mimo-v2-flash:free",
+            "name": "MiMo-V2-Flash (Free)",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          }
+        ]
+      },
       "bailian": {
         "baseUrl": "https://coding.dashscope.aliyuncs.com/v1",
         "apiKey": "sk-sp-731b6f16a41c4fa79790075887b1dfb4",
@@ -171,9 +229,12 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "bailian/qwen3.5-plus"
+        "primary": "openrouter/stepfun/step-3.5-flash:free"
       },
       "models": {
+        "openrouter/stepfun/step-3.5-flash:free": {},
+        "openrouter/xiaomi/mimo-v2-omni": {},
+        "openrouter/xiaomi/mimo-v2-pro": {},
         "bailian/qwen3.5-plus": {},
         "bailian/qwen3-max-2026-01-23": {},
         "bailian/qwen3-coder-next": {},
@@ -201,8 +262,10 @@
       "appSecret": "5D5d8tixIMAZH5zaWpn3SgVUlG8p0aT6",
       "encryptKey": "",
       "verificationToken": "",
-      "dmPolicy": "pairing",
-      "groupPolicy": "open"
+      "dmPolicy": "allowlist",
+      "groupPolicy": "allowlist",
+      "allowFrom": ["ou_b317d2d01fed443d0a2e94a15f8a4ba1"],
+      "groupAllowFrom": []
     }
   },
   "gateway": {
@@ -213,7 +276,13 @@
     }
   },
   "plugins": {
-    "allow": [],
-    "entries": {}
+    "allow": [
+      "feishu"
+    ],
+    "entries": {
+      "feishu": {
+        "enabled": true
+      }
+    }
   }
 }

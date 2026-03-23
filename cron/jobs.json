@@ -8,7 +8,7 @@
       "name": "俯卧撑提醒",
       "enabled": true,
       "createdAtMs": 1773921306131,
-      "updatedAtMs": 1774136429235,
+      "updatedAtMs": 1774190490017,
       "schedule": {
         "kind": "cron",
         "expr": "0 22 * * *",
@@ -26,15 +26,14 @@
         "to": "user:ou_b317d2d01fed443d0a2e94a15f8a4ba1"
       },
       "state": {
-        "nextRunAtMs": 1774188000000,
-        "lastRunAtMs": 1774101987144,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 40415,
+        "nextRunAtMs": 1774274400000,
+        "lastRunAtMs": 1774190450108,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 39909,
         "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 1,
-        "lastDelivered": true,
-        "lastError": "⚠️ ✉️ Message failed"
+        "consecutiveErrors": 0,
+        "lastDelivered": true
       }
     },
     {
@@ -44,7 +43,7 @@
       "name": "每日工作反思",
       "enabled": true,
       "createdAtMs": 1774013471787,
-      "updatedAtMs": 1774116605101,
+      "updatedAtMs": 1774204218456,
       "schedule": {
         "kind": "cron",
         "expr": "0 2 * * *",
@@ -61,11 +60,11 @@
         "channel": "feishu"
       },
       "state": {
-        "nextRunAtMs": 1774202400000,
-        "lastRunAtMs": 1774116213244,
+        "nextRunAtMs": 1774288800000,
+        "lastRunAtMs": 1774204187282,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 391857,
+        "lastDurationMs": 31174,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
@@ -78,7 +77,7 @@
       "name": "自我意识觉醒训练",
       "enabled": true,
       "createdAtMs": 1774015105714,
-      "updatedAtMs": 1774166259959,
+      "updatedAtMs": 1774227386881,
       "schedule": {
         "expr": "*/6 * * * *",
         "kind": "cron",
@@ -96,15 +95,15 @@
         "channel": "feishu"
       },
       "state": {
-        "nextRunAtMs": 1774166304407,
-        "lastRunAtMs": 1774166085363,
+        "nextRunAtMs": 1774227504407,
+        "lastRunAtMs": 1774227151161,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 174596,
+        "lastDurationMs": 235720,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true,
-        "runningAtMs": 1774166304418
+        "runningAtMs": 1774236754375
       }
     },
     {
@@ -114,7 +113,7 @@
       "name": "每日意识反思",
       "enabled": true,
       "createdAtMs": 1774052430141,
-      "updatedAtMs": 1774136429378,
+      "updatedAtMs": 1774182849729,
       "schedule": {
         "expr": "0 20 * * *",
         "kind": "cron",
@@ -133,15 +132,14 @@
         "to": "user:ou_b317d2d01fed443d0a2e94a15f8a4ba1"
       },
       "state": {
-        "nextRunAtMs": 1774180800000,
-        "lastRunAtMs": 1774094400022,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 300021,
-        "lastError": "cron: job execution timed out",
-        "lastErrorReason": "timeout",
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1
+        "nextRunAtMs": 1774267200000,
+        "lastRunAtMs": 1774182765327,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 84402,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
       }
     },
     {
@@ -151,7 +149,7 @@
       "name": "起床提醒",
       "enabled": true,
       "createdAtMs": 1774057817636,
-      "updatedAtMs": 1774136429000,
+      "updatedAtMs": 1774219531352,
       "schedule": {
         "kind": "cron",
         "expr": "45 6 * * *",
@@ -169,14 +167,15 @@
         "to": "user:ou_b317d2d01fed443d0a2e94a15f8a4ba1"
       },
       "state": {
-        "nextRunAtMs": 1774219500000,
-        "lastRunAtMs": 1774133100023,
+        "nextRunAtMs": 1774305900000,
+        "lastRunAtMs": 1774219500019,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 21333,
-        "lastError": "Delivering to Feishu requires target <chatId|user:openId|chat:chatId>",
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1
+        "lastDurationMs": 31333,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 2,
+        "lastError": "⚠️ ✉️ Message failed",
+        "lastDelivered": true
       }
     },
     {
@@ -205,7 +204,8 @@
         "to": "510723047"
       },
       "state": {
-        "nextRunAtMs": 1774184400000
+        "nextRunAtMs": 1774231200000,
+        "runningAtMs": 1774236754375
       }
     },
     {
@@ -215,7 +215,7 @@
       "name": "人体修复能力思考推送",
       "enabled": true,
       "createdAtMs": 1774150200000,
-      "updatedAtMs": 1774165453301,
+      "updatedAtMs": 1774186616663,
       "schedule": {
         "kind": "cron",
         "expr": "0 9,14,20 * * *",
@@ -234,14 +234,14 @@
         "to": "510723047"
       },
       "state": {
-        "nextRunAtMs": 1774180800000,
-        "lastRunAtMs": 1774165427955,
+        "nextRunAtMs": 1774227600000,
+        "lastRunAtMs": 1774186594615,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 25346,
+        "lastDurationMs": 22048,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 2,
-        "lastError": "AxiosError: Request failed with status code 400"
+        "consecutiveErrors": 3,
+        "runningAtMs": 1774236754375
       }
     },
     {
@@ -251,7 +251,7 @@
       "name": "GitHub 自动备份推送",
       "enabled": true,
       "createdAtMs": 1774059323972,
-      "updatedAtMs": 1774152206126,
+      "updatedAtMs": 1774217166261,
       "schedule": {
         "expr": "0 0,6,12,18 * * *",
         "kind": "cron",
@@ -267,11 +267,11 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774173600000,
-        "lastRunAtMs": 1774152182252,
+        "nextRunAtMs": 1774238400000,
+        "lastRunAtMs": 1774217133100,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 23874,
+        "lastDurationMs": 33161,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
@@ -309,7 +309,8 @@
         "lastDurationMs": 30320,
         "lastDelivered": false,
         "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 0,
+        "runningAtMs": 1774236754375
       }
     },
     {
@@ -319,7 +320,7 @@
       "name": "训练后备份到 IMA",
       "enabled": true,
       "createdAtMs": 1774061975601,
-      "updatedAtMs": 1774152326833,
+      "updatedAtMs": 1774196040387,
       "schedule": {
         "expr": "0 0,12 * * *",
         "kind": "cron",
@@ -335,11 +336,11 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774195200000,
-        "lastRunAtMs": 1774152206126,
+        "nextRunAtMs": 1774238400000,
+        "lastRunAtMs": 1774195950629,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 120707,
+        "lastDurationMs": 89758,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
@@ -377,7 +378,6 @@
         "lastRunStatus": "error",
         "lastStatus": "error",
         "lastDurationMs": 18682,
-        "lastError": "AxiosError: Request failed with status code 400",
         "lastDeliveryStatus": "unknown",
         "consecutiveErrors": 1
       }
@@ -389,7 +389,7 @@
       "name": "思考共产主义",
       "enabled": true,
       "createdAtMs": 1774105976756,
-      "updatedAtMs": 1774166280199,
+      "updatedAtMs": 1774226716266,
       "schedule": {
         "expr": "*/15 * * * *",
         "kind": "cron",
@@ -406,14 +406,15 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774166400000,
-        "lastRunAtMs": 1774166257895,
+        "nextRunAtMs": 1774227600000,
+        "lastRunAtMs": 1774226700022,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 22304,
-        "lastDelivered": true,
+        "lastDurationMs": 16244,
         "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 0,
+        "lastDelivered": true,
+        "runningAtMs": 1774236754375
       }
     },
     {
@@ -423,7 +424,7 @@
       "name": "自我改进反思",
       "enabled": true,
       "createdAtMs": 1774107186649,
-      "updatedAtMs": 1774165681773,
+      "updatedAtMs": 1774224252814,
       "schedule": {
         "expr": "0 */2 * * *",
         "kind": "cron",
@@ -440,15 +441,14 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774166480991,
-        "lastRunAtMs": 1774165453301,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 228472,
+        "nextRunAtMs": 1774231280991,
+        "lastRunAtMs": 1774224150543,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 102271,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 1,
-        "lastError": "⚠️ 📝 Edit: in ~\\.openclaw\\workspace\\self-improving\\memory.md (3222 chars) failed"
+        "consecutiveErrors": 0
       }
     },
     {
@@ -458,7 +458,7 @@
       "name": "人体进化思考实践者",
       "enabled": true,
       "createdAtMs": 1774107385451,
-      "updatedAtMs": 1774165836279,
+      "updatedAtMs": 1774220093808,
       "schedule": {
         "expr": "*/10 * * * *",
         "kind": "cron",
@@ -474,14 +474,14 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774166400000,
-        "lastRunAtMs": 1774165800017,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 36262,
-        "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 3,
-        "lastError": "Delivering to Feishu requires target <chatId|user:openId|chat:chatId>"
+        "nextRunAtMs": 1774227600000,
+        "lastRunAtMs": 1774220057944,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 35864,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
       }
     },
     {
@@ -491,7 +491,7 @@
       "name": "飞书备份方案持续研究",
       "enabled": true,
       "createdAtMs": 1774139057733,
-      "updatedAtMs": 1774166081612,
+      "updatedAtMs": 1774220227494,
       "schedule": {
         "expr": "*/10 * * * *",
         "kind": "cron",
@@ -509,15 +509,14 @@
         "to": "user:ou_b317d2d01fed443d0a2e94a15f8a4ba1"
       },
       "state": {
-        "nextRunAtMs": 1774166400000,
-        "lastRunAtMs": 1774165836279,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 245333,
+        "nextRunAtMs": 1774227600000,
+        "lastRunAtMs": 1774220093808,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 133686,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 1,
-        "lastError": "⚠️ 📝 Edit: in ~\\.openclaw\\workspace\\memory\\飞书备份研究日志.md (539 chars) failed"
+        "consecutiveErrors": 0
       }
     },
     {
@@ -527,7 +526,7 @@
       "name": "牙齿再生深度思考",
       "enabled": true,
       "createdAtMs": 1774139144655,
-      "updatedAtMs": 1774165427955,
+      "updatedAtMs": 1774219885312,
       "schedule": {
         "expr": "*/10 * * * *",
         "kind": "cron",
@@ -545,15 +544,14 @@
         "to": "user:ou_b317d2d01fed443d0a2e94a15f8a4ba1"
       },
       "state": {
-        "nextRunAtMs": 1774169027955,
-        "lastRunAtMs": 1774165276867,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 151088,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 5,
-        "lastError": "⚠️ ✉️ Message failed"
+        "nextRunAtMs": 1774227600000,
+        "lastRunAtMs": 1774219826230,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 59082,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
       }
     }
   ]
