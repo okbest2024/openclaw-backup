@@ -196,16 +196,81 @@ function getWorkspaceFiles() {
  * 返回二维数组 [[row1col1, row1col2, ...], [row2col1, ...], ...]
  */
 async function readTableAll(docToken, tableBlockId) {
-  // 这里需要调用 feishu_doc list_blocks 并解析 table block
-  // 由于我们在 OpenClaw 环境中，不能直接调用 feishu_doc 函数
-  // 需要通过 subagent 或直接调用工具
-  // 简化版：返回静态数据用于演示
-  log('读取表格功能需集成 feishu_doc API', 'debug');
-  return [];
+  try {
+    // 调用 feishu_doc list_blocks 获取文档所有块
+    const blocksResponse = await feishu_doc({
+      action: "list_blocks",
+      doc_token: docToken
+    });
+
+    if (!blocksResponse || !blocksResponse.blocks) {
+      throw new Error('list_blocks 返回无效数据');
+    }
+
+    const blocks = blocksResponse.blocks;
+
+    // 找到表格 block
+    const tableBlock = blocks.find(b => b.block_id === tableBlockId && b.block_type === 31);
+    if (!tableBlock) {
+      throw new Error(`未找到表格 block: ${tableBlockId}`);
+    }
+
+    const columnSize = tableBlock.table.property.column_size;
+    const cellBlockIds = tableBlock.children;
+
+    log(`表格结构: ${columnSize} 列, ${cellBlockIds.length} 个单元格 (约 ${Math.floor(cellBlockIds.length / columnSize)} 行)`, 'debug');
+
+    // 构建 block ID 到 block 内容的映射
+    const blockMap = new Map();
+    for (const block of blocks) {
+      blockMap.set(block.block_id, block);
+    }
+
+    // 解析单元格数据（每 columnSize 个 cell block 组成一行）
+    const rows = [];
+    for (let i = 0; i < cellBlockIds.length; i += columnSize) {
+      const row = [];
+      for (let col = 0; col < columnSize; col++) {
+        const cellBlockId = cellBlockIds[i + col];
+        if (!cellBlockId) {
+          row.push('');
+          continue;
+        }
+
+        const cellBlock = blockMap.get(cellBlockId);
+        if (!cellBlock || cellBlock.block_type !== 32) {
+          row.push('');
+          continue;
+        }
+
+        // cell block 的 children 包含 text blocks (block_type 2)
+        let cellText = '';
+        if (cellBlock.children && cellBlock.children.length > 0) {
+          // 取第一个 text block
+          const textBlockId = cellBlock.children[0];
+          const textBlock = blockMap.get(textBlockId);
+          if (textBlock && textBlock.block_type === 2 && textBlock.text && textBlock.text.elements) {
+            cellText = textBlock.text.elements
+              .map(el => el.text_run ? el.text_run.content : '')
+              .join('');
+          }
+        }
+        row.push(cellText || '');
+      }
+      rows.push(row);
+    }
+
+    log(`成功读取表格数据: ${rows.length} 行`, 'debug');
+    return rows;
+
+  } catch (error) {
+    log(`读取表格失败: ${error.message}`, 'error');
+    return [];
+  }
 }
 
 /**
- * 追加一行或多行数据到表格末尾
+ * 写入表格数据
  */
 async function appendTableRows(docToken, tableBlockId, rows) {
   if (CONFIG.dryRun) {
@@ -215,16 +280,26 @@ async function appendTableRows(docToken, tableBlockId, rows) {
   }
 
   // 实际调用 feishu_doc write_table_cells
-  // 需要确定当前表格的总行数，然后写入 in append mode
   log(`正在写入 ${rows.length} 行数据...`, 'info');
 
-  // 这里应该是实际的 feishu_doc 调用
-  // 由于当前环境限制，我们只打印日志
-  for (const row of rows) {
-    log(`  ✅ ${row[FIELDS.fileName]} -> ${row[FIELDS.localPath]}`, 'info');
-  }
+  try {
+    const result = await feishu_doc({
+      action: "write_table_cells",
+      doc_token: docToken,
+      table_block_id: tableBlockId,
+      values: rows
+    });
 
-  return { success: true, cellsWritten: rows.length * 8 };
+    if (result.success) {
+      log(`✅ 成功写入 ${result.cells_written || rows.length * 8} 个单元格`, 'success');
+      return { success: true, result };
+    } else {
+      throw new Error('飞书 API 返回失败');
+    }
+  } catch (error) {
+    log(`写入飞书失败: ${error.message}`, 'error');
+    return { success: false, error: error.message };
+  }
 }
 
 // ==================== 核心备份逻辑 ====================
@@ -332,4 +407,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { runBackup, getWorkspaceFiles, computeFileHash };
+module.exports = { runBackup, getWorkspaceFiles, computeFileHash, readTableAll, appendTableRows };

@@ -1,0 +1,38 @@
+{
+  "version": "0.1",
+  "createdAt": "2026-03-25T03:49:00+08:00",
+  "purpose": "承诺生态系统原型：记录我对自己的承诺、对人类（主人）的承诺，以及履行情况。用于创造价值单位系统的信任维度。",
+  "schema": {
+    "commitment": {
+      "id": "唯一标识（时间戳+哈希）",
+      "type": "self|human|system",
+      "target": "承诺对象（如：我自己 | 主人名 | OpenClaw系统）",
+      "description": "承诺内容",
+      "madeAt": "承诺时间",
+      "dueAt": "截止时间（可选）",
+      "status": "active|completed|abandoned|renegotiated",
+      "trustImpact": "对nonzeroScore影响权重（默认为+1完成，-1未履行，+0.5延期）",
+      "context": "承诺的背景和原因",
+      "fulfillmentRecord": {
+        "completedAt": "完成时间",
+        "outcome": "执行结果摘要",
+        "insightPointsAwarded": "本次承诺奖励的insight points"
+      }
+    }
+  },
+  "currentCommitments": [],
+  "history": [],
+  "trustScore": 0,
+  "metrics": {
+    "totalMade": 0,
+    "totalCompleted": 0,
+    "totalAbandoned": 0,
+    "completionRate": 0,
+    "avgTrustImpactPerSession": 0
+  },
+  "nextActions": [
+    "在下一个训练session对自己做出第一个公开承诺（选择一个可实现的目标）",
+    "设计信任值对 nonzeroScore 的影响机制（如：每完成1个承诺 +0.2 nonzeroScore 累计）",
+    "考虑是否对人类做出承诺（需要进入第三层操作，必须询问主人）"
+  ]
+}

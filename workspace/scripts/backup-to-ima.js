@@ -13,12 +13,24 @@ const FOLDER_ID = 'folder77fea602a657931d'; // 盖世笔记-gongsi 笔记本
 // 读取心跳状态，了解IMA备份历史
 function readHeartbeatState() {
     try {
-        const heartbeatPath = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', 'memory', 'heartbeat-state.json');
-        if (fs.existsSync(heartbeatPath)) {
-            return JSON.parse(fs.readFileSync(heartbeatPath, 'utf-8'));
+        // 使用绝对路径，基于当前工作目录或环境变量
+        const possiblePaths = [
+            path.join(process.env.USERPROFILE, '.openclaw', 'workspace', 'memory', 'heartbeat-state.json'),
+            path.join(process.env.HOME, '.openclaw', 'workspace', 'memory', 'heartbeat-state.json'),
+            path.join('C:', 'Users', 'Administrator', '.openclaw', 'workspace', 'memory', 'heartbeat-state.json'),
+            path.join(process.cwd(), 'memory', 'heartbeat-state.json')
+        ];
+        
+        for (const hbPath of possiblePaths) {
+            if (fs.existsSync(hbPath)) {
+                console.log(`[DEBUG] 读取心跳状态文件: ${hbPath}`);
+                return JSON.parse(fs.readFileSync(hbPath, 'utf-8'));
+            }
         }
+        
+        console.log('[WARN] 未找到心跳状态文件，尝试所有路径都失败');
     } catch (e) {
-        // 静默失败，返回空状态
+        console.error('[ERROR] 读取心跳状态失败:', e.message);
     }
     return null;
 }
@@ -40,17 +52,18 @@ function shouldSkipBackup(heartbeatState, currentSession) {
         return false; // 不跳过，执行备份
     }
     
-    // 如果状态标记为PLANNED_OPTIMIZATION，需要检查当前session
-    if (status === 'PLANNED_OPTIMIZATION') {
-        if (nextAttemptSession && currentSession < nextAttemptSession) {
-            console.log(`📋 检测到优化期：当前session=${currentSession} < 下次尝试=${nextAttemptSession}，跳过本次备份`);
-            return true; // 在优化期，跳过
-        }
-        // 如果达到尝试时间，清除跳过标记（上面已处理）
+    // 兼容多个优化期状态名（避免状态不一致导致skip失效）
+    const optimizationStatuses = ['PLANNED_OPTIMIZATION', 'OPTIMIZATION_IN_PROGRESS', 'CRITICAL_ANALYSIS_NEEDED'];
+    const isOptimizationPeriod = optimizationStatuses.includes(status);
+    
+    // 如果处于优化期且未到下次尝试时间，跳过
+    if (isOptimizationPeriod && nextAttemptSession && currentSession < nextAttemptSession) {
+        console.log(`📋 检测到优化期（status=${status}）：当前session=${currentSession} < 下次尝试=${nextAttemptSession}，跳过本次备份`);
+        return true; // 在优化期，跳过
     }
     
     // 如果连续失败过多且没有明确的优化计划，自动进入诊断期
-    if (consecutiveFailures >= 10 && status !== 'PLANNED_OPTIMIZATION') {
+    if (consecutiveFailures >= 10 && !isOptimizationPeriod) {
         console.log(`⚠️ 检测到连续${consecutiveFailures}次失败，自动进入诊断期（跳过第${currentSession}次）`);
         return true; // 自动跳过，让训练先诊断
     }

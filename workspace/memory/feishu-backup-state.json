@@ -1,0 +1,47 @@
+{
+  "lastBackupTime": null,
+  "backups": {
+    "AGENTS.md": {
+      "hash": "sha256:640debb33896f3e8...",
+      "backupTime": "2026-03-24T21:56:41.559Z",
+      "size": 10093
+    },
+    "HEARTBEAT.md": {
+      "hash": "sha256:4b59688f8d48cb0a...",
+      "backupTime": "2026-03-24T21:56:41.559Z",
+      "size": 4773
+    },
+    "IDENTITY.md": {
+      "hash": "sha256:2f79ebc295224c48...",
+      "backupTime": "2026-03-24T18:33:41.742Z",
+      "size": 1065
+    },
+    "MEMORY.md": {
+      "hash": "sha256:982d855c4664a174...",
+      "backupTime": "2026-03-24T22:05:28.120Z",
+      "size": 96914
+    },
+    "SOUL.md": {
+      "hash": "sha256:6678cd88b53384a7...",
+      "backupTime": "2026-03-24T18:33:41.742Z",
+      "size": 1709
+    },
+    "TOOLS.md": {
+      "hash": "sha256:f0a3369f2609921e...",
+      "backupTime": "2026-03-24T22:05:28.120Z",
+      "size": 10638
+    },
+    "USER.md": {
+      "hash": "sha256:a1ab76381a9ed879...",
+      "backupTime": "2026-03-24T18:33:41.742Z",
+      "size": 448
+    }
+  },
+  "stats": {
+    "totalFiles": 7,
+    "backedUp": 0,
+    "skipped": 7,
+    "failed": 0,
+    "lastBackupTime": "2026-03-24T22:05:42.041Z"
+  }
+}

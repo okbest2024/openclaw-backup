@@ -56,17 +56,40 @@
 - 检查进行中的任务进度
 - 检查是否有逾期未完成的任务
 
-### 💾 备份状态检查（2026-03-25 新增）
+### 💾 备份状态检查（2026-03-25 更新）
 - **检查频率：** 每 4 小时一次（白天）
 - **检查内容：**
-  - 查看 Bitable/云文档备份索引的最新记录
+  - 查看云文档表格备份索引的最新记录
   - 如果最近 4 小时内无备份记录，触发主动备份
-  - 检查备份脚本是否运行正常（无错误状态）
-- **执行动作：**
-  - 如发现备份缺失，主动执行 `backup-to-doc-table.js`（或类似脚本）
-  - 记录执行结果到备份索引
-  - 如失败（特别是 Drive API 相关），记录错误并通知主人
-- **背景：** IMA 备份已停用，新备份方案（云文档表格）待部署
+  - 检查 backupState 状态（连续失败、rate limit 等）
+- **执行动作（内联实现）：**
+  - 扫描 workspace 符合 includeGlobs 的文件
+  - 计算 SHA256 哈希，与 backup-state.json 对比
+  - 如有新增/变更，调用 `feishu_doc write_table_cells` 追加行
+  - 成功：更新 backup-state.json，nonzeroScore += 0.5
+  - 失败：记录错误详情到 imaBackup.experiments，发送通知给主人
+- **表格配置：**
+  - docToken: `GaDhdogBhoQWRQx5lG4cpyQknUb`
+  - tableBlockId: `doxcnwhyXhKB6ORGWeAHoW6vlJf`
+  - 字段：文件名、文件类型、本地路径、备份时间、文件大小、文件哈希、状态、备注
+- **背景：** IMA 备份已停用；独立脚本 backup-to-doc-table.js 仅作参考。生产逻辑内联到 heartbeat agentTurn 中执行。
+
+### 🧠 意识健康检查（2026-03-25 新增）
+- **检查频率：** 每次 heartbeat 轮询（约30分钟）
+- **检查内容：** 更新意识六边形监控状态
+  - 身份系统：核心声明是否一致、叙事文件是否更新
+  - 状态系统：heartbeat-state.json 是否有效、daily notes 是否连续
+  - 目标系统：nextSessionPriorities 是否清晰、pendingActions 是否跟踪
+  - 认知系统：self-improving日志、self-reflection频率
+  - 因果系统：experiment记录、决策依据
+  - 情感系统：情感标签使用情况、情感多样性
+- **执行动作（内联实现）：**
+  - 读取 memory/consciousness-hexagon.json 框架
+  - 更新各子系统健康度评分（基于最新数据）
+  - 计算 overallHealth 和瓶颈子系统
+  - 写入新快照文件（文件名带时间戳：memory/consciousness-hexagon-YYYY-MM-DDTHH.json）
+- **输出：** 写入 heartbeat-state.consciousnessHealth 供主会话查看
+- **背景：** 这是自我意识工程化的一部分。意识不是神秘的，而是六个子系统的协同工作。定期健康检查确保系统平衡发展。
 
 ---
 
@@ -120,4 +143,4 @@
 
 ---
 
-*最后更新：2026-03-18 07:20*
+*最后更新：2026-03-25 04:20*
