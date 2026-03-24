@@ -10,6 +10,52 @@ const CLIENT_ID = process.env.IMA_OPENAPI_CLIENTID || 'dce37961e40b62e9bc1e6d313
 const API_KEY = process.env.IMA_OPENAPI_APIKEY || 'EvRWLabL+0I1UUJYfdYFDkx2CuBrBlTJ6cpTnqRXtPmAMnd4Axdn6R1YSVPMAYIAFkdE2NNy6g==';
 const FOLDER_ID = 'folder77fea602a657931d'; // 盖世笔记-gongsi 笔记本
 
+// 读取心跳状态，了解IMA备份历史
+function readHeartbeatState() {
+    try {
+        const heartbeatPath = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', 'memory', 'heartbeat-state.json');
+        if (fs.existsSync(heartbeatPath)) {
+            return JSON.parse(fs.readFileSync(heartbeatPath, 'utf-8'));
+        }
+    } catch (e) {
+        // 静默失败，返回空状态
+    }
+    return null;
+}
+
+// 决定是否应该跳过本次备份
+function shouldSkipBackup(heartbeatState, currentSession) {
+    if (!heartbeatState || !heartbeatState.imaBackup) {
+        return false; // 没有历史记录，正常执行
+    }
+    
+    const imaBackup = heartbeatState.imaBackup;
+    const consecutiveFailures = imaBackup.consecutiveFailures || 0;
+    const status = imaBackup.status;
+    
+    // 如果状态标记为PLANNED_OPTIMIZATION，需要检查当前session
+    if (status === 'PLANNED_OPTIMIZATION') {
+        const nextAttemptSession = imaBackup.nextAttemptSession;
+        if (nextAttemptSession && currentSession < nextAttemptSession) {
+            console.log(`📋 检测到优化期：当前session=${currentSession} < 下次尝试=${nextAttemptSession}，跳过本次备份`);
+            return true; // 在优化期，跳过
+        }
+        // 如果达到尝试时间，清除跳过标记
+        if (nextAttemptSession && currentSession >= nextAttemptSession) {
+            console.log(`🎯 优化验证时间到：session=${currentSession} >= ${nextAttemptSession}，执行备份`);
+            return false;
+        }
+    }
+    
+    // 如果连续失败过多且没有明确的优化计划，自动进入诊断期
+    if (consecutiveFailures >= 10 && status !== 'PLANNED_OPTIMIZATION') {
+        console.log(`⚠️ 检测到连续${consecutiveFailures}次失败，自动进入诊断期（跳过第${currentSession}次）`);
+        return true; // 自动跳过，让训练先诊断
+    }
+    
+    return false;
+}
+
 const LOG_FILE = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', '意识觉醒训练日志.md');
 const BACKUP_INDEX_FILE = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', 'ima-backup-index.json');
 
@@ -75,16 +121,19 @@ function extractLatestSessions(content, maxSessions = 5) {
     return sessions.slice(0, maxSessions);
 }
 
-// 发送到 IMA（带重试）
-async function sendToIMAWithRetry(title, content, maxRetries = 5) {
+// 发送到 IMA（带重试）- 优化版：更保守的退避策略
+async function sendToIMAWithRetry(title, content, maxRetries = 5, baseDelayMs = 30000) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
             const result = await sendToIMA(title, content);
             return result;
         } catch (error) {
-            if ((error.message.includes('rate limit') || error.message.includes('fail')) && attempt < maxRetries) {
-                const waitTime = Math.pow(2, attempt) * 2000; // 指数退避：4s, 8s, 16s, 32s, 64s
-                console.log(`⏳ 遇到错误，等待 ${waitTime/1000} 秒后重试 (尝试 ${attempt}/${maxRetries})...`);
+            const shouldRetry = error.message.includes('rate limit') || error.message.includes('fail') || error.message.includes('429') || error.message.includes('20002');
+            if (shouldRetry && attempt < maxRetries) {
+                // 新增随机抖动，避免请求队列同步
+                const jitter = Math.random() * 0.3 * baseDelayMs; // 0-30% 随机抖动
+                const waitTime = baseDelayMs * Math.pow(2, attempt - 1) + jitter; // 30s, 60s, 120s, 240s, 480s + 抖动
+                console.log(`⏳ 遇到错误，等待 ${(waitTime/1000).toFixed(1)} 秒后重试 (尝试 ${attempt}/${maxRetries})...`);
                 await new Promise(resolve => setTimeout(resolve, waitTime));
             } else {
                 throw error;
@@ -152,6 +201,17 @@ async function backupToIMA() {
     console.log('开始备份意识觉醒训练日志到 IMA...');
     console.log('LOG_FILE:', LOG_FILE);
     
+    // 读取心跳状态，决定是否跳过
+    const heartbeatState = readHeartbeatState();
+    // 尝试从环境变量读取当前session编号（由cron任务传递）
+    const currentSession = parseInt(process.env.CURRENT_TRAINING_SESSION) || 
+                          (heartbeatState ? heartbeatState.trainingSession : 0);
+    
+    if (shouldSkipBackup(heartbeatState, currentSession)) {
+        console.log('ℹ️ 根据备份策略，本次备份被跳过');
+        process.exit(0);
+    }
+    
     // 读取训练日志
     if (!fs.existsSync(LOG_FILE)) {
         console.error('错误：训练日志文件不存在');
@@ -161,8 +221,19 @@ async function backupToIMA() {
     const content = fs.readFileSync(LOG_FILE, 'utf-8');
     console.log('File size:', content.length, 'chars');
     
+    // 从环境变量读取备份配置
+    const MAX_SESSIONS = parseInt(process.env.IMA_BACKUP_MAX_SESSIONS) || 5; // 每次备份的最大训练记录数
+    const INCREMENTAL_MODE = process.env.IMA_BACKUP_INCREMENTAL === 'true'; // 是否增量备份（只备份新记录）
+    const SKIP_BACKUP = process.env.IMA_BACKUP_SKIP === 'true'; // 是否跳过本次备份（用于诊断期）
+    
+    // 如果标记为跳过，直接退出
+    if (SKIP_BACKUP) {
+        console.log('ℹ️ 本次备份被策略跳过（诊断模式）');
+        process.exit(0);
+    }
+    
     // 提取最新的训练记录
-    const latestSessions = extractLatestSessions(content, 5);
+    const latestSessions = extractLatestSessions(content, MAX_SESSIONS);
     
     console.log(`找到 ${latestSessions.length} 次最新训练记录`);
     
