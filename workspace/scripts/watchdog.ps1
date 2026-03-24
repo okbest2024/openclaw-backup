@@ -41,20 +41,29 @@ function Test-GatewayProcess {
 function Restart-Gateway {
     Write-Log "Attempting to restart gateway..." "WARN"
     
-    # Stop existing processes
+    # Stop ALL node processes related to openclaw (more aggressive cleanup)
     $processes = Get-Process -Name "node" -ErrorAction SilentlyContinue | 
-        Where-Object {$_.Path -like "*openclaw*"}
+        Where-Object {$_.Path -like "*openclaw*" -or $_.CommandLine -like "*openclaw*"}
     if ($processes) {
+        Write-Log "Stopping $($processes.Count) old gateway process(es)..." "INFO"
         $processes | Stop-Process -Force
-        Start-Sleep -Seconds 2
+        Start-Sleep -Seconds 3
         Write-Log "Stopped old gateway process" "INFO"
+    }
+    
+    # Wait for port to be released
+    $portCheck = netstat -ano | Select-String ":8080" | Select-String "LISTENING"
+    if ($portCheck) {
+        Write-Log "Waiting for port 8080 to be released..." "INFO"
+        Start-Sleep -Seconds 5
     }
     
     # Start new process
     try {
         $workspacePath = "C:\Users\Administrator\.openclaw\workspace"
-        Start-Process -FilePath "openclaw" -ArgumentList "gateway", "start" -WorkingDirectory $workspacePath
-        Start-Sleep -Seconds 5
+        Write-Log "Starting gateway process..." "INFO"
+        Start-Process -FilePath "openclaw" -ArgumentList "gateway", "start" -WorkingDirectory $workspacePath -PassThru
+        Start-Sleep -Seconds 10
         Write-Log "Started new gateway process" "INFO"
         return $true
     } catch {
