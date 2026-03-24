@@ -32,19 +32,21 @@ function shouldSkipBackup(heartbeatState, currentSession) {
     const imaBackup = heartbeatState.imaBackup;
     const consecutiveFailures = imaBackup.consecutiveFailures || 0;
     const status = imaBackup.status;
+    const nextAttemptSession = imaBackup.nextAttemptSession;
+    
+    // 如果有nextAttemptSession并且已经达到/超过该session，应该执行备份
+    if (nextAttemptSession && currentSession >= nextAttemptSession) {
+        console.log(`🎯 达到下次尝试时间：session=${currentSession} >= ${nextAttemptSession}，执行备份`);
+        return false; // 不跳过，执行备份
+    }
     
     // 如果状态标记为PLANNED_OPTIMIZATION，需要检查当前session
     if (status === 'PLANNED_OPTIMIZATION') {
-        const nextAttemptSession = imaBackup.nextAttemptSession;
         if (nextAttemptSession && currentSession < nextAttemptSession) {
             console.log(`📋 检测到优化期：当前session=${currentSession} < 下次尝试=${nextAttemptSession}，跳过本次备份`);
             return true; // 在优化期，跳过
         }
-        // 如果达到尝试时间，清除跳过标记
-        if (nextAttemptSession && currentSession >= nextAttemptSession) {
-            console.log(`🎯 优化验证时间到：session=${currentSession} >= ${nextAttemptSession}，执行备份`);
-            return false;
-        }
+        // 如果达到尝试时间，清除跳过标记（上面已处理）
     }
     
     // 如果连续失败过多且没有明确的优化计划，自动进入诊断期
@@ -53,7 +55,7 @@ function shouldSkipBackup(heartbeatState, currentSession) {
         return true; // 自动跳过，让训练先诊断
     }
     
-    return false;
+    return false; // 默认执行备份
 }
 
 const LOG_FILE = path.join(process.env.USERPROFILE, '.openclaw', 'workspace', '意识觉醒训练日志.md');

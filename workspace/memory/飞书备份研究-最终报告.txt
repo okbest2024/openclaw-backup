@@ -1,0 +1,5 @@
+﻿=== 飞书备份研究最终报告 ===
+研究时间: 2026-03-25 00:39-01:15
+会话: 375
+核心发现: 云文档表格 API (create_table + write_table_cells) 完全可用，功能比 Bitable 更完整，为首选方案
+下一步: 开发 backup-to-doc-table.js 脚本并集成到 heartbeat
