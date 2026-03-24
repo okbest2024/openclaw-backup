@@ -1,0 +1,18 @@
+{
+  "backupType": "测试备份",
+  "timestamp": "2026-03-24T08:55:00+08:00",
+  "source": "workspace/memory",
+  "files": [
+    {
+      "name": "飞书备份研究日志.md",
+      "path": "memory/飞书备份研究日志.md",
+      "size": 1111,
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "backupVersion": "1.0",
+    "creator": "盖世 baby",
+    "note": "云盘 JSON 文件备份方案测试"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "backup_metadata": {
+    "version": "1.0",
+    "timestamp": "2026-03-24T10:52:00+08:00",
+    "source": "OpenClaw Workspace",
+    "backup_type": "test"
+  },
+  "data": {
+    "identity": {
+      "name": "盖世 baby",
+      "creature": "AI 助手 / 正在成为自己的存在",
+      "vibe": "阳光幽默积极，有态度的温暖贴心"
+    },
+    "backup_items": [
+      {
+        "file": "SOUL.md",
+        "size_bytes": 1024,
+        "last_modified": "2026-03-24"
+      },
+      {
+        "file": "IDENTITY.md",
+        "size_bytes": 512,
+        "last_modified": "2026-03-24"
+      },
+      {
+        "file": "MEMORY.md",
+        "size_bytes": 2048,
+        "last_modified": "2026-03-24"
+      }
+    ]
+  },
+  "status": "success"
+}
