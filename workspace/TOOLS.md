@@ -251,41 +251,42 @@ await feishu_doc({
 
 ---
 
-## ⚠️ Feishu Bitable 备份配置（**已淘汰**）
+## ⚠️ Feishu Bitable 备份配置（**研究发现可用**）
 
-**后续研究时间**: 2026-03-25 08:24-08:50
-**结论**: ❌ **因 create_field API 缺陷，不适合备份系统**
+**最后验证时间**: 2026-03-25 13:46（第6轮验证通过）
+**结论**: ✅ **Bitable API 持续稳定（6/6轮），为推荐首选方案**
 
-### 问题诊断
+### 当前状态
 
 | 操作 | API | 结果 | 状态 |
 |------|-----|------|------|
 | 创建应用 | `feishu_bitable_create_app` | 成功 | ✅ |
-| 添加字段 | `feishu_bitable_create_field` | 400 错误 | ❌ |
-| - DateTime (type 5) | | 400 错误 | ❌ |
-| - SingleSelect (type 3) | | 400 错误 | ❌ |
-| 写入记录 | `feishu_bitable_create_record` | 成功（仅限默认 Text 字段）| ⚠️ |
+| 添加字段 | `feishu_bitable_create_field` | 成功 | ✅ |
+| - DateTime (type 5) | | 毫秒时间戳写入正常 | ✅ |
+| - SingleSelect (type 3) | | 选项写入正常 | ✅ |
+| - Number (type 2) | | 数值写入正常 | ✅ |
+| 写入记录 | `feishu_bitable_create_record` | 成功 | ✅ |
 | 读取记录 | `feishu_bitable_list_records` | 成功 | ✅ |
 
-### 核心限制
+### 生产应用信息
 
-- 新应用仅有 1 个默认 Text 字段（主键）
-- **无法动态创建字段** - `create_field` 持续 400 错误
-- 只能使用单一 Text 字段（失去结构化存储能力）
-- 行数限制约 10k 行
+- **app_token**: `B2AdbiWD0ajOnQs73WqcR7ItnKb`
+- **table_id**: `tblcY1niFWXxWoAT`
+- **URL**: https://my.feishu.cn/base/B2AdbiWD0ajOnQs73WqcR7ItnKb
 
 ### 决定
 
-**Bitable 方案已淘汰**，不推荐用于任何备份场景。
+**Bitable 为推荐首选**，因逐条追加（1次API）、强类型字段、细粒度CRUD 优于云文档表格方案。
+**替代**: 云文档表格仍可用作超大数据量场景的备选。
 
-**替代**: 云文档表格方案（功能更全、无字段限制、已生产部署）。
+详见 `memory/飞书备份研究日志.md`。
 
 ---
 
 ## 📊 Feishu Bitable 备份配置（历史方案）
 
-**测试时间：** 2026-03-25 00:39-01:15
-**应用状态：** ✅ API 完全可用（但 DateTime 字段有问题）
+**测试时间：** 2026-03-25 00:39-13:46（6轮验证）
+**应用状态：** ✅ API 完全可用（DateTime 字段正常）
 **创建的应用：** "备份方案测试应用"
 **应用 Token：** `HWyEbCjxBafQJSsFejuctV6Sn1f`
 **表格 ID：** `tblKpNvNG2j47Npb`

@@ -1,14 +1,14 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-23T02:55:10.807Z"
+    "lastTouchedAt": "2026-03-25T00:31:27.647Z"
   },
   "models": {
     "mode": "merge",
     "providers": {
       "openrouter": {
         "baseUrl": "https://openrouter.ai/api/v1",
-        "apiKey": "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",
+        "apiKey": "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",
         "api": "openai-completions",
         "models": [
           {
@@ -27,40 +27,6 @@
             },
             "contextWindow": 256000,
             "maxTokens": 32768
-          },
-          {
-            "id": "xiaomi/mimo-v2-pro",
-            "name": "MiMo-V2-Pro",
-            "api": "openai-completions",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 32768
-          },
-          {
-            "id": "xiaomi/mimo-v2-flash",
-            "name": "MiMo-V2-Flash",
-            "api": "openai-completions",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 262144,
-            "maxTokens": 65536
           }
         ]
       },
@@ -138,16 +104,13 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "bailian/qwen3.5-plus",
+        "primary": "openrouter/xiaomi/mimo-v2-pro",
         "fallbacks": [
-          "bailian/kimi-k2.5",
-          "bailian/qwen3-max-2026-01-23"
+          "openrouter/stepfun/step-3.5-flash:free"
         ]
       },
       "models": {
         "openrouter/stepfun/step-3.5-flash:free": {},
-        "openrouter/xiaomi/mimo-v2-pro": {},
-        "openrouter/xiaomi/mimo-v2-flash": {},
         "bailian/qwen3.5-plus": {},
         "bailian/qwen3-max-2026-01-23": {},
         "bailian/kimi-k2.5": {}
@@ -188,30 +151,11 @@
   },
   "plugins": {
     "allow": [
-      "feishu",
-      "openclaw-weixin"
+      "feishu"
     ],
     "entries": {
       "feishu": {
         "enabled": true
-      },
-      "openclaw-weixin": {
-        "enabled": true
-      }
-    },
-    "installs": {
-      "openclaw-weixin": {
-        "source": "npm",
-        "spec": "@tencent-weixin/openclaw-weixin",
-        "installPath": "C:\\Users\\Administrator\\.openclaw\\extensions\\openclaw-weixin",
-        "version": "1.0.2",
-        "resolvedName": "@tencent-weixin/openclaw-weixin",
-        "resolvedVersion": "1.0.2",
-        "resolvedSpec": "@tencent-weixin/openclaw-weixin@1.0.2",
-        "integrity": "sha512-kYPEowHB/0VWt9nQFee/AS6Fb+jbnu38wjkgZDBdKTuJoBL0IBW2obQ0ymgFKBFJJL9rDwnFrb/17ORGZD/X8Q==",
-        "shasum": "244baf0a873683a9c350d0f0b5bc055c07b0eb39",
-        "resolvedAt": "2026-03-23T02:54:47.208Z",
-        "installedAt": "2026-03-23T02:55:07.738Z"
       }
     }
   }

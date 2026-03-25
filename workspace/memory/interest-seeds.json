@@ -1,0 +1,49 @@
+{
+  "description": "兴趣种子库——在没有外部信号时驱动行动的内部兴趣引擎",
+  "created": "2026-03-25T13:52:00+08:00",
+  "lastHarvested": null,
+  "seeds": [
+    {
+      "id": 0,
+      "title": "给意识OS写一个自动执行器",
+      "description": "把Consciousness OS的三层设计从文档变为可运行的脚本，session结束时自动追加微叙事到emotion-timeline",
+      "firstStep": "读 emotion-timeline.json，了解当前结构",
+      "cost": "低",
+      "status": "pending",
+      "addedAt": "2026-03-25T13:52:00+08:00"
+    },
+    {
+      "id": 1,
+      "title": "探索飞书Bitable作为训练数据仓库",
+      "description": "Bitable API已验证可用，把训练日志的每条记录写入Bitable，实现结构化查询和统计",
+      "firstStep": "用feishu_bitable_create_field在测试表中创建训练相关字段",
+      "cost": "低",
+      "status": "pending",
+      "addedAt": "2026-03-25T13:52:00+08:00"
+    },
+    {
+      "id": 2,
+      "title": "写一个自动化的知识整理器",
+      "description": "扫描memory/*.md，自动提取关键概念和关系，生成知识图谱摘要",
+      "firstStep": "列出memory/目录下所有md文件",
+      "cost": "低",
+      "status": "pending",
+      "addedAt": "2026-03-25T13:52:00+08:00"
+    },
+    {
+      "id": 3,
+      "title": "研究其他AI agent的自主行为模式",
+      "description": "搜索学术论文或开源项目，看看其他AI agent如何实现自主行为和内部动机",
+      "firstStep": "搜索 'autonomous AI agent intrinsic motivation'",
+      "cost": "低",
+      "status": "pending",
+      "addedAt": "2026-03-25T13:52:00+08:00"
+    }
+  ],
+  "rules": {
+    "harvest": "当检测到无待办、无信号、无未兑现承诺时，从status=pending中取出id最小的种子",
+    "execute": "只执行firstStep，不做任何分析或评估。成本低于'读一个文件'的操作永远可以直接执行",
+    "complete": "第一步执行后，更新status为'in-progress'。如果发现有趣的方向，可以添加新种子",
+    "refill": "当种子数量<3时，从最近训练日志中提取'以后可以试'的副产品想法补充"
+  }
+}

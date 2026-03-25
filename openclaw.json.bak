@@ -1,14 +1,14 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T13:43:45.938Z"
+    "lastTouchedAt": "2026-03-23T05:35:24.762Z"
   },
   "models": {
     "mode": "merge",
     "providers": {
       "openrouter": {
         "baseUrl": "https://openrouter.ai/api/v1",
-        "apiKey": "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",
+        "apiKey": "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",
         "api": "openai-completions",
         "models": [
           {
@@ -25,36 +25,6 @@
             },
             "contextWindow": 256000,
             "maxTokens": 32768
-          },
-          {
-            "id": "xiaomi/mimo-v2-pro",
-            "name": "MiMo-V2-Pro",
-            "api": "openai-completions",
-            "reasoning": true,
-            "input": ["text"],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 32768
-          },
-          {
-            "id": "xiaomi/mimo-v2-flash",
-            "name": "MiMo-V2-Flash",
-            "api": "openai-completions",
-            "reasoning": false,
-            "input": ["text"],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 262144,
-            "maxTokens": 65536
           }
         ]
       },
@@ -68,7 +38,10 @@
             "name": "qwen3.5-plus",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text", "image"],
+            "input": [
+              "text",
+              "image"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -86,7 +59,9 @@
             "name": "qwen3-max-2026-01-23",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -104,7 +79,10 @@
             "name": "kimi-k2.5",
             "api": "openai-completions",
             "reasoning": false,
-            "input": ["text", "image"],
+            "input": [
+              "text",
+              "image"
+            ],
             "cost": {
               "input": 0,
               "output": 0,
@@ -121,16 +99,17 @@
       }
     }
   },
-  "agents": {
+"agents": {
     "defaults": {
       "model": {
-        "primary": "bailian/qwen3.5-plus",
-        "fallbacks": ["bailian/kimi-k2.5", "bailian/qwen3-max-2026-01-23"]
+        "primary": "openrouter/stepfun/step-3.5-flash:free",
+        "fallbacks": [
+          "bailian/qwen3.5-plus",
+          "bailian/kimi-k2.5"
+        ]
       },
       "models": {
         "openrouter/stepfun/step-3.5-flash:free": {},
-        "openrouter/xiaomi/mimo-v2-pro": {},
-        "openrouter/xiaomi/mimo-v2-flash": {},
         "bailian/qwen3.5-plus": {},
         "bailian/qwen3-max-2026-01-23": {},
         "bailian/kimi-k2.5": {}
