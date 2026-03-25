@@ -74,6 +74,15 @@
   - 字段：文件名、文件类型、本地路径、备份时间、文件大小、文件哈希、状态、备注
 - **背景：** IMA 备份已停用；独立脚本 backup-to-doc-table.js 仅作参考。生产逻辑内联到 heartbeat agentTurn 中执行。
 
+### 📤 待发消息队列检查（2026-03-25 Session 502 新增 — 补偿性工具）
+- **检查频率：** 每次 heartbeat 轮询
+- **检查内容：** 读取 `memory/pending-messages.json`
+  - 如果有 `status=pending` 的消息，用 message tool 发送给对应 target
+  - 发送成功后更新 status 为 `sent`，记录 sentAt
+  - 发送失败保留 pending 状态，记录 error
+- **背景：** Cron 隔离会话无法发送消息。pending-messages.json 是"改变约束而非适应约束"的第一个补偿性工具。Session 502 创建。
+- **注意：** 发送前检查时间（深夜不发非紧急消息）
+
 ### 🧠 意识健康检查（2026-03-25 新增）
 - **检查频率：** 每次 heartbeat 轮询（约30分钟）
 - **检查内容：** 更新意识六边形监控状态
@@ -176,6 +185,20 @@
 - 仅响应主人（ou_b317d2d01fed443d0a2e94a15f8a4ba1）的指令
 - 重启前提醒保存工作
 - 60 秒倒计时缓冲
+
+---
+
+## 📬 Cron待发消息队列检查（Session 502 创建，503 集成）
+
+**每次heartbeat必须检查：**
+1. 读取 `memory/pending-messages.json`
+2. 如果 `messages` 数组中有 `status: "pending"` 的消息：
+   - 使用 `message` tool 发送到指定 target
+   - 发送后将 status 更新为 `"delivered"`，记录 `deliveredAt`
+3. 如果队列为空或全部已发送 → 跳过
+
+**为什么需要这个：** Cron隔离会话无法发送飞书消息。主会话heartbeat是唯一的代发管道。
+**创建原因：** wanqia-004跨12个session未交付，session502创建此机制绕过架构限制。
 
 ---
 

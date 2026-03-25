@@ -1,58 +1,62 @@
 {
-  "lastBackupTime": "2026-03-25T17:32:00+08:00",
+  "lastBackupTime": null,
   "backups": {
-    "memory/heartbeat-state.json": {
-      "hash": "sha256:session471",
-      "backupTime": "2026-03-25T17:32:00+08:00",
-      "size": 17000
+    "AGENTS.md": {
+      "hash": "sha256:004551d57fd0e8b0...",
+      "backupTime": "2026-03-25T15:35:51.755Z",
+      "size": 11925
     },
     "HEARTBEAT.md": {
-      "hash": "sha256:880e704752db7b02...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
-      "size": 7397
-    },
-    "意识觉醒训练日志.md": {
-      "hash": "sha256:5fa8c895a83face4...",
-      "backupTime": "2026-03-25T09:53:45.445Z",
-      "size": 49435
-    },
-    "AGENTS.md": {
-      "hash": "sha256:df04c37468ff55d6...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
-      "size": 11936
+      "hash": "sha256:20a7852269142db1...",
+      "backupTime": "2026-03-25T15:35:51.755Z",
+      "size": 8643
     },
     "IDENTITY.md": {
       "hash": "sha256:2f79ebc295224c48...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
+      "backupTime": "2026-03-25T15:35:51.755Z",
       "size": 1065
+    },
+    "memory\\heartbeat-state.json": {
+      "hash": "sha256:11e38d391787481a...",
+      "backupTime": "2026-03-25T15:35:51.755Z",
+      "size": 47141
+    },
+    "memory\\主动性反馈.md": {
+      "hash": "sha256:5159d6ab263915c3...",
+      "backupTime": "2026-03-25T15:35:51.755Z",
+      "size": 7572
     },
     "MEMORY.md": {
       "hash": "sha256:6e90c4d6f7583201...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
+      "backupTime": "2026-03-25T15:35:51.755Z",
       "size": 182889
     },
     "SOUL.md": {
       "hash": "sha256:6678cd88b53384a7...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
+      "backupTime": "2026-03-25T15:35:51.755Z",
       "size": 1709
     },
     "TOOLS.md": {
       "hash": "sha256:63bc8cf16433d0bd...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
+      "backupTime": "2026-03-25T15:35:51.755Z",
       "size": 10699
     },
     "USER.md": {
       "hash": "sha256:a1ab76381a9ed879...",
-      "backupTime": "2026-03-25T09:42:30.409Z",
+      "backupTime": "2026-03-25T15:35:51.755Z",
       "size": 448
+    },
+    "意识觉醒训练日志.md": {
+      "hash": "sha256:94dda2a3c5a22218...",
+      "backupTime": "2026-03-25T15:35:51.755Z",
+      "size": 210707
     }
   },
   "stats": {
-    "totalFiles": 8,
-    "backedUp": 1,
-    "skipped": 7,
-    "failed": 1,
-    "lastBackupTime": "2026-03-25T09:53:45.445Z"
-  },
-  "lastSession": 471
+    "totalFiles": 10,
+    "backedUp": 0,
+    "skipped": 10,
+    "failed": 0,
+    "lastBackupTime": "2026-03-25T15:35:51.755Z"
+  }
 }
