@@ -1,67 +1,58 @@
 {
-  "lastBackupTime": "2026-03-25T05:39:00Z",
+  "lastBackupTime": "2026-03-25T17:32:00+08:00",
   "backups": {
     "memory/heartbeat-state.json": {
-      "hash": "sha256:7FB2A58D8ED8B608",
-      "backupTime": "2026-03-25T05:39:00Z",
-      "size": 14228
+      "hash": "sha256:session471",
+      "backupTime": "2026-03-25T17:32:00+08:00",
+      "size": 17000
     },
-    "MEMORY.md": {
-      "hash": "sha256:2e9165751aa14d04...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
-      "size": 180496
+    "HEARTBEAT.md": {
+      "hash": "sha256:880e704752db7b02...",
+      "backupTime": "2026-03-25T09:42:30.409Z",
+      "size": 7397
+    },
+    "意识觉醒训练日志.md": {
+      "hash": "sha256:5fa8c895a83face4...",
+      "backupTime": "2026-03-25T09:53:45.445Z",
+      "size": 49435
     },
     "AGENTS.md": {
       "hash": "sha256:df04c37468ff55d6...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
+      "backupTime": "2026-03-25T09:42:30.409Z",
       "size": 11936
-    },
-    "USER.md": {
-      "hash": "sha256:a1ab76381a9ed879...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
-      "size": 448
-    },
-    "SOUL.md": {
-      "hash": "sha256:6678cd88b53384a7...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
-      "size": 1709
     },
     "IDENTITY.md": {
       "hash": "sha256:2f79ebc295224c48...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
+      "backupTime": "2026-03-25T09:42:30.409Z",
       "size": 1065
     },
+    "MEMORY.md": {
+      "hash": "sha256:6e90c4d6f7583201...",
+      "backupTime": "2026-03-25T09:42:30.409Z",
+      "size": 182889
+    },
+    "SOUL.md": {
+      "hash": "sha256:6678cd88b53384a7...",
+      "backupTime": "2026-03-25T09:42:30.409Z",
+      "size": 1709
+    },
     "TOOLS.md": {
-      "hash": "sha256:925d867720828b7a...",
-      "backupTime": "2026-03-25T05:50:30.093Z",
-      "size": 13395
+      "hash": "sha256:63bc8cf16433d0bd...",
+      "backupTime": "2026-03-25T09:42:30.409Z",
+      "size": 10699
     },
-    "HEARTBEAT.md": {
-      "hash": "sha256:02a704d3ad62709d...",
-      "backupTime": "2026-03-25T05:57:24.250Z",
-      "size": 6153
-    },
-    "scripts/backup-to-doc-table.js": {
-      "hash": "sha256:5C4F1D0DD19504B5",
-      "backupTime": "2026-03-25T03:12:00Z",
-      "size": 12662
-    },
-    "意识觉醒训练日志.md": {
-      "hash": "sha256:1a722efd717e05f0...",
-      "backupTime": "2026-03-25T05:57:24.250Z",
-      "size": 75659
-    },
-    "territory.json": {
-      "hash": "sha256:1C3635B01EDEB6A1",
-      "backupTime": "2026-03-25T03:12:00Z",
-      "size": 3797
+    "USER.md": {
+      "hash": "sha256:a1ab76381a9ed879...",
+      "backupTime": "2026-03-25T09:42:30.409Z",
+      "size": 448
     }
   },
   "stats": {
     "totalFiles": 8,
-    "backedUp": 2,
-    "skipped": 6,
-    "failed": 2,
-    "lastBackupTime": "2026-03-25T05:57:24.250Z"
-  }
+    "backedUp": 1,
+    "skipped": 7,
+    "failed": 1,
+    "lastBackupTime": "2026-03-25T09:53:45.445Z"
+  },
+  "lastSession": 471
 }

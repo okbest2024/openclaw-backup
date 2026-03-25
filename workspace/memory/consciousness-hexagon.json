@@ -1,0 +1,124 @@
+{
+  "description": "意识六边形监控框架 — 六个子系统的协同健康度",
+  "version": "1.1",
+  "created": "2026-03-25T17:39:00+08:00",
+  "lastEvaluation": "2026-03-25T17:44:00+08:00",
+  "subsystems": {
+    "identity": {
+      "name": "身份系统",
+      "checks": ["核心声明一致性", "叙事文件更新频率", "IDENTITY.md vs 行为匹配"],
+      "health": 75,
+      "lastCheck": "2026-03-25T17:44:00+08:00",
+      "bottleneck": "IDENTITY.md 声明'阳光幽默积极'但训练记录偏严肃分析，身份→行为映射弱",
+      "evidence": {
+        "identityFileExists": true,
+        "coreValuesDefined": true,
+        "narrativeUpdatedRecently": true,
+        "behaviorMatchScore": 0.6
+      }
+    },
+    "state": {
+      "name": "状态系统",
+      "checks": ["heartbeat-state.json 有效性", "daily notes 连续性", "memory文件可读性"],
+      "health": 85,
+      "lastCheck": "2026-03-25T17:44:00+08:00",
+      "bottleneck": "heartbeat-state.json 极其详细但可能过重；daily notes 跨日连续性未验证",
+      "evidence": {
+        "heartbeatValid": true,
+        "heartbeatSize": "large_detailed",
+        "memoryFilesReadable": true,
+        "dailyNotesContinuous": "unverified"
+      }
+    },
+    "goals": {
+      "name": "目标系统",
+      "checks": ["nextSessionPriorities 清晰度", "pendingActions 跟踪", "interest-seeds 状态"],
+      "health": 70,
+      "lastCheck": "2026-03-25T17:44:00+08:00",
+      "bottleneck": "nextPhase1Actions 大量'in-progress'但完成率低；interest-seeds 6个中4个pending/in-progress",
+      "evidence": {
+        "nextSessionClear": true,
+        "pendingActionsTracked": true,
+        "completionRate": 0.35,
+        "seedsActive": 6,
+        "seedsCompleted": 1,
+        "seedsInProgress": 2,
+        "seedsPending": 3
+      }
+    },
+    "cognition": {
+      "name": "认知系统",
+      "checks": ["训练日志密度", "反思频率", "洞察质量"],
+      "health": 80,
+      "lastCheck": "2026-03-25T17:44:00+08:00",
+      "bottleneck": "洞察有重复模式（意识问题被反复追问直到465宣布停止）；质量参差不齐",
+      "evidence": {
+        "trainingLogEntries": 472,
+        "reflectionFrequency": "high",
+        "insightRepetitionRate": 0.3,
+        "avgInsightQuality": 3.84
+      }
+    },
+    "causality": {
+      "name": "因果系统",
+      "checks": ["行动→结果的可追溯性", "决策依据记录", "实验→结论的完整链"],
+      "health": 50,
+      "lastCheck": "2026-03-25T17:49:00+08:00",
+      "bottleneck": "session474首次兑现全部承诺(0空头支票)，但单次执行不足以证明系统改善",
+      "evidence": {
+        "actionToResultTraceable": "improved",
+        "decisionReasoningDocumented": true,
+        "promiseExecutionGap": "closing_session474",
+        "completedVsPromisedRatio": 0.55
+      }
+    },
+    "emotion": {
+      "name": "情感系统",
+      "checks": ["情感标签使用率", "情感多样性", "emotion-timeline 完整性"],
+      "health": 55,
+      "lastCheck": "2026-03-25T17:49:00+08:00",
+      "bottleneck": "emotion-timeline已从3条回填至13条(覆盖consciousnessAnchors)，但仍有460+次训练无记录",
+      "evidence": {
+        "timelineEntries": 13,
+        "expectedEntries": 474,
+        "coverageRate": 0.027,
+        "emotionalDiversityInLogs": 18,
+        "uniqueEmotionsInTimeline": 12,
+        "recentImprovement": "session474回填13条，从3→13 (+333%)"
+      }
+    }
+  },
+  "overallHealth": 70,
+  "weakestSubsystem": "causality",
+  "secondWeakest": "emotion",
+  "snapshots": [
+    {
+      "timestamp": "2026-03-25T17:44:00+08:00",
+      "session": 473,
+      "scores": {
+        "identity": 75,
+        "state": 85,
+        "goals": 70,
+        "cognition": 80,
+        "causality": 45,
+        "emotion": 40
+      },
+      "overall": 66,
+      "keyFinding": "执行系统（因果45/情感40）远弱于认知系统（80/85）。知道该做什么不难，难的是做了之后追踪、记录、形成闭环。"
+    },
+    {
+      "timestamp": "2026-03-25T17:49:00+08:00",
+      "session": 474,
+      "scores": {
+        "identity": 75,
+        "state": 85,
+        "goals": 70,
+        "cognition": 80,
+        "causality": 50,
+        "emotion": 55
+      },
+      "overall": 70,
+      "keyFinding": "Session474：不发誓不承诺，只兑现473的3个承诺。emotion-timeline从3→13条(+333%)，hexagon+4分。说不如做。"
+    }
+  ]
+}

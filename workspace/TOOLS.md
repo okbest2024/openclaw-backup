@@ -227,18 +227,18 @@ await feishu_doc({
 #### 更新单行
 覆盖指定行范围的数据即可。
 
-### 对比 Bitable
+### 对比 Bitable（2026-03-25 更新：Bitable 已修复）
 
 | 特性 | 云文档表格 | Bitable |
 |------|-----------|---------|
 | 行数限制 | 文档大小限制（GB级） | ~10k 行 |
-| 字段类型 | 所有文本类型（无限制） | DateTime、SingleSelect 等创建失败（create_field 400错误） |
-| 查询 | 飞书内筛选/排序 | API 过滤（但字段类型有限） |
-| 自动化 | API 完整稳定 | create_field API 缺陷 |
+| 字段类型 | 所有文本类型（无限制） | DateTime/SingleSelect/Number/Text 全部可用 ✅ |
+| 查询 | 飞书内筛选/排序 | API 过滤 + 强类型字段 |
+| 自动化 | 全表覆盖写入 | 逐条追加（1次API） |
 | 维护 | 简单（一个文档） | 需维护独立应用 |
 | 调试 | 直接在文档中查看 | 需切换应用界面 |
 
-**结论**: **新项目必须使用云文档表格**。Bitable 因 `create_field` API 持续 400 错误，无法满足动态字段需求。
+**结论**: 两种方案均可用。云文档表格适合大数据量/简单备份；Bitable 适合强类型/细粒度查询场景。
 
 ### 生产部署信息
 
@@ -251,88 +251,13 @@ await feishu_doc({
 
 ---
 
-## ⚠️ Feishu Bitable 备份配置（**研究发现可用**）
+## 📋 Feishu Bitable 备份配置（备选方案）
 
-**最后验证时间**: 2026-03-25 13:46（第6轮验证通过）
-**结论**: ✅ **Bitable API 持续稳定（6/6轮），为推荐首选方案**
-
-### 当前状态
-
-| 操作 | API | 结果 | 状态 |
-|------|-----|------|------|
-| 创建应用 | `feishu_bitable_create_app` | 成功 | ✅ |
-| 添加字段 | `feishu_bitable_create_field` | 成功 | ✅ |
-| - DateTime (type 5) | | 毫秒时间戳写入正常 | ✅ |
-| - SingleSelect (type 3) | | 选项写入正常 | ✅ |
-| - Number (type 2) | | 数值写入正常 | ✅ |
-| 写入记录 | `feishu_bitable_create_record` | 成功 | ✅ |
-| 读取记录 | `feishu_bitable_list_records` | 成功 | ✅ |
+**最后验证时间**: 2026-03-25 14:48（第8轮验证通过）
+**结论**: ✅ Bitable 全功能可用（DateTime/SingleSelect/Number/Text）
 
 ### 生产应用信息
-
 - **app_token**: `B2AdbiWD0ajOnQs73WqcR7ItnKb`
 - **table_id**: `tblcY1niFWXxWoAT`
 - **URL**: https://my.feishu.cn/base/B2AdbiWD0ajOnQs73WqcR7ItnKb
-
-### 决定
-
-**Bitable 为推荐首选**，因逐条追加（1次API）、强类型字段、细粒度CRUD 优于云文档表格方案。
-**替代**: 云文档表格仍可用作超大数据量场景的备选。
-
-详见 `memory/飞书备份研究日志.md`。
-
----
-
-## 📊 Feishu Bitable 备份配置（历史方案）
-
-**测试时间：** 2026-03-25 00:39-13:46（6轮验证）
-**应用状态：** ✅ API 完全可用（DateTime 字段正常）
-**创建的应用：** "备份方案测试应用"
-**应用 Token：** `HWyEbCjxBafQJSsFejuctV6Sn1f`
-**表格 ID：** `tblKpNvNG2j47Npb`
-**URL：** https://my.feishu.cn/base/HWyEbCjxBafQJSsFejuctV6Sn1f
-
-### 字段定义（已测试）
-
-| 字段名 | 类型 ID | 类型名 | 状态 | 备注 |
-|--------|---------|--------|------|------|
-| 备份方案测试应用 | 1 | Text | ✅ | 默认主键字段，名与应用名相同 |
-| 数据类型 | 3 | SingleSelect | ✅ | 选项：["记忆文件","配置文件","日志文件","其他"] |
-| 文件路径 | 1 | Text | ✅ | 本地文件路径 |
-| 备注 | 1 | Text | ✅ | 备注信息 |
-| BackupTime | 5 | DateTime | ❌ | 400 错误 - API 问题，建议用 Text 替代 |
-
-### 使用示例
-
-```javascript
-// 写入备份记录
-feishu_bitable_create_record(
-  "HWyEbCjxBafQJSsFejuctV6Sn1f",
-  "tblKpNvNG2j47Npb",
-  {
-    "备份方案测试应用": "heartbeat-state.json",
-    "数据类型": "配置文件",
-    "文件路径": "memory/heartbeat-state.json",
-    "备注": "自动备份 - 包含IMA状态和训练进度"
-  }
-)
-
-// 查询所有记录
-feishu_bitable_list_records(app_token, table_id)
-```
-
-### 注意事项
-
-1. **DateTime 字段问题**：当前 API 对 `field_type=5` 的支持不稳定，建议用 Text 存储 ISO 8601 字符串
-2. **配额限制**：Bitable 有行数限制（免费版约 10k 行），需定期归档
-3. **权限**：已有 `bitable:app` (tenant) + `base:*` (user) 权限
-
----
-
-## 🚀 云盘 Drive API（暂不可用）
-
-**状态：** ❌ 所有操作返回 400 Bad Request
-**已授权权限：** `drive:drive` + `drive:file:upload` (both tenant & user)
-**问题诊断：** 可能缺少 `drive:file:create` 或 endpoint 错误
-
-**建议：** 暂停使用，待诊断修复。
+- **用途**: 适合强类型/细粒度查询场景（当前主方案为云文档表格）
