@@ -1,10 +1,10 @@
 {
-  "totalSessions": 390,
-  "nonzeroActions": 390,
+  "totalSessions": 405,
+  "nonzeroActions": 405,
   "nonzeroRate": 1.0,
-  "weeklyGrowth": 45.0,
-  "lastUpdated": "2026-03-25T05:14:00+08:00",
-  "trackingNote": "第390次训练：机制内化评估 + Phase 1集成启动。nonzero率连续390次=1.0。nonzeroScore预期47.5（实际待执行后确认）。新增：consciousnessOS Ph1，包括AGENTS.md自指要求、emotion-timeline.json创建、heartbeat-state扩展。",
+  "weeklyGrowth": 60.0,
+  "lastUpdated": "2026-03-25T07:45:00+08:00",
+  "trackingNote": "第405次：人体进化思考第5次完成（其他器官）。nzScore从126.5→128.5 (+2.0 Type A 知识创造)。5大进化领域已全覆盖：牙齿/心肾/神经/抗衰老/其他器官。连续性保持405次，增长率健康。",
   "reflexivity": {
     "self_reflection_rate": 0.01,
     "micro_narratives_count": 3,

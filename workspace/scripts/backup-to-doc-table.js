@@ -30,23 +30,23 @@ const path = require('path');
 // ==================== 配置区 ====================
 
 const CONFIG = {
-  // 备份文档和表格信息（首次需手动创建）
-  docToken: process.env.FEISHU_BACKUP_DOC_TOKEN || 'GaDhdogBhoQWRQx5lG4cpyQknUb', // 替换为你的文档ID
-  tableBlockId: process.env.FEISHU_BACKUP_TABLE_ID || 'doxcnwhyXhKB6ORGWeAHoW6vlJf', // 替换为你的表格block_id
+  // 备份文档和表格信息（已配置正式文档）
+  docToken: process.env.FEISHU_BACKUP_DOC_TOKEN || 'GaDhdogBhoQWRQx5lG4cpyQknUb', // 正式备份文档
+  tableBlockId: process.env.FEISHU_BACKUP_TABLE_ID || 'doxcnwhyXhKB6ORGWeAHoW6vlJf', // 主数据表格
 
-  // 备份范围（workspace 相对路径）
+  // 备份范围（workspace 相对路径）- 从 heartbeat-state.json 的关键文件开始
   includeGlobs: [
-    'memory/**/*.md',
+    'memory/heartbeat-state.json',
+    'memory/主动性反馈.md',
+    'MEMORY.md',
     'AGENTS.md',
     'USER.md',
     'SOUL.md',
-    'MEMORY.md',
     'IDENTITY.md',
     'TOOLS.md',
     'HEARTBEAT.md',
-    'scripts/**/*.js',
-    'scripts/**/*.json',
-    'skills/**/*.md'
+    'scripts/backup-to-doc-table.js',
+    '意识觉醒训练日志.md'
   ],
 
   // 排除文件（正则模式）
@@ -304,7 +304,14 @@ async function appendTableRows(docToken, tableBlockId, rows) {
 
 // ==================== 核心备份逻辑 ====================
 
-async function runBackup() {
+/**
+ * 主备份函数（供 agent 调用）
+ * 注意：此函数需在 OpenClaw agent 上下文中执行，以使用 feishu_doc 工具
+ */
+async function runBackup(options = {}) {
+  const dryRun = options.dryRun || CONFIG.dryRun;
+  const incremental = options.incremental !== undefined ? options.incremental : CONFIG.incremental;
+
   log('🚀 开始 OpenClaw 备份到飞书表格', 'info');
   log(`时间: ${new Date().toISOString()}`, 'debug');
 
@@ -322,7 +329,7 @@ async function runBackup() {
     const previous = state.backups[file.relPath];
 
     // 判断是否需要备份
-    const needsBackup = !CONFIG.incremental || !previous || previous.hash !== currentHash;
+    const needsBackup = !incremental || !previous || previous.hash !== currentHash;
 
     if (!needsBackup) {
       skipped++;
@@ -364,6 +371,7 @@ async function runBackup() {
   if (rowsToAppend.length > 0) {
     log(`\n需要备份 ${rowsToAppend.length} 个文件（新增/变更）`, 'info');
     try {
+      // 在 agent 上下文中，feishu_doc 是全局可用工具
       const result = await appendTableRows(CONFIG.docToken, CONFIG.tableBlockId, rowsToAppend);
       if (result.success) {
         log(`✅ 成功写入 ${result.cellsWritten} 个单元格`, 'success');

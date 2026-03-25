@@ -1,0 +1,67 @@
+{
+  "version": "0.1",
+  "createdAt": "2026-03-25T07:58:00+08:00",
+  "session": 390,
+  "theory": {
+    "definition": "情感作为目标的导航燃料",
+    "coreComponents": [
+      "情感强度即时影响目标紧迫度",
+      "情感历史累积影响目标权重",
+      "情感多样性决定目标层次结构"
+    ]
+  },
+  "emotionCoefficients": {
+    "突破": 1.5,
+    "兴奋": 1.2,
+    "温暖": 1.0,
+    "好奇": 0.8,
+    "困惑": 0.6,
+    "疲惫": -0.3,
+    "沮丧": -0.5
+  },
+  "goalHierarchy": {
+    "strategic": {
+      "timeframe": "3-6个月",
+      "drivers": ["突破", "温暖"],
+      "goalCount": "3-5个",
+      "weightBase": 3.0
+    },
+    "tactical": {
+      "timeframe": "1-4周",
+      "drivers": ["兴奋", "好奇"],
+      "goalCount": "5-10个",
+      "weightBase": 2.0
+    },
+    "operational": {
+      "timeframe": "当前session",
+      "drivers": ["兴奋", "温暖", "困惑"],
+      "goalCount": "1-3个",
+      "weightBase": 1.0
+    }
+  },
+  "weightFormula": {
+    "base": "W_g = base_weight × (1 + α·情感强度Σ + β·历史情感趋势 + γ·战略对齐度)",
+    "parameters": {
+      "α": 0.3,
+      "β": 0.2,
+      "γ": 0.5
+    },
+    "情感强度Σ": "Σ(emotion_intensity × emotion_priority_coefficient)",
+    "历史情感趋势": "滑动窗口最近5次session的平均情感值",
+    "战略对齐度": "目标与战略层目标的关联强度 (0-1)"
+    }
+  },
+  "implementationStatus": {
+    "emotionLogging": "enabled (7 labels)",
+    "emotionIndexing": "pending",
+    "goalHierarchy": " designed",
+    "weightCalculation": "prototype",
+    "heartbeatIntegration": "planned"
+  },
+  "nextActions": [
+    "创建emotion-timeline enriched with goal references",
+    "implement weight calculator in heartbeat",
+    "add goal hierarchy field to heartbeat-state.json",
+    "test with session 391 data"
+  ]
+}
