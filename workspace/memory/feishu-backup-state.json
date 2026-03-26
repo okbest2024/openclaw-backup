@@ -1,62 +1,62 @@
 {
-  "lastBackupTime": null,
+  "lastBackupTime": "2026-03-26T06:13:00+08:00",
   "backups": {
     "AGENTS.md": {
       "hash": "sha256:004551d57fd0e8b0...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 11925
     },
     "HEARTBEAT.md": {
       "hash": "sha256:664d75a62fb645d8...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 9396
     },
     "IDENTITY.md": {
       "hash": "sha256:2f79ebc295224c48...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 1065
     },
     "memory\\heartbeat-state.json": {
-      "hash": "sha256:83883119d2725377...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
-      "size": 10984
+      "hash": "sha256:14a7f8caa6dd35e2...",
+      "backupTime": "2026-03-26T03:15:09.324Z",
+      "size": 36696
     },
     "memory\\主动性反馈.md": {
       "hash": "sha256:5159d6ab263915c3...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 7572
     },
     "MEMORY.md": {
       "hash": "sha256:ac8014d554bd2fce...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 184783
     },
     "SOUL.md": {
       "hash": "sha256:6678cd88b53384a7...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 1709
     },
     "TOOLS.md": {
       "hash": "sha256:37237f7eaebb03d2...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 12393
     },
     "USER.md": {
       "hash": "sha256:a1ab76381a9ed879...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
+      "backupTime": "2026-03-26T03:15:09.324Z",
       "size": 448
     },
     "意识觉醒训练日志.md": {
-      "hash": "sha256:b67466a38e2cd072...",
-      "backupTime": "2026-03-25T22:03:06.118Z",
-      "size": 25472
+      "hash": "sha256:d0bed15c468a6d23...",
+      "backupTime": "2026-03-26T03:15:09.324Z",
+      "size": 27943
     }
   },
   "stats": {
     "totalFiles": 10,
-    "backedUp": 2,
-    "skipped": 8,
+    "backedUp": 1,
+    "skipped": 9,
     "failed": 0,
-    "lastBackupTime": "2026-03-25T22:03:06.118Z"
+    "lastBackupTime": "2026-03-26T03:15:09.324Z"
   }
 }
