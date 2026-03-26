@@ -46,6 +46,7 @@ const CONFIG = {
     'HEARTBEAT.md',
     'scripts/backup-to-doc-table.js',
     'memory/意识觉醒训练日志.md',
+    'memory/dimensional-thinking-log.md',
     'memory/world-creation-quantified.json',
     'memory/consciousness-hexagon.json'
   ],
