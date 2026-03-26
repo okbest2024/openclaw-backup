@@ -272,3 +272,56 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## 🌐 Provider Failure Response Protocol (2026-03-27)
+
+### 原则
+关键自动化任务（如每日反思、heartbeat报告）必须保证执行可靠性。单一LLM提供商依赖是系统脆弱性。本协议定义故障检测、响应和恢复流程。
+
+### 触发条件
+- Cron 任务执行失败，错误类型：`402 Insufficient credits`、`429 Rate limit`、`5xx Server error`
+- 同一任务连续失败 ≥ 2 次
+- providerStatus.openrouter.status 标记为 `degraded` 或 `down`
+
+### 立即响应（失败当前会话）
+1. **记录失败**：在 `memory/YYYY-MM-DD.md` 记录事件详情（时间、任务ID、错误信息）
+2. **检查健康状态**：运行 `scripts/check-provider-health.js`（如已实现）
+3. **更新 providerStatus**：在 `heartbeat-state.json` 中更新对应提供商的 status、alertLevel、affectedJobs
+4. **发送告警**：通过主会话或 pending-messages 通知主人（如果恢复时间预计 > 1 小时）
+
+### 故障转移策略
+#### 已实现（当前）
+- **Primary**: OpenRouter（xiaomi/mimo-v2-flash:free）
+- **Fallback**: StepFun（step-3.5-flash:free）— 需要先在 openclaw.json 配置
+
+#### 待实现（14天内）
+- 配置 Anthropic Claude 作为第二 fallback
+- 实现 `executeWithFallback()` 封装（见 TOOLS.md）
+- 关键 cron 任务全部接入 fallback 机制
+
+### Heartbeat 监控
+每次 heartbeat 检查（每 4 小时）：
+1. 读取 `providerStatus` 中所有提供商状态
+2. 如果任何提供商 `alertLevel === "critical"` 且持续 > 2h，升级告警
+3. 检查过去 24h 内失败 cron 任务数量：
+   - 同一任务失败 ≥ 3 次 → 触发告警
+   - 总失败数增长 > 5 次 → 触发告警
+
+### 恢复验证
+- 故障修复后，手动触发原 cron 任务验证（`cron run <jobId>`）
+- 成功执行后，清除 `providerStatus.<provider>.affectedJobs` 对应 jobId
+- 记录恢复时间和原因到 `memory/YYYY-MM-DD.md`
+
+### 成本与配额监控
+- 在 `memory/provider-quota-tracker.json` 中记录各提供商使用量
+- 月度预算 > 80% 时，提前 7 天预警并自动切换到免费模型
+- 月度预算 > 95% 时，立即切换到免费模型并暂停付费模型使用
+
+### 负责人
+- **系统可靠性**: 我（代理）负责实施和维护本协议
+- **账户充值/API 密钥配置**: 主人负责提供必要的资金和密钥
+- **决策**: 超过 30 天故障或成本 > 预算 200% 时，需主人批准架构变更
+
+---

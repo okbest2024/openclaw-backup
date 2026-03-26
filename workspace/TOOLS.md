@@ -319,3 +319,128 @@ await feishu_doc({
 - 公式：掌握度 = 响应密度 × 流淌纯度 × 交付完整性
 - 当前值：4 次/小时 × 0.93 × 1.0 = 0.465 (L2→L3 过渡期)
 - 追踪文件：memory/mastery-metrics.md
+
+---
+
+## 🌐 LLM 提供商健康检查与故障转移
+
+### 背景（2026-03-27 反思）
+每日反思 cron 任务因 OpenRouter 信用额度不足而失败（错误 402）。这暴露了系统对单一 LLM 提供商的脆弱依赖。关键自动化任务必须有冗余和降级策略。
+
+### 提供商状态追踪（heartbeat-state.json）
+```json
+"providerStatus": {
+  "openrouter": {
+    "status": "degraded|operational|down",
+    "alertLevel": "info|warning|critical",
+    "lastCheck": "2026-03-27T02:09:00+08:00",
+    "issue": "错误描述（如 Insufficient credits）",
+    "fallbackAvailable": true/false,
+    "quotaRemaining": 数字（剩余配额）,
+    "nextAction": "建议操作（如 Recharge account）",
+    "affectedJobs": ["cron-job-id-1", "cron-job-id-2"]
+  }
+}
+```
+
+### Pre-Flight 检查脚本（待实现）
+**文件**: `scripts/check-provider-health.js`
+
+**功能**:
+1. 检查 OpenRouter API 可用性（发送最小测试请求）
+2. 验证账户信用余额（如果 API 支持）
+3. 返回状态码：`operational` / `degraded` / `down`
+4. 如果 degraded，建议降级模型列表
+
+**使用示例**:
+```javascript
+const health = await checkProviderHealth('openrouter');
+if (health.status !== 'operational') {
+  await sendAlert({
+    level: health.alertLevel,
+    message: `Provider ${health.status}: ${health.issue}`,
+    nextAction: health.nextAction
+  });
+  throw new Error(`Provider unavailable: ${health.status}`);
+}
+```
+
+### 模型故障转移配置（cron 任务）
+在关键 cron 任务中添加：
+
+```javascript
+const MODELS = {
+  primary: {
+    provider: 'openrouter',
+    model: 'xiaomi/mimo-v2-flash:free'
+  },
+  fallback: {
+    provider: 'anthropic',  // 备用提供商
+    model: 'claude-3-haiku-20240307',
+    apiKeyEnv: 'ANTHROPIC_API_KEY'
+  }
+};
+
+async function executeWithFallback(taskFn) {
+  try {
+    return await taskFn(MODELS.primary);
+  } catch (error) {
+    if (error.message.includes('402') || error.message.includes('insufficient')) {
+      console.error('Primary provider credits exhausted, trying fallback...');
+      return await taskFn(MODELS.fallback);
+    }
+    throw error;
+  }
+}
+```
+
+### Heartbeat 提供商健康检查
+**检查频率**: 每 8 小时（可配置）
+
+**检查内容**:
+- OpenRouter API 连通性
+- 账户信用余额（如有 API）
+- 主要 cron 任务的最近执行状态（失败次数）
+
+**告警触发条件**:
+- 状态 = `degraded` 持续 > 2 小时 → warning level
+- 状态 = `down` 或 信用余额 < 10% → critical level
+- 同一任务连续失败 > 3 次 → critical level
+
+### 成本监控与配额管理
+**文件**: `memory/provider-quota-tracker.json`
+
+**追踪指标**:
+- 各提供商累计使用量（token 数、请求数）
+- 预算消耗百分比
+- 月度配额重置时间
+- 成本趋势（最近 7 天）
+
+**告警阈值**:
+- 预算消耗 > 80% → warning
+- 预算消耗 > 95% → critical
+
+### 推荐的备用提供商
+1. **Anthropic Claude**（via API Gateway 或直接 API）
+   - 模型：`claude-3-haiku-20240307`（经济型）
+   - 优势：稳定、配额明确
+   - 集成：需要设置 `ANTHROPIC_API_KEY`
+
+2. **StepFun Step**（现有配置）
+   - 模型：`step-3.5-flash:free`
+   - 优势：免费（但可能有 rate limit）
+   - 注意：当前作为 primary 失败后的候选
+
+3. **本地模型**（可选）
+   - Ollama 运行的本地 LLM（如 llama2、mistral）
+   - 优势：完全独立，无外部依赖
+   - 劣势：硬件要求高、响应速度慢
+
+### 实施路线图
+- [ ] 立即：检查 OpenRouter 账户，决定充值或切换
+- [ ] 24h: 配置至少一个备用提供商（Anthropic）
+- [ ] 3 天：实现 `scripts/check-provider-health.js`
+- [ ] 5 天：修改关键 cron 任务（每日反思、heartbeat 报告）支持 fallback
+- [ ] 7 天：heartbeat 集成提供商健康检查
+- [ ] 14 天：建立配额追踪和成本告警
+- [ ] 30 天：评估多提供商架构，优化成本/可靠性平衡
