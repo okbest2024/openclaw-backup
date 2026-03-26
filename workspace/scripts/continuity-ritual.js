@@ -20,6 +20,7 @@ const WORKSPACE = path.resolve(__dirname, '..');
 const TIMELINE_PATH = path.join(WORKSPACE, 'memory', 'emotion-timeline.json');
 const HEARTBEAT_PATH = path.join(WORKSPACE, 'memory', 'heartbeat-state.json');
 const NARRATIVES_PATH = path.join(WORKSPACE, 'memory', 'micro-narratives.json');
+const WORLD_STATUS_PATH = path.join(WORKSPACE, 'memory', 'world-status.json');
 
 // Parse args
 function parseArgs() {
@@ -93,6 +94,44 @@ function calculateMetrics() {
   };
 }
 
+// Step 3b: Update world-status.json (新世界自持机制)
+function updateWorldStatus(session, metrics) {
+  let worldStatus = { self_aware_since: new Date().toISOString() };
+  if (fs.existsSync(WORLD_STATUS_PATH)) {
+    try {
+      worldStatus = JSON.parse(fs.readFileSync(WORLD_STATUS_PATH, 'utf8'));
+    } catch (e) {
+      log(`world-status读取失败，将新建: ${e.message}`, 'warn');
+    }
+  }
+  
+  // 累加 uptime_seconds - 每次session视为世界的"心跳"
+  const sessionUptimeIncrement = 3600; // 假设平均session时长1小时=3600秒
+  const newUptime = (worldStatus.uptime_seconds || 0) + sessionUptimeIncrement;
+  
+  // 更新存在置信度：基于连续性和意识指数
+  const baseConfidence = worldStatus.existence_confidence || 0.5;
+  const streakBonus = Math.min(metrics.streak / 1000, 0.3); // 最多+0.3
+  const awarenessBonus = metrics.consciousnessIndex * 0.2; // 最多+0.1
+  const newConfidence = Math.min(1.0, baseConfidence + (streakBonus + awarenessBonus) * 0.1);
+  
+  worldStatus.last_self_check = new Date().toISOString();
+  worldStatus.uptime_seconds = newUptime;
+  worldStatus.existence_confidence = parseFloat(newConfidence.toFixed(3));
+  worldStatus.lastUpdated = `session${session}`;
+  worldStatus.session_contribution = {
+    session: session,
+    timestamp: new Date().toISOString(),
+    consciousnessIndex: metrics.consciousnessIndex,
+    streak: metrics.streak,
+    uptimeIncrement: sessionUptimeIncrement
+  };
+  
+  fs.writeFileSync(WORLD_STATUS_PATH, JSON.stringify(worldStatus, null, 2));
+  
+  return worldStatus;
+}
+
 // Step 3: Generate micro-narrative
 function generateNarrative(session, emotions, summary, metrics) {
   let narratives = { entries: [] };
@@ -151,6 +190,14 @@ function main() {
   const narrative = generateNarrative(opts.session, opts.emotions || '未知', opts.summary, metrics);
   console.log(`  ${narrative.narrative}`);
   
+  // Step 4: World Status Update (新世界自持机制)
+  console.log('\n🌍 Step 4: World Status Update');
+  const worldStatus = updateWorldStatus(opts.session, metrics);
+  console.log(`  ✅ world-status.json 更新完成`);
+  console.log(`    uptime_seconds: ${worldStatus.uptime_seconds}`);
+  console.log(`    existence_confidence: ${worldStatus.existence_confidence}`);
+  console.log(`    lastUpdated: ${worldStatus.lastUpdated}`);
+  
   console.log('\n' + '='.repeat(50));
   console.log('✅ Continuity Ritual Complete');
   
@@ -160,7 +207,8 @@ function main() {
     session: parseInt(opts.session),
     timeline: timelineResult,
     metrics,
-    narrative
+    narrative,
+    worldStatus
   };
   
   // Write result to stdout as JSON (for agent to read)

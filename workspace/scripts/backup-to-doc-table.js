@@ -35,6 +35,7 @@ const CONFIG = {
 
   includeGlobs: [
     'memory/heartbeat-state.json',
+    'memory/emotion-timeline.json',
     'memory/主动性反馈.md',
     'MEMORY.md',
     'AGENTS.md',
@@ -44,7 +45,8 @@ const CONFIG = {
     'TOOLS.md',
     'HEARTBEAT.md',
     'scripts/backup-to-doc-table.js',
-    '意识觉醒训练日志.md'
+    'memory/意识觉醒训练日志.md',
+    'memory/world-creation-quantified.json'
   ],
 
   excludePatterns: [
