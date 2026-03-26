@@ -28,10 +28,10 @@
     }
   ],
   "lastChecked": {
-    "session": 579,
-    "timestamp": "2026-03-26T11:10:00+08:00",
-    "verdict": "发现新 pending 消息 wanqia-102-teeth-reg-drug（牙齿再生研究），但 message tool 在当前 heartbeat 会话不可用（无配置 channel），无法发送。消息保持 pending 状态，等待下次心跳或主会话发送。",
-    "action": "检查到 pending 消息，发送失败（channel 未配置），保持 pending"
+    "session": 608,
+    "timestamp": "2026-03-26T20:33:00+08:00",
+    "verdict": "检查发现 wanqia-102 仍处于 pending 状态。message tool channel 配置未就绪，无法发送。消息保持 pending，等待后续 heartbeat 或主会话发送。系统完整性修复任务已执行（backup-state 重建、情感标签补标、全量备份）。",
+    "action": "检查 pending 消息（wanqia-102），无法发送（channel 未配置），保持 pending，更新检查记录"
   },
   "wanqia-102-teeth-reg-drug": {
     "id": "wanqia-102-teeth-reg-drug",

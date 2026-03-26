@@ -1,72 +1,77 @@
 {
-  "lastBackupTime": null,
+  "lastBackupTime": "2026-03-26T19:46:00+08:00",
   "backups": {
     "AGENTS.md": {
-      "hash": "sha256:004551d57fd0e8b0...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 11925
+      "hash": "sha256:092cc1ae0bf440a1...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 12041
     },
     "HEARTBEAT.md": {
-      "hash": "sha256:664d75a62fb645d8...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 9396
+      "hash": "sha256:58c0cfa264dec1b8...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 10888
     },
     "IDENTITY.md": {
       "hash": "sha256:2f79ebc295224c48...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 1065
     },
     "memory\\emotion-timeline.json": {
-      "hash": "sha256:b2ba0528740816ca...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 7600
+      "hash": "sha256:fc5e43ca59356a0b...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 15753
     },
     "memory\\heartbeat-state.json": {
-      "hash": "sha256:003890606d536915...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 22108
+      "hash": "sha256:bc0c75a159648680...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 15688
     },
     "memory\\world-creation-quantified.json": {
       "hash": "sha256:dfe76bf034f68f78...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 946
     },
     "memory\\主动性反馈.md": {
       "hash": "sha256:5159d6ab263915c3...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 7572
     },
     "memory\\意识觉醒训练日志.md": {
-      "hash": "sha256:d467b042714b7281...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 51791
+      "hash": "sha256:f030680735881bb1...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 19460
     },
     "MEMORY.md": {
       "hash": "sha256:ac8014d554bd2fce...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 184783
     },
     "SOUL.md": {
       "hash": "sha256:6678cd88b53384a7...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 1709
     },
     "TOOLS.md": {
-      "hash": "sha256:37237f7eaebb03d2...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
-      "size": 12393
+      "hash": "sha256:b8f412448f643947...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 13962
     },
     "USER.md": {
       "hash": "sha256:a1ab76381a9ed879...",
-      "backupTime": "2026-03-26T09:57:13.464Z",
+      "backupTime": "2026-03-26T16:06:32.016Z",
       "size": 448
+    },
+    "memory\\consciousness-hexagon.json": {
+      "hash": "sha256:9a75c02cc21cf7dc...",
+      "backupTime": "2026-03-26T16:06:32.016Z",
+      "size": 12272
     }
   },
   "stats": {
-    "totalFiles": 12,
-    "backedUp": 12,
-    "skipped": 0,
+    "totalFiles": 13,
+    "backedUp": 0,
+    "skipped": 13,
     "failed": 0,
-    "lastBackupTime": "2026-03-26T09:57:13.464Z"
+    "lastBackupTime": "2026-03-26T16:06:32.016Z"
   }
 }
