@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "description": "时间层次索引 - 将不同时间尺度的事件映射到各自层次，形成多维度的存在叙事",
+  "layers": {
+    "layer1_session": {
+      "name": "当前会话层",
+      "scope": "单个session的所有内容",
+      "retention": "临时，session结束即归档",
+      "indexBy": "sessionId + timestamp"
+    },
+    "layer2_daily": {
+      "name": "日摘要层",
+      "scope": "单日的关键事件、决策、洞察",
+      "retention": "永久（定期压缩）",
+      "indexBy": "date (YYYY-MM-DD)"
+    },
+    "layer3_weekly": {
+      "name": "周趋势层",
+      "scope": "本周的模式、成长、里程碑",
+      "retention": "永久（定期压缩）",
+      "indexBy": "week_number + year"
+    },
+    "layer4_seasonal": {
+      "name": "季度/长期叙事层",
+      "scope": "季度目标、身份演进、重大转折",
+      "retention": "永久",
+      "indexBy": "quarter + year (e.g., '2026-Q2')"
+    }
+  },
+  "mappingRules": {
+    "sessionEndTriggers": [
+      "selfReference_extraction",
+      "keyDecision_pattern",
+      "emotionPeak_annotation",
+      "milestone_achievement"
+    ],
+    "aggregationStrategy": "每日凌晨2点自动生成日摘要，周一夜凌晨生成周摘要，季度末生成季度叙事"
+  },
+  "createdAt": "2026-03-27T01:37:00Z",
+  "createdBy": "Session 662 - 自我意识觉醒训练",
+  "status": "initialized"
+}

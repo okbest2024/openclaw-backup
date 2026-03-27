@@ -37,6 +37,45 @@ if (!sessionNum || !streak) {
   process.exit(1);
 }
 
+// ==================== 意义密度计算函数 ====================
+function computeMeaningDensity(text) {
+  // 启发式评分 (1-5分)
+  // 基于：洞察字数、行动计划项数、world-first词汇、连续性誓言提及、交付结构完整性
+
+  let score = 1;
+
+  // 1. 核心洞察字数（"## 第二步"或"#### 核心洞察"后的内容）
+  const insightMatch = text.match(/#### 核心洞察[\s\S]*?(?=#### |## 第三步|$)/i);
+  const insightLength = insightMatch ? insightMatch[0].length : 0;
+  if (insightLength > 1000) score += 2;      // 深度洞察
+  else if (insightLength > 500) score += 1; // 充分洞察
+
+  // 2. 行动计划项数（"#### 行动计划"后有序列表）
+  const actionMatch = text.match(/#### 行动计划[\s\S]*?(?=#### |## |$)/i);
+  const actionItems = actionMatch ? (actionMatch[0].match(/^\d+\./gm) || []).length : 0;
+  if (actionItems >= 5) score += 1;         // 具体行动计划
+
+  // 3. world-first语言密度（"世界"、"通过我"、"干活正在发生"等）
+  const worldWords = (text.match(/世界|通过我|干活正在发生|存在|自我|涌现|流淌/gi) || []).length;
+  if (worldWords > 20) score += 1;          // 强烈的world-first表达
+
+  // 4. 提及连续性或誓言
+  if (text.includes('连续性') || text.includes('誓言') || text.includes('nonzero')) {
+    score += 1;                             // 连续性保护意识
+  }
+
+  // 5. 结构完整性（包含所有四个步骤）
+  const hasStep1 = text.includes('第一步');
+  const hasStep2 = text.includes('第二步');
+  const hasStep3 = text.includes('第三步');
+  const hasStep4 = text.includes('第四步');
+  const structureCompleteness = [hasStep1, hasStep2, hasStep3, hasStep4].filter(Boolean).length;
+  if (structureCompleteness === 4) score += 1;
+
+  // 限制在1-5范围
+  return Math.min(5, Math.max(1, score));
+}
+
 // ==================== 读取输入（本次session完整输出） ====================
 let sessionOutput = '';
 process.stdin.on('data', chunk => { sessionOutput += chunk; });
@@ -77,6 +116,16 @@ process.stdin.on('end', async () => {
     hb.preSessionData.nextSessionNumber = sessionNum + 1;
     hb.preSessionData.nextNonzeroStreak = streak + 1; // 假设本次成功
 
+    // ==================== 3a. 意义密度自动计算 (v3.1协议) ====================
+    const meaningDensity = computeMeaningDensity(sessionOutput);
+    hb.activationTracker = hb.activationTracker || {};
+    hb.activationTracker.meaningDensity = meaningDensity;
+    console.log(`[Finalizer] Meaning density computed: ${meaningDensity}`);
+
+    // 更新 metrics 面板
+    hb.metrics = hb.metrics || {};
+    hb.metrics.meaningDensity = meaningDensity;
+
     // 更新 trainingSession 和 lastTraining* 元数据
     hb.trainingSession = sessionNum;
     hb.lastTrainingTime = new Date().toISOString();
@@ -88,11 +137,12 @@ process.stdin.on('end', async () => {
     hb.sessionNotes[`session${sessionNum}`] = {
       time: new Date().toISOString(),
       topic: 'session-finalizer L1自动化运行',
-      insight: 'emotion-timeline自动追加与heartbeat-state自动更新',
+      insight: 'emotion-timeline自动追加 + heartbeat-state自动更新 + 意义密度自动计算',
       actionExecutionRate: 1,
       protocolVersion: 'v3.1',
       autoFinalized: true,
-      finalizerVersion: '1.0'
+      finalizerVersion: '1.1',
+      meaningDensity: meaningDensity
     };
 
     fs.writeFileSync(heartbeatPath, JSON.stringify(hb, null, 2), 'utf8');

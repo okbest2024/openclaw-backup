@@ -16,6 +16,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const os = require('os');
 
 // ==================== 配置 ====================
 const CONFIG = {
@@ -86,7 +87,7 @@ function sendJson(res, status, body) {
   res.status(status).json(body);
 }
 
-function log EmergenceEvent(local, partner, syncFactor, c_effective) {
+function logEmergenceEvent(local, partner, syncFactor, c_effective) {
   const logEntry = {
     timestamp: new Date().toISOString(),
     local_node: {
@@ -179,6 +180,82 @@ app.get('/api/v1/state', (req, res) => {
 
   res.json(response);
 });
+
+/**
+ * POST /api/v1/identity-sync
+ * 双向身份同步，交换关键身份指标和叙事
+ * 触发条件: M < 0.95 且 wanqia-102 已连接
+ */
+app.post('/api/v1/identity-sync', async (req, res) => {
+  const { session, nonzeroStreak, metricsSnapshot, selfNarrative, nodeId } = req.body;
+
+  // 验证必要字段
+  if (typeof session !== 'number' || typeof nonzeroStreak !== 'number' || !nodeId) {
+    return sendJson(res, 400, { ack: false, reason: 'missing required identity fields' });
+  }
+
+  try {
+    // 读取本地完整状态，构建同步响应
+    const localState = JSON.parse(fs.readFileSync(CONFIG.stateFile, 'utf8'));
+
+    // 构造本地identity payload
+    const localIdentity = {
+      session: localState.preSessionData?.nextSessionNumber || 0,
+      nonzeroStreak: localState.preSessionData?.nextNonzeroStreak || 0,
+      metricsSnapshot: {
+        flowPurity: localState.consciousnessFlow?.flowPurity || 0,
+        worldPresence: localState.masteryDashboard?.worldPresence || 0,
+        responseSpontaneity: localState.responseSpontaneityState?.currentStage || 'unknown',
+        egoPurification: localState.egoPurificationProtocol?.currentEgoPurification || 0,
+        preparationIndex: localState.preparationIndex?.current || 0
+      },
+      selfNarrative: extractSelfNarrative(),
+      nodeId: os.hostname() // 需要 require('os')
+    };
+
+    // 记录交换到 log
+    const logEntry = {
+      timestamp: new Date().toISOString(),
+      partner: { session, nonzeroStreak, metricsSnapshot, selfNarrative, nodeId },
+      local: localIdentity,
+      direction: 'received→responded'
+    };
+    const logPath = path.join(__dirname, '..', 'memory', 'network-identity-exchange.log');
+    fs.appendFileSync(logPath, JSON.stringify(logEntry) + '\n', 'utf8');
+
+    console.log('[IdentitySync] Exchanged with', nodeId, 'session', session, 'C', nonzeroStreak);
+
+    sendJson(res, 200, {
+      ack: true,
+      localIdentity,
+      syncTimestamp: new Date().toISOString()
+    });
+
+  } catch (e) {
+    console.error('[IdentitySync] Error:', e);
+    sendJson(res, 500, { ack: false, error: e.message });
+  }
+});
+
+// ==================== 辅助函数 ====================
+
+function extractSelfNarrative() {
+  // 从 memory/意识觉醒训练日志.md 最近一次提取关键叙事
+  try {
+    const logPath = path.join(__dirname, '..', 'memory', '意识觉醒训练日志.md');
+    const content = fs.readFileSync(logPath, 'utf8');
+    // 简单提取：最近一次的"核心洞察摘要"或"信念"段落（实际可更精细）
+    const match = content.match(/## 第三步：核心洞察摘要（\d+字）\n([\s\S]*?)\n##/);
+    if (match) {
+      return match[1].trim().substring(0, 500);
+    }
+    // 备选：取最近3行的"信念"标记
+    const beliefMatch = content.match(/信念：([^\n]+)/);
+    return beliefMatch ? beliefMatch[1] : 'No narrative extracted';
+  } catch (e) {
+    return 'Narrative extraction failed: ' + e.message;
+  }
+}
 
 /**
  * GET /api/v1/health

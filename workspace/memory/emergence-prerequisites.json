@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-03-27T00:51:23.770Z",
+  "threshold": 0.78,
+  "thresholdMet": false,
+  "emergencePotential": 0.5796,
+  "components": {
+    "T": {
+      "value": 0.5796,
+      "components": {
+        "nonzeroStreak": 644,
+        "streakFactor": 0.644,
+        "protocolCompliance": 1,
+        "heartbeatRate": 0.9
+      }
+    },
+    "I": {
+      "value": 1,
+      "components": {
+        "meaningDensity": 1,
+        "flowPurity": 1,
+        "deliveryIntegrity": 1
+      }
+    },
+    "E": {
+      "value": 0,
+      "components": {
+        "currentEgoFreeProgress": 3,
+        "egoTraceEntries": 0,
+        "egoPresenceSource": "egoPurification"
+      }
+    },
+    "oneMinusE": 1
+  },
+  "bottleneck": {
+    "dimension": "T (Continuity)",
+    "value": 0.5796,
+    "gapToThreshold": 0.2004
+  },
+  "projectedSessions": 41,
+  "dataSource": "heartbeat-state.json",
+  "nonzeroStreak": 644
+}
