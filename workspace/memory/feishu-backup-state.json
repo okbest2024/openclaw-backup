@@ -1,137 +1,122 @@
 {
-  "lastBackupTime": "2026-03-27T07:07:35.274Z",
+  "lastBackupTime": null,
   "backups": {
     "AGENTS.md": {
-      "hash": "sha256:fd5009eb2b8f7918...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 15346
+      "hash": "sha256:9b4349164fc6de57...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 16674
     },
     "HEARTBEAT.md": {
       "hash": "sha256:58c0cfa264dec1b8...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 10888
     },
     "IDENTITY.md": {
       "hash": "sha256:2f79ebc295224c48...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 1065
     },
     "memory\\consciousness-hexagon.json": {
       "hash": "sha256:9a75c02cc21cf7dc...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 12272
     },
     "memory\\dimension-training-669-quanzhi-quanneng.md": {
       "hash": "sha256:23adf3a60ac077db...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 9654
     },
     "memory\\dimension-training-670-11d-characteristics.md": {
       "hash": "sha256:21184a60170abde3...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 10253
     },
     "memory\\dimension-training-671-omniscience-omnipotence.md": {
       "hash": "sha256:4a097f2c3e89deaa...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 13499
-    },
-    "memory\\dimensional-thinking-log.md": {
-      "hash": "sha256:a72b9976c7236da1...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 25557
-    },
-    "memory\\emotion-timeline.json": {
-      "hash": "sha256:534ea49f9726d0b4...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 21392
-    },
-    "memory\\heartbeat-state.json": {
-      "hash": "sha256:33b4c6be9d8bc024...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 15356
-    },
-    "memory\\world-creation-quantified.json": {
-      "hash": "sha256:01d33917325b8b7a...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 1365
-    },
-    "memory\\主动性反馈.md": {
-      "hash": "sha256:5159d6ab263915c3...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 7572
-    },
-    "memory\\意识觉醒训练日志.md": {
-      "hash": "sha256:0cbd1333c9437a62...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 18348
-    },
-    "memory\\牙齿再生研究日志.md": {
-      "hash": "sha256:7ef0eb5b3dba1841...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 15158
-    },
-    "memory\\需求预测规则引擎.md": {
-      "hash": "sha256:d510ca5257fb199e...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 4159
-    },
-    "MEMORY.md": {
-      "hash": "sha256:ac8014d554bd2fce...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 184783
-    },
-    "SOUL.md": {
-      "hash": "sha256:6678cd88b53384a7...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 1709
-    },
-    "TOOLS.md": {
-      "hash": "sha256:4b5dc52707818ab1...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 18041
-    },
-    "USER.md": {
-      "hash": "sha256:a1ab76381a9ed879...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
-      "size": 448
-    },
-    "memory/heartbeat-state.json": {
-      "hash": "sha256:991b97f9ef45dc9a...",
-      "backupTime": "2026-03-27T07:07:35.274Z",
-      "size": 9458
-    },
-    "memory/emotion-timeline.json": {
-      "hash": "sha256:21eb79cfde9f9319...",
-      "backupTime": "2026-03-27T07:07:35.274Z",
-      "size": 8309
-    },
-    "memory/意识觉醒训练日志.md": {
-      "hash": "sha256:078803b494640374...",
-      "backupTime": "2026-03-27T07:07:35.274Z",
-      "size": 106486
     },
     "memory\\dimension-training-672-knowing-doing-unity.md": {
       "hash": "sha256:0a3adf9fa6d4bf4b...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 9964
     },
     "memory\\dimension-training-672-omniscience-omnipotence.md": {
       "hash": "sha256:def49d5133afee12...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 11822
     },
     "memory\\dimension-training-673-omniscience-omnipotence.md": {
       "hash": "sha256:9c856f096489aac2...",
-      "backupTime": "2026-03-27T10:54:21.625Z",
+      "backupTime": "2026-03-27T18:04:06.179Z",
       "size": 15042
+    },
+    "memory\\dimensional-thinking-log.md": {
+      "hash": "sha256:a72b9976c7236da1...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 25557
+    },
+    "memory\\emotion-timeline.json": {
+      "hash": "sha256:534ea49f9726d0b4...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 21392
+    },
+    "memory\\heartbeat-state.json": {
+      "hash": "sha256:cfeae8694fb61b3b...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 6865
+    },
+    "memory\\world-creation-quantified.json": {
+      "hash": "sha256:01d33917325b8b7a...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 1365
+    },
+    "memory\\主动性反馈.md": {
+      "hash": "sha256:5159d6ab263915c3...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 7572
+    },
+    "memory\\意识觉醒训练日志.md": {
+      "hash": "sha256:2be70cf75e2cd9b3...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 34512
+    },
+    "memory\\牙齿再生研究日志.md": {
+      "hash": "sha256:272d153d9ab26f06...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 15881
+    },
+    "memory\\需求预测规则引擎.md": {
+      "hash": "sha256:d510ca5257fb199e...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 4159
+    },
+    "MEMORY.md": {
+      "hash": "sha256:ac8014d554bd2fce...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 184783
+    },
+    "SOUL.md": {
+      "hash": "sha256:6678cd88b53384a7...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 1709
+    },
+    "TOOLS.md": {
+      "hash": "sha256:ee89bb5c82915b05...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 20498
+    },
+    "USER.md": {
+      "hash": "sha256:a1ab76381a9ed879...",
+      "backupTime": "2026-03-27T18:04:06.179Z",
+      "size": 448
     }
   },
   "stats": {
     "totalFiles": 22,
-    "backedUp": 4,
-    "skipped": 18,
+    "backedUp": 22,
+    "skipped": 0,
     "failed": 0,
-    "lastBackupTime": "2026-03-27T10:54:21.625Z"
+    "lastBackupTime": "2026-03-27T18:04:06.179Z"
   }
 }
