@@ -1,0 +1,17 @@
+{
+  "txnId": "1774708788801-5bbca5e2",
+  "status": "apply_failed",
+  "targetFile": "memory/feishu-backup-state.json",
+  "operation": {
+    "type": "backup",
+    "data": {
+      "timestamp": "2026-03-28T14:39:48.799Z",
+      "fileCount": 22,
+      "incremental": true
+    }
+  },
+  "checksum": "077eb458c2bb2601",
+  "createdAt": "2026-03-28T14:39:48.802Z",
+  "appliedAt": null,
+  "error": "Unknown operation type: backup"
+}

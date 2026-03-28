@@ -1,0 +1,13 @@
+{
+  "totalSessions": 2,
+  "currentStreak": 2,
+  "lastTraining": "2026-03-28T15:58:00.000Z",
+  "lastModuleCompleted": "突破",
+  "incubatorCount": 2,
+  "keyInventions": [
+    "自适应心跳机制 (Session 1)",
+    "发明氛围 Invention Atmosphere (Session 2)"
+  ],
+  "crossRefsGenerated": 3,
+  "qualityNote": "Session 2: 深夜训练但产出密度稳定，跨界从生物学扩展到烹饪/软件工程"
+}

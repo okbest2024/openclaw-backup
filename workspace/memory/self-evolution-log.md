@@ -791,3 +791,487 @@
 ---
 *记录时间: 2026/3/28 18:01:09*
 *下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 18:22，2026-03-28T10:26:23.520Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.4小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 70h）
+- ✅ emotion-timeline: 连续（最近13条，最新9.9h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 18:26:23*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 18:52，2026-03-28T10:53:44.108Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.9
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 70h）
+- ✅ emotion-timeline: 连续（最近13条，最新10.3h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.9
+- **本次小计**: 0.9
+
+---
+*记录时间: 2026/3/28 18:53:44*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 19:22，2026-03-28T11:23:40.931Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 71h）
+- ✅ emotion-timeline: 连续（最近13条，最新10.8h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 19:23:41*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 19:52，2026-03-28T11:54:34.999Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 71h）
+- ✅ emotion-timeline: 连续（最近13条，最新11.3h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 19:54:35*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 20:22，2026-03-28T12:23:42.722Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.9
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 72h）
+- ✅ emotion-timeline: 连续（最近13条，最新11.8h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：thinking-methods-training.log, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.9
+- **本次小计**: 0.9
+
+---
+*记录时间: 2026/3/28 20:23:42*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 20:52，2026-03-28T12:53:19.345Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.3
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.5小时前）
+- ✅ World-status: 正常（0.5小时前，uptime 72h）
+- ✅ emotion-timeline: 连续（最近13条，最新12.3h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.3
+- **本次小计**: 0.3
+
+---
+*记录时间: 2026/3/28 20:53:19*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 21:22，2026-03-28T13:24:52.409Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 73h）
+- ✅ emotion-timeline: 连续（最近13条，最新12.8h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 21:24:52*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 21:52，2026-03-28T13:55:51.636Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 正常（0.6小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 73h）
+- ✅ emotion-timeline: 连续（最近13条，最新13.3h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+无
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：无
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 21:55:51*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 22:52，2026-03-28T14:59:22.181Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492975.0小时前）
+- ✅ World-status: 正常（0.1小时前，uptime 74h）
+- ✅ emotion-timeline: 连续（最近13条，最新14.4h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 22:59:22*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-28 23:22，2026-03-28T15:24:11.329Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492975.4小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 75h）
+- ✅ emotion-timeline: 连续（最近13条，最新14.8h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json, 意识觉醒训练日志.md
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/28 23:24:11*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 00:22，2026-03-28T16:26:42.410Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492976.4小时前）
+- ✅ World-status: 正常（-7.9小时前，uptime 76h）
+- ✅ emotion-timeline: 连续（最近13条，最新15.9h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：scripts, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 00:26:42*
+*下次 heartbeat: 约 30-60 分钟后*

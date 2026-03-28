@@ -27,6 +27,15 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
+// WAL 集成（Session 698）：让备份操作通过事务日志记录
+let WALManager;
+try {
+  const walMod = require('./wal-manager');
+  WALManager = walMod.WALManager;
+} catch (e) {
+  WALManager = null; // graceful degradation: WAL不可用时备份仍能运行
+}
+
 // ==================== 配置区 ====================
 
 const CONFIG = {
@@ -155,6 +164,22 @@ function buildBackupData(options = {}) {
   const now = new Date().toISOString();
   const rows = [];
 
+  // WAL集成（Session 698）：备份前提交事务记录
+  let walTxnId = null;
+  if (WALManager && !options.dryRun) {
+    try {
+      const walDir = path.join(process.cwd(), 'memory', 'wal');
+      const wal = new WALManager(walDir);
+      walTxnId = wal.commit(
+        path.join(walDir, 'backup-log.json'),
+        { type: 'json-merge', data: { [now]: { fileCount: files.length, incremental, status: 'started' } } }
+      );
+      log(`WAL事务已提交: ${walTxnId}`, 'debug');
+    } catch (e) {
+      log(`WAL提交失败（备份继续）: ${e.message}`, 'warn');
+    }
+  }
+
   for (const file of files) {
     const currentHash = computeFileHash(file.path);
     const previous = state.backups[file.relPath];
@@ -184,6 +209,18 @@ function buildBackupData(options = {}) {
   };
 
   saveState(state);
+
+  // WAL集成（Session 698）：备份完成，标记事务已应用
+  if (walTxnId && WALManager) {
+    try {
+      const walDir = path.join(process.cwd(), 'memory', 'wal');
+      const wal = new WALManager(walDir);
+      const result = wal.apply(walTxnId);
+      log(`WAL事务已应用: ${walTxnId} (${result.status})`, 'debug');
+    } catch (e) {
+      log(`WAL应用失败（数据已保存）: ${e.message}`, 'warn');
+    }
+  }
 
   return {
     docToken: CONFIG.docToken,
