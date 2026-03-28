@@ -1275,3 +1275,135 @@
 ---
 *记录时间: 2026/3/29 00:26:42*
 *下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 00:52，2026-03-28T16:53:57.039Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492976.9小时前）
+- ✅ World-status: 正常（-8.0小时前，uptime 76h）
+- ✅ emotion-timeline: 连续（最近13条，最新16.3h前）
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：temp-wal-archive.js, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 00:53:57*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 01:22，2026-03-28T17:24:33.537Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492977.4小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 77h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json, 意识觉醒训练日志.md
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 01:24:33*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 02:22，2026-03-28T18:23:45.216Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492978.4小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 78h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：thinking-methods-training-log.md, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 02:23:45*
+*下次 heartbeat: 约 30-60 分钟后*

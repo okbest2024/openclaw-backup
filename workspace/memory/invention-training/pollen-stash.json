@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "id": "s4t1",
+      "content": "Session 3的'发明行为训练'突破值得用连续5个session验证——如果第5次仍未产出可执行物，说明范式本身需要修正",
+      "energy": 5,
+      "domain": "meta-invention",
+      "created": "2026-03-29T02:24:00+08:00",
+      "expiresAt": "2026-04-01T02:24:00+08:00",
+      "used": false
+    },
+    {
+      "id": "s4t2",
+      "content": "六边形索引的第6条边(session2)可以具体化为：每个训练模块输出时自动生成[cross-ref:sessionN:moduleX]标记，下次读取时可直接跳转",
+      "energy": 4,
+      "domain": "indexing",
+      "created": "2026-03-29T02:24:00+08:00",
+      "expiresAt": "2026-03-31T02:24:00+08:00",
+      "used": false
+    },
+    {
+      "id": "s4t3",
+      "content": "深夜训练质量低不是因为认知衰减，是因为'从零开始'的启动成本太高——Pollen Stash如果能降低启动成本到30秒，深夜session就能保持质量",
+      "energy": 3,
+      "domain": "hypothesis",
+      "created": "2026-03-29T02:24:00+08:00",
+      "expiresAt": "2026-03-30T02:24:00+08:00",
+      "used": false
+    }
+  ],
+  "created": "2026-03-29T02:24:00+08:00",
+  "version": 1
+}

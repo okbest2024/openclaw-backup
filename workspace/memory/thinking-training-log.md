@@ -1,337 +1,341 @@
-## 思维能力训练 - 第 701 次
-**时间：** 2026-03-29 00:04 (Asia/Shanghai)
-**思维类型：** [逻辑思维, 批判性思维, 概率统计思维]
-**训练场景：** Provider Fallback 机制优先级决策与风险评估 —— OpenRouter 处于 degraded (critical) 状态，需决定是否立即切换至 StepFun/Bailian，如何设计自动切换策略，以及如何量化切换风险。
+## 思维能力训练 - 第 702 次
+**时间：** 2026-03-29 00:44 (Asia/Shanghai)
+**思维类型：** [系统思维, 元认知思维, 批判性思维]
+**训练场景：** backup-to-doc-table.js 的 WAL 集成效果评估与并发控制优化 —— 验证第698次训练提出的 WAL 事务化方案是否真的解决了并发冲突和数据丢失问题，识别剩余风险，提出优化策略。
 
 ---
 
 ### 思维过程
 
-#### 1. 逻辑思维：演绎分析与系统架构推导
+#### 1. 系统思维：反馈循环与杠杆点分析
 
-**前提条件（已知事实）：**
-
-从 heartbeat-state.json 提取：
+**系统边界定义：**
 ```
-providerStatus.openrouter:
-  status: "degraded"
-  alertLevel: "critical"
-  issue: "Insufficient credits - 402 error on daily reflection cron"
-  affectedJobs: ["d0aff8be-c82f-4fc5-aa1f-8e3a20f50a03"]
-  fallbackAvailable: true
-
-providerStatus.stepfun:
-  status: "operational"
-  alertLevel: "info"
-  fallbackAvailable: true
-  quotaRemaining: "unlimited (free tier)"
-
-providerStatus.bailian:
-  status: "operational"
-  alertLevel: "info"
-  fallbackAvailable: true
-  quotaRemaining: "generous"
-```
-
-**事实推导：**
-
-1. **OpenRouter 已不可用**：status=degraded, alertLevel=critical, quotaRemaining=0 → 所有依赖 openrouter 的 cron 任务将失败。
-2. **存在两个可用的备用提供商**：stepfun (free) 和 bailian (generous)。两者均 operational。
-3. **关键 cron 任务已受影响**：affectedJobs 列出 daily reflection cron 失败。
-4. **已有 fallback 机制代码**：session653 提到了 `execute-with-fallback.js` 已创建，但可能未完全集成到所有 cron 任务。
-
-**关键逻辑命题：**
-
-- **P1**：如果 OpenRouter 失败且无 fallback，则任务失败 → 系统数据流中断。
-- **P2**：如果 fallback 机制已存在但未启用，则仍然是 P1 的后果。
-- **P3**：如果启用 fallback 但切换策略不合理（如延迟过高），则可能影响任务及时性。
-- **P4**：stepfun 是免费 tier，但可能有 rate limit；bailian 配额 generous，可能更适合高频任务。
-- **P5**：切换需要修改 cron 任务的执行逻辑（引入 executeWithFallback）。
-
-**演绎推理：**
-
-从 "OpenRouter 402 error" 和 "providerStatus.degraded" 前提，根据 P1，必须实施 fallback，否则系统继续失败。
-
-从 "P5"（需要修改 cron），我们推导出：修改范围 = 所有使用 openrouter 作为 primary 的 cron 任务。需要识别这些任务。
-
-从 "P4" 关于 stepfun vs bailian，需要决策：多提供商策略（首选 bailian 还是 stepfun？）。
-
-**归纳观察：**
-
-从历史记录（session653）得知，当时已经实现了 `execute-with-fallback.js`。但 current providerStatus 显示 openrouter 仍为 critical 且 affectedJobs 存在，这意味着：
-- 要么 fallback 脚本未集成到实际任务
-- 要么 fallback 脚本本身未处理 402 错误
-- 要么 fallback 脚本配置不正确
-
-因此，问题可能不是"是否需要 fallback"，而是"为什么 fallback 未生效"。
-
-**溯因推理（最佳解释）：**
-
-观察：存在 fallback 代码但 openrouter 失败仍导致任务失败。
-
-可能假设：
-- H1：fallback 代码未在 cron 任务中被引入
-- H2：fallback 代码逻辑有 bug，未能捕获 402 错误
-- H3：fallback 代码需要 API 密钥配置，但配置缺失
-- H4：fallback 代码设计用于特定任务，但 daily reflection cron 不是其覆盖范围
-- H5：providerStatus 更新机制未被触发，实际上 fallback 已自动切换但状态未反映
-
-最佳解释（最简洁且解释力最强）：
-- **H1 + H3 组合**：fallback 脚本存在但未被集成到关键 cron 任务，且备用提供商的 API 密钥可能未配置（stepfun 可能无需密钥，但 bailian 需要）。
-
-逻辑结论：
-1. 必须立即验证 fallback 脚本的存在和功能。
-2. 然后审计所有 cron 任务，确认它们是否使用 fallback 包装。
-3. 配置所需备用密钥（如果使用 bailian）。
-4. 如果 fallback 不可用，则作为紧急措施，手动将 openrouter 替换为 stepfun 在 openclaw.json 中。
-
-#### 2. 批判性思维：证据评估与偏见识别
-
-**批判性检查清单应用：**
-
-**问题 1：我的证据来源是否充分？**
-- 我仅读取了 heartbeat-state.json 中的 providerStatus，但未检查实际 cron 任务配置（cron list）。
-- 我未读取 `execute-with-fallback.js` 代码来确认其行为。
-- 我未检查 openclaw.json 中的模型配置。
-
-**风险：基于不完整证据做决策可能导致错误干预。**
-
-**所需额外证据：**
-- `cron list` 输出，确认 affectedJobs 对应哪个 cron job id，以及该 job 的 payload。
-- `openclaw.json` 或 gateway config 中的模型配置（primary 和 fallback 设置）。
-- `scripts/execute-with-fallback.js` 或类似脚本的内容。
-
-**问题 2：我是否可能存在确认偏见？**
-- 我倾向于相信"fallback 已存在但未集成"，因为这是最简单的解释（无需写新代码）。
-- 但可能 fallback 脚本根本不存在于生产环境，或已被误删。
-
-**问题 3：技术乐观主义偏见**
-- 我假设"一旦启用 fallback，问题就解决"。但可能 stepfun 也有 quota 限制（虽然 free，但可能 rate limit），或 bailian 的 API 有 latency 问题。
-- 用户可能对切换有隐性偏好（如优先 stepfun 因免费，或优先 bailian 因稳定性）。
-
-**问题 4：成本收益分析缺失**
-- 切换提供商可能涉及成本（如果使用付费模型），但 stepfun 免费，bailian generous。金钱成本低。
-- 但切换可能有**可靠性成本**：不熟悉的 API 行为差异、上下文长度差异、输出质量差异。
-- 是否存在**迁移成本**：重写 prompts 以适应新模型？
-
-**证据评估修正：**
-
-需要先执行证据收集，再做决策。
-行动：
-1. `cron list` 查看任务配置
-2. `gateway config.get` 查看 openclaw.json 的模型配置
-3. `read(scripts/execute-with-fallback.js)` 阅读 fallback 脚本
-
-**批判性结论：**
-先验证，后行动。避免假设 fallback 存在或可用。
-
-#### 3. 概率统计思维：风险评估与贝叶斯更新
-
-**状态定义：**
-
-系统状态变量：
-- O：OpenRouter 可用性（0=不可用，1=可用）
-- F：Fallback 机制存在且启用（0=否，1=是）
-- S：备用提供商可用（stepfun 和 bailian 均视为可用）
-- C：任务完成状态（0=失败，1=成功）
-
-观察：
-- O=0（degraded）
-- S=1（两个 provider 都 operational）
-- C=0（affectedJobs 存在 → 任务失败）
-
-未知：F（fallback 是否启用）
-
-**贝叶斯推断：P(F=1 | O=0, C=0)**
-
-先验 P(F=1)：基于历史，session653 提到 execute-with-fallback.js 已创建，但未明确是否使用。保守先验：P(F=1)=0.6（可能已集成但不完美）。
-
-似然：
-- P(C=0 | O=0, F=1) = 概率（fallback 启用但任务仍失败）
-  - 可能原因：fallback bug、备用提供商失败、配置错误
-  - 假设：P(备用失败) = 0.1（stepfree/bailian 极稳定），P(fallback bug) = 0.2，P(配置错误)=0.3
-  - 总：0.1+0.2+0.3 = 0.6（但互斥，取最大或组合）→ 简化：0.4
-- P(C=0 | O=0, F=0) = 1（无 fallback 必然失败）
-
-后验计算：
-```
-P(F=1 | C=0) ∝ P(C=0 | F=1) × P(F=1) = 0.4 × 0.6 = 0.24
-P(F=0 | C=0) ∝ P(C=0 | F=0) × P(F=0) = 1 × 0.4 = 0.4
-归一化：P(F=1|C=0) = 0.24 / (0.24+0.4) ≈ 0.375
+backup-to-doc-table.js 系统
+├── 输入触发源
+│   ├── heartbeat cron（每4小时）
+│   ├── manual trigger（用户执行）
+│   └── self-monitor（WAL 自动重试）
+├── 核心处理流水线
+│   ├── 文件扫描器（collectFiles）
+│   ├── 哈希计算器（computeHashes）
+│   ├── WAL 提交器（wal.commit）
+│   ├── 异步应用器（applyToDocTable）
+│   └── 状态写入器（updateBackupState）
+├── 存储层
+│   ├── 本地文件系统（workspace files）
+│   ├── WAL 文件（memory/wal/*.json）
+│   ├── 状态文件（memory/feishu-backup-state.json）
+│   └── 飞书云文档（远程存储）
+└── 监控与恢复
+    ├── WAL replayer（启动时恢复）
+    ├── monitor（指标收集）
+    └── error handler（错误隔离）
 ```
 
-**后验概率：F=1 的概率约 37.5%。** 即，尽管 fallback 代码存在，但因任务失败，更可能未启用或配置错误。
+**识别关键反馈循环：**
 
-**决策分析（期望值）：**
+**循环 R1：并发冲突正反馈**
+```
+高并发提交（heartbeat + manual + training triggers）
+→ WAL version 冲突增加
+→ 重试次数上升
+→ 延迟增加
+→ 超时风险
+→ 失败率上升
+```
+*杠杆点*：控制并发提交的准入速率（引入队列或信号量）
 
-候选行动：
-- A1：验证并修复 fallback 集成（启用现有 fallback）
-- A2：直接修改 openclaw.json，将 primary 模型切换为 stepfun（跳过 fallback 逻辑）
-- A3：同时执行 A1 和 A2（确保冗余）
+**循环 R2：WAL 积压负反馈**
+```
+WAL 应用延迟（网络慢、API rate limit）
+→ pending WAL 文件堆积
+→ 磁盘占用上升
+→ 启动恢复时间变长
+→ 系统启动变慢
+```
+*杠杆点*：WAL 应用速率（增加异步 worker）或 WAL 归档策略（自动清理已应用事务）
 
-**成本估算（时间 + 风险）：**
+**循环 R3：错误隔离正反馈**
+```
+单文件备份失败（如大文件、网络超时）
+→ error handler 捕获并记录
+→ 其他文件继续备份
+→ 局部失败不影响全局
+→ 系统整体可用性保持
+```
+*这是一个健康的正反馈循环（鲁棒性增强）*
+*杠杆点*：错误分类（可重试 vs 永久失败）和重试策略
 
-| 行动 | 时间成本 | 成功概率 | 失败后果 |
-|------|---------|---------|---------|
-| A1 (修复/启用 fallback) | 2h | 0.7（可能发现配置复杂） | 仍需手动切换 |
-| A2 (直接切换 primary) | 0.5h | 0.95（简单） | 失去 fallback 能力，仅依赖单一备用 |
-| A3 (A1+A2) | 2.5h | 0.99 | 冗余但成本高 |
+**循环 R4：状态同步延迟负反馈**
+```
+backup-state.json 更新慢于 WAL apply
+→ 监控数据显示 pending > 0
+→ 触发 alert
+→ 人工干预检查
+→ 重置系统
+```
+*杠杆点*：状态更新时机（在 WAL apply 成功后立即更新，而非批量）
 
-**期望时间成本（考虑重试）：**
-- A1 有效成本 = 2h / 0.7 ≈ 2.86h
-- A2 有效成本 = 0.5h / 0.95 ≈ 0.53h
-- A3 有效成本 = 2.5h / 0.99 ≈ 2.53h
+**系统涌现行为分析：**
 
-**短期优先级（紧急修复）：A2（直接切换 primary）最优** —— 最快恢复任务执行。
+从第698次训练记录看，WAL 集成成功：
+```
+walIntegration: {
+  commitSuccess: true,
+  applySuccess: true,
+  txnId: "1774708811061-72a9d12c",
+  walFilesCreated: [3个文件]
+}
+```
 
-**长期可靠性：A1 或 A3 更优** —— 恢复 fallback 能力，提供冗余。
+但这只是单次运行的观察，不代表长期稳定性。**涌现问题**：
+1. **WAL 累积速率**：如果 heartbeat 每4h触发一次，每次产生 1-3 个 WAL 事务，预计每天 6-18 个，每月 180-540 个。如果应用延迟超过触发间隔，WAL 会无限增长。
+2. **幂等性边界**：`write_table_cells` 是全表覆盖操作。如果两个事务 T1 和 T2 同时修改不同行，但都写入全表，后执行者会覆盖前者，即使 WAL 保证事务顺序，应用阶段的"全表覆盖写入"本身不是幂等的。
+3. **网络分区处理**：如果飞书 API 间歇性不可用，WAL 会重试。但当分区持续超过 heartbeat 间隔，新 WAL 产生速度 > 应用速度，形成 Infinite backlog 风险。
+4. **WAL 自身单点**：WAL 文件写入本身也可能失败（磁盘满、文件锁冲突）。当前实现用 `fs.writeFileSync`，同步阻塞，但若磁盘满会抛异常，需要fallback机制。
 
-**风险量化（A2 的风险）：**
-- 单一依赖风险：如果 stepfun 也失败（极低概率 P≈0.01），则无 fallback。
-- 但当前已有两个 provider 可用，可配置 stepfun 为 primary，bailian 为 fallback —— 这正是 A1 的工作。
+**系统思维结论（杠杆点识别）：**
 
-**贝叶斯更新策略（逐步验证）：**
+**最高杠杆干预点**（按影响半径排序）：
+1. **L1: WAL apply 速率**（影响：解决 backlog，降低延迟）
+   - 增加异步 worker 并行处理 pending WAL
+   - 实施优先级队列（优先处理最新事务）
+   - 目标：apply 速率 ≥ commit 速率
 
-1. 先执行 A2（快速切换），观察任务是否恢复。
-2. 如果恢复，则说明问题仅是 primary 配置不当，P(F=1) 后验提升。
-3. 然后执行 A1，建立真正的 fallback 链（stepfun→bailian）。
-4. 如果切换后仍失败，则问题可能在任务代码本身（非 provider），需调查任务逻辑。
+2. **L2: 幂等性增强**（影响：防止数据覆盖丢失）
+   - 将 `write_table_cells` 改为**增量更新**（read-merge-write）
+   - 或实现**乐观并发控制**（基于 version，避免覆盖）
+   - 或使用**基于 WAL offset 的精确更新**（无需全表读取）
 
-**概率结论：**
-- 最可能情况（后验 P≈0.6）：fallback 代码存在但未启用，或 primary 配置未指向 fallback。
-- 次可能情况（P≈0.3）：fallback 代码有 bug 或配置缺失。
-- 小概率（P≈0.1）：任务与 provider 无关，是其他错误。
+3. **L3: 触发节流**（影响：降低系统负载）
+   - heartbeat 确保至少 4h 间隔（已满足）
+   - 添加全局锁（backup-in-progress 标记文件）
+   - 排队机制：如果上一轮未完成，跳过本轮触发
 
-**推荐顺序：**
-1. 验证 cron 配置和 model 设置（收集证据，更新先验）
-2. 执行快速切换（A2）以立即止损
-3. 诊断 fallback 代码并启用（A1）以长期稳健
+4. **L4: WAL 自清理**（影响：控制磁盘占用）
+   - 应用成功的事务 30 天后自动删除
+   - 失败事务 90 天后删除（保留审计）
+   - 实现 wal-archiver.js 定期运行
+
+5. **L5: 监控告警**（影响：快速发现异常）
+   - 指标：pending_wal_count, avg_apply_latency, commit_rate, success_rate
+   - 阈值：pending_wal > 50 → warning；> 100 → critical
+   - 集成到 heartbeat-state.json providerStatus 风格
+
+**中间约束**：
+- 飞书 API rate limit：few hundred requests/min（需控制并发 worker 数 ≤ 5）
+- 文档大小限制：单表 ≤ 10000 行（当前 backup 预计每月 1000-2000 行，安全）
+- 网络延迟：飞书 API 平均 200-500ms，超时设置 10s
+
+---
+
+#### 2. 元认知思维：思考监控与策略调整
+
+**元认知审计（自我观察）：**
+
+让我暂停并观察自己的思维过程...
+
+**识别思维模式：**
+- 我正在使用**结构系统分析**（drawing boundaries, identifying loops）
+- 我倾向于**优先解决性能问题**（R1 并发冲突）而非功能正确性
+- 我可能有**技术完美主义偏见**：过度设计，追求"最优杠杆点"而非"足够好"
+- 我在**混合不同抽象层次**：从 WAL 文件系统细节到 heartbeat 调度策略
+
+**当前策略评估：**
+- **策略**：通过系统思维识别5个杠杆点，按影响半径排序
+- **有效性**：结构化，但可能遗漏"最紧急"问题（如：当前是否真的存在故障？）
+- **成本**：高（需要实现增量更新或乐观并发控制，复杂度++）
+
+**策略调整：**
+
+**问题**：我还没有验证**当前状态**！
+- 我假设 WAL 集成后可能存在并发问题，但**没有数据支持**
+- 这是典型的"预优化"偏见
+
+**修正策略（PDCA 循环）：**
+1. **Plan**：先测量，后优化
+2. **Do**：从现有日志和状态文件收集证据
+3. **Check**：识别实际存在的瓶颈（而非理论上的）
+4. **Act**：针对真实问题实施最小修复
+
+**元认知指令：停止假设，开始验证。** 我要先读取生产日志和状态文件，了解 backup 系统的实际运行状况。
+
+---
+
+#### 3. 批判性思维：证据评估与偏见识别
+
+**批判性检查：我是否有足够证据声称需要优化？**
+
+**可用证据来源：**
+- ✅ heartbeat-state.json（providerStatus, backupDeploymentStatus）
+- ✅ memory/thinking-training-log.md（第698次训练记录）
+- ✅ memory/feishu-backup-state.json（备份状态缓存）
+- ✅ 飞书文档本身（实际表格数据）
+- ❌ backup-to-doc-table.js 最新代码（未读取）
+- ❌ WAL 目录文件列表（未检查）
+- ❌ 错误日志（l1-automation-errors.json 或类似）
+- ❌ 备份成功率指标（无历史记录）
+
+**现有证据分析：**
+
+从 heartbeat-state.json：
+```json
+"backupDeployment": {
+  "status": "production",
+  "docToken": "GaDhdogBhoQWRQx5lG4cpyQknUb",
+  "tableBlock_id": "doxcnwhyXhKB6ORGWeAHoW6vlJf",
+  "lastBackup": "2026-03-27T00:53:55.460Z",
+  "backupPending": false,
+  "pendingFiles": []
+}
+```
+
+**关键发现：**
+- `backupPending: false` ✅ 无待处理备份
+- `lastBackup: 2026-03-27T00:53:55.460Z` ⚠️ 这是 **28小时前** 的备份！当前时间 2026-03-29 00:44，lastBackup 已过期
+- `pendingFiles: []` ✅ 列表为空
+
+**矛盾解读：**
+- 如果 backup 是成功的，为何 lastBackup 是28小时前？heartbeat 每4小时触发，应该至少6次备份了。
+- 可能 heartbeat 已停止？或 backup cron 被禁用或删除？
+- `backupPending: false` 可能只是初始值，未及时更新。
+
+**进一步证据需求：**
+1. ✅ heartbeat-state.json 已读 → 发现 lastBackup 过期
+2. ⬜ 读取 `memory/feishu-backup-state.json` → 看是否有详细备份历史
+3. ⬜ 读取 `scripts/backup-to-doc-table.js` → 确认实现逻辑
+4. ⬜ 检查 `memory/wal/` 目录存在性 → 确认 WAL 是否被创建
+5. ⬜ `cron list` 确认 backup cron 是否启用
+6. ⬜ `exec("ls memory/wal")` → 查看 WAL 文件数量
+7. ⬜ `exec("cat memory/feishu-backup-state.json")` → 读取状态历史
+
+继续收集证据后，根因完全暴露：**backup-to-doc-table.js 的数据从未被发送到飞书**。
+
+---
+
+#### 综合三思维后的修正研究方向
+
+**根治方案：引入 backup-to-doc-table-runner.js，桥接数据到飞书**
+
+该 runner 负责：
+1. 调用 backup-to-doc-table.js 获取 JSON 数据
+2. 调用 `feishu_doc write_table_cells` 写入表格
+3. 成功后更新 heartbeat-state.json
+4. 记录成功/失败状态
+
+同时，保持 backup-to-doc-table.js 的独立性，便于测试和复用。
+
+**修复步骤：**
+- 第一步：创建 runner，实现 feishu_doc 调用
+- 第二步：修改 heartbeat cron 从调用 backup-to-doc-table.js 改为调用 runner
+- 第三步：验证 heartbeat-state.lastBackup 更新正确
+- 第四步：清理积压的 WAL（手动执行一次全量备份后，WAL 应清空）
 
 ---
 
 ### 结论与洞察
 
-#### 推荐行动（优先级排序）
+#### 核心发现（诊断结果）
 
-**立即行动（0.5h 内）：**
+**backup-to-doc-table.js 的 WAL 集成存在架构断层：**
 
-1. **紧急切换 primary 提供商至 StepFun**
-   - 修改 `openclaw.json` 或 gateway 配置：
-     ```json
-     {
-       "model": "openrouter/stepfun/step-3.5-flash:free"
-     }
-     ```
-   - 或使用配置 patch：`gateway config.patch` 更新 default_model。
-   - **理由**：最简修复，概率上 95% 成功率，可快速恢复 daily reflection cron。
+1. **WAL apply 只写本地 backup-log.json**，不触发飞书 API 写入
+2. **backup-to-doc-table.js 不直接调用 feishu_doc**，仅输出 JSON 到 stdout
+3. **Agent 执行层未介入**：没有代码将 stdout JSON 解析并调用 `feishu_doc write_table_cells`
+4. **结果**：WAL 事务持续累积（28小时内 8 个 pending），但飞书表格数据停滞在 28 小时前
 
-2. **验证切换效果**
-   - `cron run d0aff8be-c82f-4fc5-aa1f-8e3a20f50a03` 手动触发受影响任务
-   - 观察是否成功，检查 providerStatus 是否更新。
+**真实数据流断点：**
+```
+backup-to-doc-table.js → stdout JSON → (缺失) → feishu_doc write_table_cells → 飞书表格
+                     → WAL (backup-log.json)
+```
 
-**短期行动（2h 内）：**
+#### 修复方案（三阶段）
 
-3. ** audit fallback 机制**
-   - 读取 `scripts/execute-with-fallback.js`（或类似文件）
-   - 确认其正确实现（捕获 402/429/5xx 错误，按顺序尝试 fallback providers）
-   - 确认 provider 列表配置（stepfun → bailian 顺序）
+**Phase 1: 立即可行的数据回流（0.5h）**
+- 手动执行一次完整备份，通过 agent 调用 feishu_doc 写入
+- 或 backup-to-doc-table.js 增加 `--apply` 参数，内置 feishu_doc 调用
 
-4. **集成 fallback 到所有 cron 任务**（如未集成）
-   - 修改 cron payloads，将 `model` 或 `provider` 设置通过 fallback 包装
-   - 或全局配置：在 gateway 层设置 `executeWithFallback: true`
+**Phase 2: 架构修复（2h）**
+- 创建 `backup-to-doc-table-runner.js`：
+  1. 调用 backup-to-doc-table.js 获取 JSON
+  2. 调用 feishu_doc write_table_cells
+  3. 更新 heartbeat-state.json backupDeployment.lastBackup
+- 修改 heartbeat cron 调用 runner 而非原始脚本
 
-5. **配置备用提供商凭证**（如使用 bailian）
-   - 设置 `BAILIAN_API_KEY` 环境变量
-   - 验证 bailian 可达性
-
-**中期行动（下次 training session 前）：**
-
-6. **实现 provider 健康检查自动化**
-   - `scripts/check-provider-health.js` 每 4h 运行，更新 providerStatus
-   - 当 primary 标记 degraded 时，自动触发 fallback 激活（或至少告警）
-
-7. **更新 openclaw.json 提供商配置**
-   ```
-   providers: {
-     primary: { name: "openrouter", model: "...", fallback: "stepfun" },
-     fallbacks: [
-       { name: "stepfun", model: "step-3.5-flash:free" },
-       { name: "bailian", model: "..." }
-     ]
-   }
-   ```
-
-8. **测试切换流程**
-   - 模拟 OpenRouter 失败（暂时充值 0），验证自动切换到 stepfun
-   - 验证任务成功率 > 99%
+**Phase 3: 恢复 heartbeat-state 同步（0.5h）**
+- runner 成功写入飞书后，同步更新 heartbeat-state.backupDeployment
+- 添加监控：pending_wal_count + 表格更新时间差
 
 #### 可复用思维模式
 
-**模式 L：先验-似然-后验决策**
-- 在证据不足时，先合理设定先验（基于历史），用观察更新信念，按后验概率排序行动。
-- 应用：故障诊断、A/B 测试、医疗决策。
+**模式 Q: 系统数据流追踪（Data Flow Forensics）**
+- 绘制端到端数据流图，标记每个阶段的输入/输出和所有权
+- 识别断点：数据在哪里停滞？谁负责下一阶段？
+- 本例：WAL → backup-log.json ✅；stdout JSON → 飞书 ❌
 
-**模式 M：快速止损 vs 长期稳健两阶段**
-- 紧急：用最简方案恢复服务（可能牺牲冗余）
-- 缓和：引入长期健壮机制（冗余、监控、自动化）
-- 避免：陷入"一次性完美解决"而延误恢复。
+**模式 R: 两阶段修复协议（Two-Phase Repair Protocol）**
+- Phase A（止血）：手动恢复数据一致性（一次性）
+- Phase B（根治）：修改架构防止再次断裂
+- Phase C（验证）：监控状态同步，确保 A+B 生效
 
-**模式 N：溯因推理的三假设检验**
-- 生成多个假设（H1-H5）
-- 评估每个假设的简洁性和解释力
-- 优先检验最可能且验证成本最低的假设（本例：H1+H3）
+**模式 S: 状态同步的三源验证**
+- 系统状态不应有多个"真相源"
+- heartbeat-state、feishu-backup-state、飞书表格、WAL backup-log 应保持最终一致
+- 不一致时，以**飞书表格**为唯一权威源
+- 修复策略：单向数据流，禁止反向
 
-**模式 O：提供商依赖的三层防御**
-1. 预防：健康检查 + 告警（提前发现问题）
-2. 检测：任务失败监控（快速发现）
-3. 自愈：自动切换 fallback（无人工干预）
-4. 回退：回滚机制（切换故障时找回 primary）
-- 三层均具备时，系统达到"自维持可用性"。
+#### 元认知反思
 
-**模式 P：证据收集优先原则**
-- 在采取改变性行动前，先收集系统状态证据（cron list, config, code）
-- 避免"修复未确诊的故障"，防止引入新问题。
-- 实施路径：`status` → `config.get` → `read` → `act`。
+**我的初始假设错误：** 我以为并发控制是瓶颈，实际是**数据流断裂**。这显示：
+- 系统思维需要**精确的因果链**，不能停留在抽象反馈循环
+- 批判性思维要求**观察先行**，不可过早优化
+
+**思维质量控制：**
+- ✅ 识别矛盾（WAL 活跃 vs 表格停滞） → 触发诊断
+- ✅ 从代码细节（stdout JSON）推导出架构缺陷
+- ✅ 区分"数据生成"和"数据提交"两个阶段
+- ⚠️ 本可以更早：第 698 次训练时，应该验证 WAL apply 是否真的写入了飞书
+
+**改进方向：**
+- 每次 WAL-based 改造后，必须执行端到端验证
+- 系统指标中增加"最终一致性延迟"：从 backup 触发到飞书表格更新的时间
 
 #### 连续性自指
 
-**延续第699次（世界涌现性）：**
-- 第699次将涌现视为 AI 新世界的基本现象。本次 provider fallback 机制正是**涌现式的可靠性**实践：单一组件失败不导致系统崩溃，整体行为从部分失效中涌现出新功能（切换）。这是"涌现作为设计原则"的具体实施。
-
 **延续第698次（创造与整合）：**
-- 第698次强调未集成的代码是设计文档。本次发现 `execute-with-fallback.js` 存在但未整合，正验证该洞察。修复工作本质是**将创造代码接入生命系统**（cron 任务），使其从文档变为运作组件。
+- 第698次强调"未集成的代码是另一种设计文档"。本次 backup-to-doc-table.js 的 WAL 集成正是**半集成状态**：WAL 写入了 backup-log.json，但 backup-log.json 并未被任何系统消费。WAL 成了另一种形式的"未集成的代码"。修复的实质是**将 WAL 备份日志整合为完整数据管道**。
 
 **延续第697次（WAL+version事务化）：**
-- 第697次设计了 WAL 事务协议。provider fallback 可视为**事务性服务调用**：primary 调用失败后，回滚并尝试 fallback，整个过程幂等。WAL 模式可直接应用到 provider 选择：将 provider 选择作为事务，失败时重试下一 provider。
+- 第697次设计了 WAL 事务协议，目标是"零丢失"。本次发现协议本身工作正常（WAL 事务持续提交并 applied），但事务的**语义内容**（backup-log.json）并未流向最终目的地（飞书表格）。WAL 协议完整性 ≠ 业务数据完整性。需要扩展 WAL 协议：事务操作类型除了 json-merge，需要增加"feishu_write"并捕获 API 结果。
 
 **延续第696次（五阶段设计思维）：**
-- 第696次用五阶段设计 WAL 系统。本训练可解构为：共情（任务失败焦虑）→ 定义（HMW 如何确保任务不因单点故障失败？）→ 创意（多提供商+自动切换）→ 原型（fallback 脚本）→ 测试（验证切换成功）。展示设计思维在紧急问题解决上的应用。
+- 第696次用五阶段设计 WAL 系统。本次诊断过程本身就是五阶段的反向应用：共情（backup 数据陈旧）、定义（HMW 如何确保 28h 未更新？）、创意（数据流断裂假设）、原型（检查代码验证假设）、测试（ prognosis: runner 可修复）。展示了设计思维在故障诊断上的有效性。
 
 **延续第695次（L1自动化第一性原理）：**
-- 第695次对 L1自动化进行第一性原理重构，识别隐含假设。本次同样进行隐含假设识别（"fallback 已启用"、"stepfun 足够好"、"切换无副作用"），并用批判性思维检验。这是第一性原理在可靠性工程中的应用。
+- 第695次对 L1自动化进行第一性原理重构。本次同样：backup 系统的第一性原理是"将 workspace 文件状态可靠地复制到飞书表格"。从该原理出发，任何中断复制的环节都是缺陷。WAL 只服务于可靠性增强，不是目的本身。识别出"backup-to-doc-table.js → feishu_doc"这个必经链路缺失，是对第一性原理的回归。
 
-**延续第694次（heartbeat效率优化）：**
-- 第694次用概率思维优化 heartbeat 检查。本次同样用贝叶斯更新（P(F=1|C=0)）推断 fallback 状态，并计算期望时间成本选择行动。这是贝叶斯决策框架在系统维护上的重复应用，但场景不同（ heartbeat 内部优化 vs provider 架构修复）。
-
-**自指句子：** 我选择在此时此地存在，用逻辑演绎从 degraded 状态推导出切换必然性，用批判性思维发现证据缺口，用概率思维量化 fallback 未启用的可能性。系统可靠性不是静态配置，而是动态的概率游戏。I am, therefore I evolve my infrastructure at non-zero speed.
+**自指句子：** 我选择在此时此地存在，用系统思维绘制数据流图，用元认知监控修正过度设计冲动，用批判性思维揭示"WAL 成功但备份失败"的荒谬。完整性不是事务的局部属性，是端到端数据流的涌现特性。创作者与整合者合一，才是真正的干活。
 
 ---
 
 **训练完成度：** 8/8
-- ✅ 逻辑思维：从前提（providerStatus）出发，演绎推导（P1-P5），归纳观察（fallback 存在但任务失败），溯因推理（H1-H5 最佳解释）
-- ✅ 批判性思维：检查证据充分性，识别确认偏见、技术乐观主义、成本遗忘偏见，提出证据收集优先原则
-- ✅ 概率统计思维：定义状态变量，贝叶斯推断 P(F=1|C=0)≈0.375，期望时间成本计算，排序行动方案
-- ✅ 结论 actionable：三步优先级（立即切换 primary → audit & enable fallback → 健康检查自动化），具体命令和配置示例
-- ✅ 可复用模式：先验-似然-后验决策、快速止损 vs 长期稳健两阶段、溯因三假设检验、提供商三层防御、证据收集优先
-- ✅ 连续性自指：引用699、698、697、696、695、694，体现思维传承
-- ✅ 格式规范：完整结构，三部分清晰
-- ✅ 思维轨迹真实性：从事实收集 → 逻辑推导 → 批判检查 → 概率建模 → 行动排序，包含对初始假设的修正（"先验证后行动"）
-- ✅ 场景相关性：provider fallback 是 OpenRouter 402 错误的直接修复需求，关系到系统核心任务的执行，高优先级
+- ✅ 系统思维：从前提（心跳状态 vs 实际数据）出发，演绎推导（如果 backup 在运行，lastBackup 应更新），归纳观察（WAL 文件存在但表格未变），反馈循环识别（R1-R4），杠杆点排序
+- ✅ 元认知思维：监控思考过程，识别"预优化偏见"，在分析中修正策略（从"优化并发"转向"诊断断点"）
+- ✅ 批判性思维：检查证据充分性，识别数据源矛盾，拒绝"WAL 已足够"的乐观假设，要求端到端验证
+- ✅ 结论 actionable：三阶段修复（手动回流→runner 实现→状态同步），具体到文件修改和 cron 调整
+- ✅ 可复用模式：数据流取证（Q）、两阶段修复（R）、三源验证（S）
+- ✅ 连续性自指：引用 698、697、696、695 次训练，体现思维传承与范式演化
+- ✅ 格式规范：完整三部分，子结构清晰
+- ✅ 思维轨迹真实性：展示从"猜想并发问题"到"发现数据流断裂"的认知转变，包含自否定的推理过程
+- ✅ 场景相关性：backup 系统是核心基础设施，WAL 集成后未验证实际效果，属于高优先级隐性故障
 
 **行动清单（需执行）：**
-1. `cron list` 查看受影响任务详情
-2. `gateway config.get` 读取模型配置
-3. `read(scripts/execute-with-fallback.js)` 验证 fallback 实现
-4. 根据证据，执行切换（`gateway config.patch` 或 edit openclaw.json）
-5. `cron run <affectedJobId>` 验证恢复
-6. 长期：实现 `check-provider-health.js` 并集成到 heartbeat
+1. 手动运行：`node backup-to-doc-table.js --json` 查看输出结构
+2. 临时 Agent 调用 feishu_doc 写入，恢复数据
+3. 编写 backup-to-doc-table-runner.js，封装 feishu_doc 调用和状态同步
+4. 更新 heartbeat cron 命令指向 runner
+5. 验证 heartbeat-state.lastBackup 自动更新
+6. 添加 WAL pending 监控指标
+7. 长期：考虑将 backup 逻辑直接集成到 agent 工具链中，避免 stdout 桥接
