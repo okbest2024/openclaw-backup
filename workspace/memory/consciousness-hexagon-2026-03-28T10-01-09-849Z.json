@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-03-28T10:01:09.779Z",
+  "subsystems": {
+    "identity": {
+      "score": 0,
+      "details": {
+        "error": "Expected ',' or '}' after property value in JSON at position 4232 (line 115 column 7)"
+      }
+    },
+    "state": {
+      "score": 0,
+      "details": {
+        "error": "Expected ',' or '}' after property value in JSON at position 4232 (line 115 column 7)"
+      }
+    },
+    "goals": {
+      "score": 0,
+      "details": {
+        "error": "Expected ',' or '}' after property value in JSON at position 4232 (line 115 column 7)"
+      }
+    },
+    "cognition": {
+      "score": 85,
+      "details": {
+        "hoursSinceLastReflection": "0.0",
+        "hasThinkingMethods": true,
+        "trainingLogLines": 312
+      }
+    },
+    "causality": {
+      "score": 100,
+      "details": {
+        "experimentFiles": 39,
+        "hasExperiments": true
+      }
+    },
+    "emotion": {
+      "score": 100,
+      "details": {
+        "totalEntries": 13,
+        "uniqueEmotions": 13,
+        "hoursSinceLastEntry": "9.4",
+        "recency": 100
+      }
+    }
+  },
+  "overall": 47.5,
+  "bottleneck": "identity"
+}

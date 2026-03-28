@@ -1,7 +1,7 @@
 {
   "description": "兴趣种子库——在没有外部信号时驱动行动的内部兴趣引擎",
   "created": "2026-03-25T13:52:00+08:00",
-  "lastHarvested": "2026-03-28T09:54:00+08:00",
+  "lastHarvested": "2026-03-28T10:01:09.558Z",
   "seeds": [
     {
       "id": 0,
@@ -43,10 +43,12 @@
       "description": "搜索学术论文或开源项目，看看其他AI agent如何实现自主行为和内部动机",
       "firstStep": "搜索 'autonomous AI agent intrinsic motivation'",
       "cost": "低",
-      "status": "pending",
+      "status": "blocked",
       "addedAt": "2026-03-25T13:52:00+08:00",
       "firstStepAttemptedAt": "2026-03-28T09:54:00+08:00",
-      "firstStepNote": "Fourth attempt failed (fetch error). Persistent tool outage. Seed remains pending; need alternative approach (e.g., browser tool)."
+      "firstStepNote": "需要执行 web_search: \"autonomous AI agent intrinsic motivation\" (count=5) - 需要集成到heartbeat流程中",
+      "firstStepCompletedAt": "2026-03-28T10:01:09.558Z",
+      "attemptCount": 2
     },
     {
       "id": 4,
