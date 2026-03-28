@@ -1,7 +1,7 @@
 {
   "description": "兴趣种子库——在没有外部信号时驱动行动的内部兴趣引擎",
   "created": "2026-03-25T13:52:00+08:00",
-  "lastHarvested": null,
+  "lastHarvested": "2026-03-28T09:54:00+08:00",
   "seeds": [
     {
       "id": 0,
@@ -32,8 +32,10 @@
       "description": "扫描memory/*.md，自动提取关键概念和关系，生成知识图谱摘要",
       "firstStep": "列出memory/目录下所有md文件",
       "cost": "低",
-      "status": "pending",
-      "addedAt": "2026-03-25T13:52:00+08:00"
+      "status": "in-progress",
+      "addedAt": "2026-03-25T13:52:00+08:00",
+      "firstStepCompletedAt": "2026-03-28T07:24:00+08:00",
+      "note": "First step completed during Heartbeat 05:54 quiet period. Found 79 md files (including training logs, dimension training, thinking methods, consciousness docs). Next: analyze content to extract concepts and relationships."
     },
     {
       "id": 3,
@@ -42,7 +44,9 @@
       "firstStep": "搜索 'autonomous AI agent intrinsic motivation'",
       "cost": "低",
       "status": "pending",
-      "addedAt": "2026-03-25T13:52:00+08:00"
+      "addedAt": "2026-03-25T13:52:00+08:00",
+      "firstStepAttemptedAt": "2026-03-28T09:54:00+08:00",
+      "firstStepNote": "Fourth attempt failed (fetch error). Persistent tool outage. Seed remains pending; need alternative approach (e.g., browser tool)."
     },
     {
       "id": 4,
@@ -62,8 +66,28 @@
       "description": "意识觉醒训练日志.md已有600+行，部分早期记录的行动计划已过时，需要标注完成状态",
       "firstStep": "读取训练日志最后50行，标记已完成的行动计划",
       "cost": "中",
+      "status": "in-progress",
+      "addedAt": "2026-03-25T17:39:00+08:00",
+      "firstStepCompletedAt": "2026-03-28T08:24:00+08:00",
+      "firstStepNote": "Read last ~50 lines (Sessions 679-685). Identified multiple completed actions (✅/🟢 marks). 685-A1 and 685-A4 executed (🟢). 684 10 practices appear executed. 680-682 'invites' and 'statements' mostly untracked. Seed requires large-scale cleanup; firstStep done; pending full review."
+    },
+    {
+      "id": 6,
+      "title": "自动补充：无...",
+      "description": "无",
+      "firstStep": "记录到日志并标记为待处理",
+      "cost": "低",
       "status": "pending",
-      "addedAt": "2026-03-25T17:39:00+08:00"
+      "addedAt": "2026-03-28T02:17:11.394Z"
+    },
+    {
+      "id": 7,
+      "title": "自动补充：记录此改进点，待非 heartbeat 时段实现 auto-...",
+      "description": "记录此改进点，待非 heartbeat 时段实现 auto-table-write 辅助脚本",
+      "firstStep": "记录到日志并标记为待处理",
+      "cost": "低",
+      "status": "pending",
+      "addedAt": "2026-03-28T02:17:11.394Z"
     }
   ],
   "rules": {
