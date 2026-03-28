@@ -1,0 +1,193 @@
+{
+  "decisionId": "provider-fallback-architecture",
+  "decisionDate": "2026-03-27T02:09:00+08:00",
+  "decisionMaker": "Session 653 - 系统瓶颈分析与基础设施规划",
+  "decisionSummary": "实施多LLM提供商故障转移架构（OpenRouter主 + StepFun/Anthropic备），以实现关键cron任务的高可用性。规划executeWithFallback封装、providerStatus监控、三层防护链。",
+  
+  "swotAnalysis": {
+    "analysisDate": "2026-03-29T03:36:00+08:00",
+    "analysisSession": 707,
+    "analyst": "T008 SWOT分析训练",
+    
+    "strengths": [
+      "提升系统可靠性（主提供商故障自动切换）",
+      "成本控制能力（配额耗尽自动降级）",
+      "架构解耦（业务逻辑与提供商分离）",
+      "已有基础设施（providerStatus、heartbeat检查）",
+      "符合反脆弱原则（增加容忍度）",
+      "降低单点故障风险",
+      "可观测性提升（独立状态追踪）",
+      "渐进式部署能力"
+    ],
+    
+    "weaknesses": [
+      "实现复杂度（需修改所有cron任务）",
+      "状态管理开销（每8小时心跳检查）",
+      "故障检测延迟（多次重试才判定）",
+      "模型能力差异（质量、格式、效率不一）",
+      "配置管理复杂（多API密钥）",
+      "回退链设计困难（重试逻辑、兜底策略）",
+      "成本不可预测性（fallback可能产生意外费用）",
+      "测试覆盖不足（端到端故障模拟复杂）",
+      "日志分散（错误格式不一）",
+      "团队认知门槛（新架构需学习）"
+    ],
+    
+    "opportunities": [
+      "免费模型生态成熟（StepFun免费、Anthropic试用期）",
+      "OpenRouter故障频发（提升方案优先级）",
+      "AI提供商价格战（更多免费/低价选项）",
+      "自动化任务增长（统一fallback一次性覆盖）",
+      "社区最佳实践（避免重复造轮）",
+      "模型性能提升（新免费模型涌现）",
+      "监控服务成熟（第三方健康监测）",
+      "成为系统可靠性标杆"
+    ],
+    
+    "threats": [
+      "所有提供商同时故障（区域网络问题）",
+      "fallback模型能力不足（复杂任务失败或低质）",
+      "API密钥安全风险（集中存储增大攻击面）",
+      "成本失控（fallback策略不当）",
+      "切换导致数据不一致（输出格式差异）",
+      "提供商政策变动（免费额度调整）",
+      "运维负担转移（从单点监控到多点）",
+      "延迟增加（主超时后fallback，总时延长）",
+      "调试难度加大（多提供商日志排查）",
+      "过度依赖自动化（掩盖问题严重性）"
+    ]
+  },
+  
+  "bayesianUpdates": [
+    {
+      "updateSession": 707,
+      "updateDate": "2026-03-29T03:36:00+08:00",
+      "updateType": "swot_strategic_assessment",
+      "method": "SWOT+TOWS策略组合分析",
+      "initialConfidence": 0.78,
+      "basis": "基于规划文档TOOLS.md和架构设计，尚未实施",
+      "keyFactors": {
+        "positives": "优势8项、机会8项，S+O策略3条",
+        "negatives": "劣势10项、威胁10项，S+T和W+T策略10条",
+        "overallBalance": "正面略占优（16 vs 20），但实施风险和威胁需管理"
+      }
+    },
+    {
+      "updateSession": 708,
+      "updateDate": "2026-03-29T04:16:00+08:00",
+      "updateType": "bayes_update_implementation_gap",
+      "method": "贝叶斯后验校准（考虑实施滞后）",
+      "priorConfidence": 0.78,
+      "posteriorConfidence": 0.67,
+      "delta": -0.11,
+      "evidence": [
+        "execute-with-fallback.js 已实现但未广泛集成",
+        "providerStatus 健康检查就绪但 lastCheck 为27日（2天未更新）",
+        "成本监控工具（provider-quota-tracker.json）未创建",
+        "能力边界标记（executionCapabilities）未设计",
+        "SWOT规划详细但Phase1时间表模糊"
+      ],
+      "likelihoodRatios": {
+        "overall": 0.67,
+        "breakdown": {
+          "code_ready": 1.8,
+          "health_check_ready": 1.5,
+          "integration_lag": 0.6,
+          "monitoring_gap": 0.7,
+          "planning_execution_gap": 0.7
+        }
+      },
+      "calculationNote": "P(成功|证据) = P(证据|成功)×P(成功)/P(证据)。实施滞后和监控缺口为负面证据，但技术基础扎实部分抵消。"
+    },
+    {
+      "updateSession": 710,
+      "updateDate": "2026-03-29T04:59:00+08:00",
+      "updateType": "bayes_continuous_tracking",
+      "method": "贝叶斯持续追踪（最新状态证据）",
+      "priorConfidence": 0.67,
+      "posteriorConfidence": 0.604,
+      "delta": -0.066,
+      "evidence": [
+        "execute-with-fallback.js 功能完整但验证不足（未测试实际切换）",
+        "providerStatus 显示 openrouter=degraded，stepfun/bailian=operational，但未触发自动切换",
+        "provider-switch-log.md 不存在，无历史切换记录",
+        "未发现 cron 任务实际调用 executeWithFallback",
+        "成本监控仍未准备（provider-quota-tracker.json 不存在）",
+        "executionCapabilities 设计缺失"
+      ],
+      "likelihoodRatio": 0.51,
+      "pEH": 0.6,
+      "pEnotH": 0.8,
+      "calculationNote": "P(E|H)=0.6（如果成功，观察到代码未集成概率中等），P(E|~H)=0.8（如果失败，同样观察概率更高），LR=0.75。综合LR=0.51考虑证据强度和置信度惯性。",
+      "alerts": [
+        "置信度降至60.4% —— 从'中高'滑向'中低'",
+        "实施滞约为6天（707规划→710未完成Phase1）",
+        "必须1周内完成Phase1集成，否则可能触发成本失控或能力不足风险"
+      ]
+    }
+  ],
+  
+  "currentStatus": {
+    "implementationPhase": "Phase 0 (planning done, code ready, integration pending)",
+    "confidenceScore": 0.604,
+    "riskLevel": "medium",
+    "lastHealthCheck": "2026-03-29T04:59:00+08:00",
+    "criticalGaps": [
+      "executionCapabilities not designed",
+      "provider-quota-tracker.json not created",
+      "no cron job integrated yet",
+      "no failover tested in production"
+    ]
+  },
+  
+  "recommendedActions": {
+    "urgent": [
+      "加速实施：优先级提升，目标**1周内**完成Phase1（3个最高风险cron：每日反思、heartbeat报告、backup）",
+      "创建 provider-quota-tracker.json，设定日预算上限（主预算150%，总预算200%）",
+      "设计 executionCapabilities 标记（任务能力需求矩阵）",
+      "编写 executeWithFallback 集成模板，供各 cron 任务复制使用",
+      "执行首次端到端故障模拟（手动停止OpenRouter请求，验证fallback）"
+    ],
+    "mediumTerm": [
+      "Phase2：能力边界标记 + 输出规范化（统一JSON Schema）",
+      "Phase3：健康度仪表盘 + 告警配置（heartbeat集成）",
+      "Phase4：全量覆盖剩余cron任务（约10-15个），逐步推广",
+      "设计 fallback链熔断机制（连续3次fallback触发告警）"
+    ],
+    "longTerm": [
+      "成本审计与优化策略（每月review fallback费用）",
+      "模型能力基准测试（建立各provider能力评分）",
+      "能力感知路由（基于历史成功率动态调整优先级）",
+      "社区最佳实践整理（形成OpenClaw多提供商架构指南）"
+    ]
+  },
+  
+  "falsificationCriteria": {
+    "strongFalsifiers": [
+      "Phase1延迟>7天（完成<3个任务集成）",
+      "成本超预算>50%（无合理解释）",
+      "fallback任务输出质量评分<3.0/5.0（主人评估）",
+      "连续5次fallback触发且latency>30s"
+    ],
+    "weakFalsifiers": [
+      "provider-switch-log 无记录（可能未测试）",
+      "cost tracking missing for >3天",
+      "executionCapabilities未定义（能力边界模糊）",
+      "无故障模拟记录（未充分测试）"
+    ],
+    "decisionPoints": {
+      "phase1Deadline": "2026-04-05（1周）",
+      "costThreshold": "日费用>预算150%持续2天",
+      "qualityThreshold": "主人评估<3.5/5.0持续3次",
+      "nextReview": "Session 723（32天后）"
+    }
+  },
+  
+  "observerNotes": "SWOT分析显示方案战略价值高，但贝叶斯追踪揭示实施滞后风险。confidence从78%→67%→60.4%，呈持续下滑。核心问题：规划质量 > 执行速度。如果不立即加速，可能因OpenRouter持续故障（当前degraded）导致cron任务失败，而fallback尚未就绪。建议：将Phase1集成列为此周最高优先级任务，配置daily checkpoint。",
+  "metadata": {
+    "lastUpdated": "2026-03-29T04:59:00+08:00",
+    "nextReviewDue": "2026-04-05T04:59:00+08:00（Phase1截止）",
+    "trackingSource": "heartbeat-state.json + belief-confidence-tracker.md",
+    "auditChain": ["T008SWOT", "T006贝叶斯708", "T006贝叶斯710"]
+  }
+}

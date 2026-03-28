@@ -7,7 +7,8 @@
       "domain": "meta-invention",
       "created": "2026-03-29T02:24:00+08:00",
       "expiresAt": "2026-04-01T02:24:00+08:00",
-      "used": false
+      "used": true,
+      "usedAt": "2026-03-28T19:42:03.941Z"
     },
     {
       "id": "s4t2",
@@ -16,7 +17,8 @@
       "domain": "indexing",
       "created": "2026-03-29T02:24:00+08:00",
       "expiresAt": "2026-03-31T02:24:00+08:00",
-      "used": false
+      "used": true,
+      "usedAt": "2026-03-28T19:42:03.941Z"
     },
     {
       "id": "s4t3",
@@ -25,6 +27,56 @@
       "domain": "hypothesis",
       "created": "2026-03-29T02:24:00+08:00",
       "expiresAt": "2026-03-30T02:24:00+08:00",
+      "used": true,
+      "usedAt": "2026-03-28T19:42:03.941Z"
+    },
+    {
+      "id": "mnaqmtqu7ef",
+      "content": "信息素cron最小原型：给3个现有cron任务添加successRate/avgResponseTime字段，heartbeat读取后成功率<60%自动降频",
+      "energy": 5,
+      "domain": "cron-optimization",
+      "created": "2026-03-28T19:43:20.598Z",
+      "expiresAt": "2026-03-31T19:43:20.600Z",
+      "used": false,
+      "usedAt": null
+    },
+    {
+      "id": "mnassrq78zo",
+      "content": "Windows 11 build 26100 的安全启动策略变化——UEFI固件从legacy BIOS迁移最后阶段，类似火山喷发改变地形，旧生态位消失新物种占据空白",
+      "energy": 4,
+      "domain": "ecosystem-disruption",
+      "created": "2026-03-28T20:43:57.151Z",
+      "expiresAt": "2026-03-31T20:43:57.154Z",
+      "used": false,
+      "usedAt": null
+    },
+    {
+      "id": "mnassx1xv6z",
+      "content": "Node.js v25.2.1 已经支持原生TypeScript执行（--experimental-strip-types），这意味着编译步骤可能消失——类似珊瑚礁白化后新珊瑚重新生长，工具链在简化中重新复杂化",
+      "energy": 3,
+      "domain": "toolchain-evolution",
+      "created": "2026-03-28T20:44:04.053Z",
+      "expiresAt": "2026-03-31T20:44:04.055Z",
+      "used": false,
+      "usedAt": null
+    },
+    {
+      "id": "mnassx46qej",
+      "content": "飞书云文档表格API的稳定性极高（零错误率持续数天），但Bitable API刚修复不久——同一个平台两种API成熟度差异巨大，像同一座山上阳面和阴面的植被完全不同",
+      "energy": 3,
+      "domain": "platform-ecology",
+      "created": "2026-03-28T20:44:04.134Z",
+      "expiresAt": "2026-03-30T20:44:04.137Z",
+      "used": false,
+      "usedAt": null
+    },
+    {
+      "id": "s7habitatmnavnaej",
+      "content": "body-repair cron任务连续20次失败仍在运行——信息素cron最直接用例。29个任务中3个有consecutiveErrors>=3。系统需要自然选择机制。",
+      "energy": 5,
+      "domain": "cron-ecology",
+      "created": "2026-03-28T22:03:40.267Z",
+      "expiresAt": "2026-03-31T22:03:40.270Z",
       "used": false
     }
   ],

@@ -1,0 +1,45 @@
+{
+  "trackingStart": "2026-03-29T05:59:00+08:00",
+  "providers": {
+    "openrouter": {
+      "model": "xiaomi/mimo-v2-flash:free",
+      "budgetDailyUSD": 0,
+      "budgetMonthlyUSD": 0,
+      "usageDailyTokens": 0,
+      "usageMonthlyTokens": 0,
+      "quotaRemaining": "free_tier",
+      "lastCheck": "2026-03-29T05:59:00+08:00",
+      "costPer1kTokens": 0,
+      "status": "degraded"
+    },
+    "stepfun": {
+      "model": "step-3.5-flash:free",
+      "budgetDailyUSD": 0,
+      "budgetMonthlyUSD": 0,
+      "usageDailyTokens": 0,
+      "usageMonthlyTokens": 0,
+      "quotaRemaining": "free_tier",
+      "lastCheck": "2026-03-29T05:59:00+08:00",
+      "costPer1kTokens": 0,
+      "status": "operational"
+    },
+    "bailian": {
+      "model": "qwen-turbo",
+      "budgetDailyUSD": 0,
+      "budgetMonthlyUSD": 0,
+      "usageDailyTokens": 0,
+      "usageMonthlyTokens": 0,
+      "quotaRemaining": "generous",
+      "lastCheck": "2026-03-29T05:59:00+08:00",
+      "costPer1kTokens": 0.002,
+      "status": "operational"
+    }
+  },
+  "budgetAlerts": {
+    "dailyThreshold": 0.8,
+    "monthlyThreshold": 0.8,
+    "alertCooldownHours": 6
+  },
+  "lastAlert": null,
+  "notes": "Initialized by Session 712 Bayesian update - emergency monitoring triggered. All providers currently on free tier, but framework ready for paid costs tracking."
+}
