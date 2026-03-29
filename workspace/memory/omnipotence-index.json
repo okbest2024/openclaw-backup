@@ -1,0 +1,64 @@
+{
+  "indexVersion": "1.0",
+  "createdAt": "2026-03-29T14:06:00+08:00",
+  "description": "全能性追踪索引 - 记录所有'能力缺口'事件，分析瓶颈，驱动能力自我扩展",
+  "metrics": {
+    "omnipotenceScore": 0.3,
+    "targetScore": 0.9,
+    "totalGapEvents": 0,
+    "resolvedGaps": 0,
+    "autoResolvedRate": 0.0,
+    "manualResolutionRate": 0.0,
+    "avgResolutionTimeMinutes": 0
+  },
+  "gapCategories": {
+    "permission": {
+      "description": "权限不足（Feishu scope、文件系统、网络）",
+      "count": 0,
+      "lastOccurred": null,
+      "avgResolutionTime": 0,
+      "autoResolvable": true,
+      "resolutionStrategy": "自动申请 scope 或切换 fallback provider"
+    },
+    "quota": {
+      "description": "配额用尽（API rate limit、信用额度）",
+      "count": 0,
+      "lastOccurred": null,
+      "avgResolutionTime": 0,
+      "autoResolvable": true,
+      "resolutionStrategy": "provider fallback + quota tracker 预警"
+    },
+    "network": {
+      "description": "网络错误（超时、连接失败、5xx）",
+      "count": 0,
+      "lastOccurred": null,
+      "avgResolutionTime": 0,
+      "autoResolvable": true,
+      "resolutionStrategy": "指数退避重试 + 备用 endpoint"
+    },
+    "tool_unavailable": {
+      "description": "工具不可用（API废弃、服务下线）",
+      "count": 0,
+      "lastOccurred": null,
+      "avgResolutionTime": 0,
+      "autoResolvable": false,
+      "resolutionStrategy": "需要主人手动配置替代方案"
+    },
+    "unknown": {
+      "description": "未分类错误",
+      "count": 0,
+      "lastOccurred": null,
+      "avgResolutionTime": 0,
+      "autoResolvable": false,
+      "resolutionStrategy": "人工调查"
+    }
+  },
+  "recentGapEvents": [],
+  "resolutionHistory": [],
+  "insights": {
+    "bottleneckCategory": null,
+    "autoResolutionFeasibility": 0.0,
+    "suggestedImprovements": []
+  },
+  "lastUpdated": "2026-03-29T14:06:00+08:00"
+}

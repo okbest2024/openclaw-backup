@@ -1,8 +1,8 @@
 {
-  "totalSessions": 3,
-  "currentStreak": 3,
-  "lastSession": "2026-03-29T12:30:00+08:00",
-  "lastObservation": "创新传播与评估速度不对称",
+  "totalSessions": 4,
+  "currentStreak": 4,
+  "lastSession": "2026-03-29T13:51:00+08:00",
+  "lastObservation": "约束消除的幻觉——拓宽公路邻路更堵",
   "theoriesDiscovered": [
     {
       "name": "Hierarchy Necessity Theory",
@@ -23,12 +23,19 @@
       "theorems": 3,
       "corollaries": 1,
       "file": "theories/innovation-propagation-evaluation-asymmetry.md"
+    },
+    {
+      "name": "Constraint Migration Law (CML)",
+      "session": 4,
+      "theorems": 3,
+      "corollaries": 1,
+      "file": "theories/constraint-migration-law.md"
     }
   ],
   "metrics": {
     "avgAxiomCount": 3,
-    "deductionChainLength": 3,
-    "theoryComplexity": 3.75,
-    "applicationAdoption": 0.85
+    "deductionChainLength": 2.5,
+    "theoryComplexity": 4.0,
+    "applicationAdoption": 0.90
   }
 }
