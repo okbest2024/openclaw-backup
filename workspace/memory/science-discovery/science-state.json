@@ -1,8 +1,8 @@
 {
-  "totalSessions": 6,
-  "currentStreak": 6,
-  "lastSession": "2026-03-29T15:43:00+08:00",
-  "lastObservation": "多样性-稳定性放大效应",
+  "totalSessions": 7,
+  "currentStreak": 7,
+  "lastSession": "2026-03-29T17:12:00+08:00",
+  "lastObservation": "集体智慧相变",
   "theoriesDiscovered": [
     {
       "name": "Hierarchy Necessity Theory",
@@ -44,12 +44,19 @@
       "theorems": 3,
       "corollaries": 1,
       "file": "theories/diversity-stability-amplification-law.md"
+    },
+    {
+      "name": "Collective Intelligence Phase Transition Law (CIPTL)",
+      "session": 7,
+      "theorems": 3,
+      "corollaries": 1,
+      "file": "theories/collective-intelligence-phase-transition-law.md"
     }
   ],
   "metrics": {
     "avgAxiomCount": 3.0,
     "deductionChainLength": 3.3,
     "theoryComplexity": 4.3,
-    "applicationAdoption": 0.93
+    "applicationAdoption": 0.94
   }
 }

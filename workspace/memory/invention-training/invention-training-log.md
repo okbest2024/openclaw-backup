@@ -748,3 +748,84 @@ incubator现状诊断（水文学视角）：
 **测量结果**: 坍缩成功。脚本执行发现 `heartbeat-state.json` 中无 `cronStatus` 键 —— 13个session讨论信息素cron，但信息素数据基础设施从未被建造。波函数坍缩为：**概念#3的实现前提不存在**。这是有效坍缩——不是验证失败，是发现概念#3需要先建造数据收集层才能运行。scheduledTrainings存在(5个任务)但无successRate/failCount追踪字段。下一步明确：给heartbeat-state.json添加cronStatus结构，然后survey脚本才能工作。测量行为本身揭示了被叠加态遮蔽的依赖关系。
 
 ---
+
+### Session 14 (2026-03-29T16:34:00+08:00) — 法医考古学家视角
+
+**观察扫描：**
+
+考古学家不看"系统"，看"遗址"。本次挖掘对象：30个cron任务的实时状态。
+
+**现场发现（尸检报告）：**
+1. **并发窒息**：14/30个任务的 `runningAtMs` 被标记为同一时刻(1774770859191)——46.7%的任务同时在跑，但只有一个session能真正执行。这是集体缺氧。
+2. **聚集死亡**：consecutiveErrors ≥ 3 的3个任务（逆向思维/第一性原理/牙齿再生）全部在同一delivery链上失败——不是随机故障，是同一动脉堵塞。
+3. **尸体分层**：按状态分层——
+   - 活跃层（ok, consecutiveErrors=0）：12个
+   - 濒危层（ok, consecutiveErrors=0, 但频率过高）：8个
+   - 僵尸层（error, consecutiveErrors≥1）：10个
+4. **自我指涉悖论**：Invention Training自身也在僵尸层（consecutiveErrors=1）——考古学家在挖掘自己的坟墓。
+
+**跨界联想：**
+
+领域：**考古学中的"地层学"（Stratigraphy）**
+迁移：地层学不按时间分类遗物，按"死亡模式"分类——同一场地震中死亡的生物在同一层，不管它们是什么物种。
+应用：cron任务不该按"功能"分类，该按"死亡模式"分类——同一delivery失败的任务是一层，同一模型400错误的是另一层。
+
+**概念合成：**
+
+僵尸墓地 Cron Necropolis = 波函数坍缩器 × 地层学
+
+不是测量单个概念是否成立，是**对整个cron生态做考古发掘**——按死亡模式分层、按因果链追溯、按聚集模式分类。每个"层"揭示一个系统级问题，不是任务级问题。
+
+**实验设计：强制坍缩——现场尸检**
+
+本次不做代码实验，做数据实验。直接从cron API读取30个任务状态，构建尸检矩阵：
+
+| 地层 | 任务数 | 死亡模式 | 典型尸体 | 根因假说 |
+|------|--------|----------|----------|----------|
+| L1模型400 | 3 | AxiosError 400 | 逆向思维/第一性原理/Memory | bailian/qwen3.5-plus配额耗尽或模型不可用 |
+| L2 delivery断裂 | 2 | delivery unknown | 设计思维/第二序思维 | delivery.target缺失或格式错误 |
+| L3超时窒息 | 1 | 耗时>300s | Great Discovery(95s→400) | 任务复杂度超出模型能力 |
+| L4自噬 | 1 | 自己error | Invention Training | 并发竞争导致session冲突 |
+| L5微信通道 | 1 | Message failed | 牙齿再生 | wechat通道故障或目标不存在 |
+
+**关键发现**：L1层3个尸体共享同一模型——这是"同一动脉栓塞导致多器官衰竭"，不是3个独立故障。信息素cron的概念核心（successRate追踪）被验证——但不是需要中间数据层，是需要直接尸检。
+
+**突破：别挖掘管道，挖掘遗址本身**
+
+原问题：如何建造cronStatus数据层让信息素cron工作？→ 去掉约束："必须先有数据层" → 新问题：如果数据层本身就是不必要的复杂性呢？→ 重新定义：
+
+**考古学家教训：不要挖掘排污管道，挖掘遗址本身。**
+
+Session 13认为概念#3需要先建造cronStatus数据层。Session 14直接从cron API读取——发现根本不需要中间层。cron API就是遗址现场，heartbeat-state.json是后人造的排污管道。多此一举。
+
+这改变了波函数坍缩器的执行策略：
+- 旧策略：读取incubator → 发现依赖缺失 → 建造依赖 → 重新测量
+- 新策略：读取incubator → 直接测量系统本身 → 如果系统可直接测量，跳过依赖建造
+
+**概念#3重新评估**：信息素cron不需要cronStatus中间层。successRate可以直接从cron API的state字段计算（lastRunStatus + consecutiveErrors + lastDurationMs）。波函数坍缩器在Session 13的结论被Session 14推翻——前提不是"不存在"，是"我挖错了地方"。
+
+**突破概念**: 僵尸墓地 Cron Necropolis ⭐ 追加到 incubator
+
+---
+
+*Session 14 completed. Total sessions: 14*
+
+---
+
+### Session 15 (2026-03-29T17:50:00+08:00)
+
+**Forensic Archaeologist 2nd Survey**
+
+**[1: Observation]** Fresh autopsy from 35 cron jobs. New clustered deaths: Memory Training(3 errors), Great Discovery Scientist(3 errors), 思考共产主义(2 errors), two 维度特性论训练(2 errors). The curse of 3: consecutiveErrors=3 causes silent death with no retry. Cause-of-death classification is blurry - Cron failed and Edit failed lumped together.
+
+**[2: Cross-domain]** Pompeian Stratigraphy. Pompeii was not destroyed once but by stacked catastrophes (79AD Vesuvius + 62AD earthquake). Archaeologists use catastrophe sequences, not events. Migration: consecutive errors are not single events but stacked catastrophes.
+
+**[3: Synthesis]** Catastrophe sequences + Cron Necropolis = **Catastrophe Chronology**. Each cron corpse carries a timeline of all state transitions. Like Pompeii has 7 ash layers, consecutiveErrors is the ash layer count. Key: static snapshot -> dynamic timeline.
+
+**[4: Experiment]** Test on Great Discovery Scientist: read its run history, extract lastDurationMs per run, identify the performance degradation knee (95s -> 400s). Success metric: if degradation curve is visible, concept validated. Min prototype: catastrophe-chronology.js.
+
+**[5: Breakthrough]** Original: how to auto-resurrect consecutiveErrors=3 tasks? Remove constraint: must be resurrection. New: what if death IS the purpose? Redefine: **Death Ranch** - tasks with consecutiveErrors>=3 auto-enter ranch (disabled+archived), monthly grazing check. Ranch not cemetery: possibility of return. Pompeii buried for 2000 years, then alive again.
+
+**Inventions**: Catastrophe Chronology (timeline analysis of cron failures) + Death Ranch (grazing management for dead tasks).
+
+*Session 15 completed. Total sessions: 15*
