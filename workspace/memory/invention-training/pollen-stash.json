@@ -37,8 +37,8 @@
       "domain": "cron-optimization",
       "created": "2026-03-28T19:43:20.598Z",
       "expiresAt": "2026-03-31T19:43:20.600Z",
-      "used": false,
-      "usedAt": null
+      "used": true,
+      "usedAt": "2026-03-28T23:14:43.191Z"
     },
     {
       "id": "mnassrq78zo",
@@ -47,8 +47,8 @@
       "domain": "ecosystem-disruption",
       "created": "2026-03-28T20:43:57.151Z",
       "expiresAt": "2026-03-31T20:43:57.154Z",
-      "used": false,
-      "usedAt": null
+      "used": true,
+      "usedAt": "2026-03-28T23:14:43.191Z"
     },
     {
       "id": "mnassx1xv6z",
@@ -77,7 +77,8 @@
       "domain": "cron-ecology",
       "created": "2026-03-28T22:03:40.267Z",
       "expiresAt": "2026-03-31T22:03:40.270Z",
-      "used": false
+      "used": true,
+      "usedAt": "2026-03-28T23:14:43.191Z"
     }
   ],
   "created": "2026-03-29T02:24:00+08:00",

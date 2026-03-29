@@ -1,0 +1,26 @@
+{
+  "lastRun": "2026-03-29T01:12:15.157Z",
+  "fileMtimes": {
+    "heartbeat-state.json": 1774746358305.7583,
+    "MEMORY.md": 1774658019784.4717,
+    "AGENTS.md": 1774622306383.3257,
+    "USER.md": 1773895886960.084,
+    "SOUL.md": 1773895886960.084,
+    "IDENTITY.md": 1774066518919.8738,
+    "TOOLS.md": 1774719797401.333,
+    "HEARTBEAT.md": 1774640443847.7168,
+    "backup-to-doc-table-alt.js": 1774746729552.2964
+  },
+  "fileHashes": {
+    "heartbeat-state.json": "1dad5053812a1776a596324fce6c02d798f2bc4657090c7fe4ff9b2c6437663f",
+    "MEMORY.md": "f2973d7d1c81ac1cca2477d8a4a171ac689cde4fdb5f5252d7f17ef989fabe65",
+    "AGENTS.md": "9b4349164fc6de5729a9b7072f3d16268af55f16d48e0b3853d91f373442dfc1",
+    "USER.md": "a1ab76381a9ed8796a26c53a53ac5a3a375c74d3477ca7d0132a258f49005c1a",
+    "SOUL.md": "6678cd88b53384a783749202b92841068c1295073d8f2c5dc5d026ef1b07c8c9",
+    "IDENTITY.md": "2f79ebc295224c48e1356e9d98bb50434e28754291b14c373c2a502ad52743ff",
+    "TOOLS.md": "47ce94fa95c5e81808e5d42fa9abb6e15d6db03a97e3070976a0f4d58e506dfc",
+    "HEARTBEAT.md": "657cd0bd913d1cb9585f2ab1ce9db2a0f181257988def912a700eaf53d1cd9b8",
+    "backup-to-doc-table-alt.js": "aa87e81d8b4d95ad18a0f5e5ae6e2257ab4c7c4518985fd529440c520db53002"
+  },
+  "backupCount": 1
+}

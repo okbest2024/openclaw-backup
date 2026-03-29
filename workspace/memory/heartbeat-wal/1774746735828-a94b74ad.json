@@ -1,0 +1,14 @@
+{
+  "txnId": "1774746735828-a94b74ad",
+  "operation": "updateSession",
+  "payload": {
+    "session": 722,
+    "streak": 696,
+    "stream": "存活条件→有机生长"
+  },
+  "status": "applied",
+  "checksum": "6064561d221d07b9",
+  "createdAt": "2026-03-29T01:12:15.829Z",
+  "version": "1.0",
+  "appliedAt": "2026-03-29T01:12:15.834Z"
+}

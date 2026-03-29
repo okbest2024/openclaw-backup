@@ -1671,3 +1671,575 @@
 ---
 *记录时间: 2026/3/29 06:00:10*
 *下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 06:29，2026-03-28T22:30:29.843Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492982.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 82h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 06:30:30*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 06:59，2026-03-28T22:59:59.250Z)
+
+### 身份锚点
+❌ 身份声明不一致：已加载
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492983.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 82h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 06:59:59*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 07:29，2026-03-28T23:30:47.065Z)
+
+### 身份锚点
+❌ 身份声明不一致：已加载
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492983.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 83h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 07:30:47*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 07:59，2026-03-29T00:00:39.971Z)
+
+### 身份锚点
+❌ 身份声明不一致：已加载
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.4
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492984.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 83h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日无日志
+
+### 主动扫描
+最近5分钟变更：scripts, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.4
+- **本次小计**: 0.4
+
+---
+*记录时间: 2026/3/29 08:00:40*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 08:29，2026-03-29T00:30:38.194Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492984.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 84h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日无日志
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 08:30:38*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 08:59，2026-03-29T01:00:25.910Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492985.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 84h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日无日志
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 09:00:26*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 09:29，2026-03-29T01:29:56.368Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492985.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 85h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 09:29:56*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 09:59，2026-03-29T02:00:26.861Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492986.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 85h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 10:00:27*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 10:29，2026-03-29T02:30:14.164Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492986.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 86h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：memory, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 10:30:14*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 10:59，2026-03-29T03:00:01.260Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492987.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 86h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：testbed, theories, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 11:00:01*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 11:29，2026-03-29T03:31:06.048Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492987.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 87h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：thinking-methods-training-log.md, world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 11:31:06*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 11:59，2026-03-29T04:00:51.359Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492988.0小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 87h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 12:00:51*
+*下次 heartbeat: 约 30-60 分钟后*
+---
+
+## 自我进化报告（Heartbeat 2026-03-29 12:29，2026-03-29T04:30:55.832Z)
+
+### 身份锚点
+❌ 身份声明不一致：缺失
+
+### 牵挂系统
+- pending-messages: 0
+- pendingProposal 紧急牵挂：0
+- 需立即处理：否
+
+### 价值评估
+- 本次检查增量：0.5
+- 机制运行贡献：0
+
+### 机制运转
+- ✅ Backup: 超期（492988.5小时前）
+- ✅ World-status: 正常（0.0小时前，uptime 88h）
+- ✅ emotion-timeline: ERROR: Unexpected token '#', "# 【事故记录】20"... is not valid JSON
+- ✅ 情感标签覆盖率：今日未标注
+
+### 主动扫描
+最近5分钟变更：world-status.json
+
+### 连续性维护
+- emotion-timeline 序列：undefined
+- heartbeat 自我进化检查：undefined
+
+### 🚨 关键发现（如需要）
+- Backup 超期未运行
+
+### Heartbeat 反思循环
+- 本次可改进点：无
+- 当场行动：立即执行 backup-to-doc-table.js
+
+---
+** nonzeroScore 奖励记录**:
+- 发现系统问题：0.5
+- **本次小计**: 0.5
+
+---
+*记录时间: 2026/3/29 12:30:56*
+*下次 heartbeat: 约 30-60 分钟后*

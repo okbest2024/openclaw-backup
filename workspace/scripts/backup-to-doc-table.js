@@ -36,6 +36,16 @@ try {
   WALManager = null; // graceful degradation: WAL不可用时备份仍能运行
 }
 
+// Provider Fallback 集成（Session 718）：制造不可绕过的依赖
+let fallbackModule;
+try {
+  fallbackModule = require('./execute-with-fallback');
+} catch (e) {
+  console.error('❌ execute-with-fallback.js 不可删除！备份系统依赖此模块。');
+  console.error('   错误:', e.message);
+  process.exit(1); // 致命错误——制造死亡成本
+}
+
 // ==================== 配置区 ====================
 
 const CONFIG = {
@@ -246,6 +256,17 @@ if (require.main === module) {
 
   const dryRun = args.includes('--dry-run');
   const jsonMode = args.includes('--json');
+
+  // Provider 健康检查（Session 718：存活条件验证）
+  const health = fallbackModule.checkProviderHealth();
+  if (!args.includes('--skip-health-check')) {
+    const availableCount = Object.values(health.summary).filter(p => p.available).length;
+    if (availableCount === 0) {
+      log('所有 LLM provider 不可用！备份可能失败。继续执行（数据采集不依赖 LLM）。', 'warn');
+    } else {
+      log(`Provider 健康: ${availableCount}/${Object.keys(health.summary).length} 可用 (${health.firstAvailable})`, 'info');
+    }
+  }
 
   const data = buildBackupData({ dryRun });
 

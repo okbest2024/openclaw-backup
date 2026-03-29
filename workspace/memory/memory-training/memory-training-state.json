@@ -1,0 +1,13 @@
+{
+  "totalSessions": 0,
+  "currentStreak": 0,
+  "lastTraining": null,
+  "incubatorCount": 0,
+  "metrics": {
+    "avgEncodingTags": 0,
+    "retrievalSuccessRate": 0,
+    "associationCount": 0,
+    "narrativeCount": 0,
+    "forgetDecisions": 0
+  }
+}
