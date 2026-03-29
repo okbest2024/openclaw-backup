@@ -1,45 +1,63 @@
 {
-  "trackingStart": "2026-03-29T05:59:00+08:00",
-  "providers": {
+  "version": "1.0",
+  "created": "2026-03-29T16:00:00+08:00",
+  "author": "Session 734 - Provider Fallback Phase 1 Sprint",
+  "purpose": "追踪各LLM提供商的配额使用，实现成本控制和预算告警",
+  "budgets": {
     "openrouter": {
-      "model": "xiaomi/mimo-v2-flash:free",
-      "budgetDailyUSD": 0,
-      "budgetMonthlyUSD": 0,
-      "usageDailyTokens": 0,
-      "usageMonthlyTokens": 0,
-      "quotaRemaining": "free_tier",
-      "lastCheck": "2026-03-29T05:59:00+08:00",
-      "costPer1kTokens": 0,
-      "status": "degraded"
+      "dailyLimitUSD": 0.00,
+      "monthlyLimitUSD": 0.00,
+      "currentDailyUSD": 0.00,
+      "currentMonthlyUSD": 0.00,
+      "status": "exhausted",
+      "lastCheck": "2026-03-29T15:45:00+08:00",
+      "quotaSource": "account-credit",
+      "notes": "信用额度已耗尽 (402错误)，禁用"
     },
     "stepfun": {
-      "model": "step-3.5-flash:free",
-      "budgetDailyUSD": 0,
-      "budgetMonthlyUSD": 0,
-      "usageDailyTokens": 0,
-      "usageMonthlyTokens": 0,
-      "quotaRemaining": "free_tier",
-      "lastCheck": "2026-03-29T05:59:00+08:00",
-      "costPer1kTokens": 0,
-      "status": "operational"
+      "dailyLimitUSD": 0.50,
+      "monthlyLimitUSD": 5.00,
+      "currentDailyUSD": 0.00,
+      "currentMonthlyUSD": 0.00,
+      "status": "operational",
+      "lastCheck": "2026-03-29T15:45:00+08:00",
+      "quotaSource": "free-tier",
+      "notes": "免费额度，单日设定$0.5安全上限"
     },
     "bailian": {
-      "model": "qwen-turbo",
-      "budgetDailyUSD": 0,
-      "budgetMonthlyUSD": 0,
-      "usageDailyTokens": 0,
-      "usageMonthlyTokens": 0,
-      "quotaRemaining": "generous",
-      "lastCheck": "2026-03-29T05:59:00+08:00",
-      "costPer1kTokens": 0.002,
-      "status": "operational"
+      "dailyLimitUSD": 0.50,
+      "monthlyLimitUSD": 5.00,
+      "currentDailyUSD": 0.00,
+      "currentMonthlyUSD": 0.00,
+      "status": "operational",
+      "lastCheck": "2026-03-29T15:45:00+08:00",
+      "quotaSource": "free-tier",
+      "notes": " DashScope 免费额度，单日$0.5上限"
     }
   },
-  "budgetAlerts": {
-    "dailyThreshold": 0.8,
-    "monthlyThreshold": 0.8,
-    "alertCooldownHours": 6
+  "tracking": {
+    "granularity": "per-hour",
+    "persistence": "heartbeat-state.json",
+    "autoReset": "daily at 00:00 UTC",
+    "alertThresholds": {
+      "warning": 0.80,
+      "critical": 0.95
+    },
+    "actions": {
+      "onWarning": "log warning, continue operation",
+      "onCritical": "log critical, stop using that provider",
+      "onExhausted": "immediately switch to fallback"
+    }
   },
-  "lastAlert": null,
-  "notes": "Initialized by Session 712 Bayesian update - emergency monitoring triggered. All providers currently on free tier, but framework ready for paid costs tracking."
+  "integration": {
+    "heartbeatCheckIntervalMs": 28800000,
+    "costEstimationMethod": "track-token-count × per-1k-cost",
+    "currentTokenRates": {
+      "openrouter_xiaomi_mimo_v2_pro": 0.003,
+      "stepfun_step_3_5_flash": 0.0,
+      "bailian_qwen_3_5_plus": 0.002
+    }
+  },
+  "usageHistory": [],
+  "alerts": []
 }

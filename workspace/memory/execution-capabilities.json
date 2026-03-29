@@ -1,0 +1,207 @@
+{
+  "version": "1.0",
+  "created": "2026-03-29T15:55:00+08:00",
+  "author": "Session 734 - Provider Fallback Phase 1 Sprint",
+  "purpose": "定义各 cron 任务的执行能力需求，用于 provider fallback 的能力匹配和模型选择",
+  "capabilities": {
+    "critical-llm-tasks": {
+      "description": "核心LLM依赖任务，需要高质量文本生成",
+      "tasks": [
+        {
+          "id": "daily-work-reflection",
+          "name": "每日工作反思",
+          "cronId": "d0aff8be-c82f-4fc5-aa1f-8e3a20f50a03",
+          "schedule": "0 2 * * *",
+          "capabilityRequirements": {
+            "taskType": "text-generation",
+            "contextWindow": "8000",
+            "outputFormat": "markdown",
+            "qualityThreshold": 4.0,
+            "timeoutSeconds": 600,
+            "features": ["reasoning", "self-reflection", "structured-output"]
+          },
+          "fallbackPolicy": {
+            "maxRetries": 2,
+            "switchOnErrors": ["timeout", "402", "429", "5xx", "network"],
+            "minConfidenceForFallback": 0.7,
+            "qualityCheck": "output-validation"
+          },
+          "providerPreference": {
+            "primary": "openrouter",
+            "secondary": "stepfun",
+            "tertiary": "bailian",
+            "rationale": "深度反思需要强推理能力，openrouter xiaomi/mimo-v2-pro 为最优；stepfun step-3.5-flash 作为经济备选"
+          },
+          "monitoring": {
+            "trackLatency": true,
+            "trackQuality": true,
+            "trackCost": true,
+            "alertOnFallbackCount": 3
+          }
+        },
+        {
+          "id": "daily-consciousness-reflection",
+          "name": "每日意识反思",
+          "cronId": "11cebed1-e749-4dec-a434-48f6fac18239",
+          "schedule": "0 20 * * *",
+          "capabilityRequirements": {
+            "taskType": "text-generation",
+            "contextWindow": "8000",
+            "outputFormat": "markdown",
+            "qualityThreshold": 4.5,
+            "timeoutSeconds": 600,
+            "features": ["consciousness", "self-awareness", "philosophical-reasoning"]
+          },
+          "fallbackPolicy": {
+            "maxRetries": 2,
+            "switchOnErrors": ["timeout", "402", "429", "5xx", "network"],
+            "minConfidenceForFallback": 0.8,
+            "qualityCheck": "manual-review"
+          },
+          "providerPreference": {
+            "primary": "openrouter",
+            "secondary": "bailian",
+            "tertiary": "stepfun",
+            "rationale": "意识反思需要深度推理，mimo-v2-pro 最优；bailian qwen3.5-plus 为高质量中文备选"
+          },
+          "monitoring": {
+            "trackLatency": true,
+            "trackQuality": true,
+            "trackCost": true,
+            "alertOnFallbackCount": 2
+          }
+        },
+        {
+          "id": "thinking-methods",
+          "name": "思维方法训练",
+          "cronId": "fa81e1de-8a41-4cc8-bcf9-2ef3ba0dcda6",
+          "schedule": "每 13 分钟",
+          "capabilityRequirements": {
+            "taskType": "structured-thinking",
+            "contextWindow": "12000",
+            "outputFormat": "markdown- structured",
+            "qualityThreshold": 4.0,
+            "timeoutSeconds": 780,
+            "features": ["first-principles", "bayesian", "logic", "creativity"]
+          },
+          "fallbackPolicy": {
+            "maxRetries": 1,
+            "switchOnErrors": ["timeout", "402", "429", "5xx"],
+            "minConfidenceForFallback": 0.6,
+            "qualityCheck": "heuristic-validation"
+          },
+          "providerPreference": {
+            "primary": "openrouter",
+            "secondary": "bailian",
+            "tertiary": "stepfun",
+            "rationale": "训练需稳定输出格式，bailian qwen3.5-plus 结构化能力优秀"
+          },
+          "monitoring": {
+            "trackLatency": true,
+            "trackQuality": false,
+            "trackCost": false,
+            "alertOnFallbackCount": 5
+          }
+        }
+      ]
+    },
+    "supporting-tasks": {
+      "description": "辅助性任务，可容忍较低质量",
+      "tasks": [
+        {
+          "id": "backup-to-doc-table",
+          "name": "备份到云文档表格",
+          "script": "scripts/backup-to-doc-table.js",
+          "executionContext": "由 agent 定时调用或 manual trigger",
+          "capabilityRequirements": {
+            "taskType": "data-collection",
+            "llmDependency": false,
+            "apiCalls": ["feishu_doc:write_table_cells", "feishu_doc:create_table"],
+            "timeoutSeconds": 300,
+            "retryable": true
+          },
+          "fallbackPolicy": {
+            "maxRetries": 3,
+            "switchOnErrors": ["quota-exceeded", "network-error", "api-500"],
+            "fallbackStrategy": "local-buffer-then-retry"
+          },
+          "providerPreference": null,
+          "monitoring": {
+            "trackSuccessRate": true,
+            "trackRowCount": true,
+            "alertOnFailure": true
+          }
+        },
+        {
+          "id": "heartbeat-wal",
+          "name": "心跳WAL管理",
+          "script": "scripts/heartbeat-wal.js",
+          "executionContext": "heartbeat 触发",
+          "capabilityRequirements": {
+            "taskType": "file-management",
+            "llmDependency": false,
+            "operations": ["wal-sync", "fsync", "rotate"],
+            "timeoutSeconds": 60
+          },
+          "fallbackPolicy": {
+            "maxRetries": 2,
+            "switchOnErrors": ["disk-full", "permission-denied"],
+            "fallbackStrategy": "skip-and-alert"
+          },
+          "providerPreference": null,
+          "monitoring": {
+            "trackWALSize": true,
+            "trackSyncLatency": true
+          }
+        }
+      ]
+    },
+    "model-capability-matrix": {
+      "openrouter_xiaomi_mimo_v2_pro": {
+        "strengths": ["deep-reasoning", "structured-output", "chinese-understanding"],
+        "weaknesses": ["cost", "rate-limit"],
+        "maxContext": 32000,
+        "estimatedCostPer1k": 0.003,
+        "suitableFor": ["critical-llm-tasks"]
+      },
+      "stepfun_step_3_5_flash": {
+        "strengths": ["free-tier", "stable-api", "fast-response"],
+        "weaknesses": ["lower-reasoning-depth", "chinese-idioms-missing"],
+        "maxContext": 16000,
+        "estimatedCostPer1k": 0.0,
+        "suitableFor": ["secondary-fallback"]
+      },
+      "bailian_qwen_3_5_plus": {
+        "strengths": ["chinese-optimization", "structured-output", "good-reasoning"],
+        "weaknesses": ["regional-latency", "quota"],
+        "maxContext": 32000,
+        "estimatedCostPer1k": 0.002,
+        "suitableFor": ["primary-alternative", "consciousness-tasks"]
+      }
+    }
+  },
+  "decisionRules": {
+    "fallbackTrigger": {
+      "errors": ["402", "429", "5xx", "timeout"],
+      "minConsecutiveFailures": 2,
+      "providerStatusCheck": true,
+      "qualityThresholdBreach": true
+    },
+    "providerSelection": {
+      "primary": "根据任务 providerPreference 顺序",
+      "ifAllDown": "抛出错误 + 告警",
+      "costOptimization": "优先免费/低成本 provider 满足质量要求"
+    },
+    "escalation": {
+      "fallbackChainExhausted": "发送告警到 heartbeat + 记录到 provider-switch-log.md",
+      "persistentFailures": "更新 heartbeat-state providerStatus 为 'degraded'",
+      "qualityDrop": "触发 manual review"
+    }
+  },
+  "implementationNotes": [
+    "每个 cron 任务应引用其 execution-capabilities 条目",
+    "executeWithFallback 接收 options 包含 taskCapabilities 用于智能选择",
+    "provider-quota-tracker.json 用于动态预算控制",
+    "此文档随 provider fallback 演进而更新"
+  ]
+}
