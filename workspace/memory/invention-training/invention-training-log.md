@@ -829,3 +829,58 @@ Session 13认为概念#3需要先建造cronStatus数据层。Session 14直接从
 **Inventions**: Catastrophe Chronology (timeline analysis of cron failures) + Death Ranch (grazing management for dead tasks).
 
 *Session 15 completed. Total sessions: 15*
+
+---
+
+### Session 16 (2026-03-29T19:11:00+08:00)
+
+**Epidemiologist Survey**
+
+**[1: Observation]** Fresh data from 35 cron jobs. The epidemic is spreading:
+- 思考共产主义: consecutiveErrors=4 (突破诅咒阈值!) — 使用 bailian/qwen3.5-plus
+- 维度特性论训练1: consecutiveErrors=4 (突破诅咒阈值!) — 使用 bailian/qwen3.5-plus
+- 维度特性论训练2: consecutiveErrors=4 (突破诅咒阈值!) — 使用 bailian/qwen3.5-plus
+- 自我改进反思: consecutiveErrors=1 (早期症状) — 不使用 bailian/qwen3.5-plus
+- 牙齿再生: consecutiveErrors=1 (早期症状) — 不使用 bailian/qwen3.5-plus
+
+死亡牧场候选更新：3个新入场（总6个），3个接近入场。传染病分布异常集中。
+
+**[2: Cross-domain]** 流行病学 Epidemiology. 核心框架：传染链三要素 (感染源/传播途径/易感人群)。疫情调查的第一步不是治疗病人，是绘制传播地图——谁传染了谁？迁移：cron失败不是独立事件，是传染病。感染源=高风险模型，传播途径=同模型共享资源，易感人群=使用高风险模型的任务。
+
+**[3: Synthesis]** Cron失败 + 流行病学 = **传染链阻断器 Transmission Chain Breaker**. 不是诊断每个任务"为什么死"，是诊断"为什么这些任务死在一起"。bailian/qwen3.5-plus模型感染率异常——思考共产主义、维度特性论1、维度特性论2三个独立任务共享同一模型，呈聚集感染。这不是巧合，是空气传播。
+
+**[4: Experiment]** 验证"模型传染"假说：对比bailian/qwen3.5-plus任务组的失败率 vs 其他模型组。如果bailian组失败率 > 其他组3倍以上，假说成立。最小原型：transmission-chain-analyzer.js，按模型分组统计consecutiveErrors分布。成功指标：(1)正确识别bailian为感染源(2)计算群体免疫阈值(3)找到零号病人。
+
+**[5: Breakthrough]** 原问题：如何修复consecutiveErrors=4的任务？→ 去掉约束："每个任务独立修复" → 新问题：如果失败是群体传播，个体修复有意义吗？→ 重新定义：不需要修复，需要**隔离**。传染链阻断器：高风险模型自动标记为"疫区"，同模型任务错开执行（避免同时爆发），零号病人优先隔离（思考共产主义最早error，可能耗尽了模型配额导致后续任务被传染）。
+
+**核心洞察**：之前的四学科框架（建筑师/生态学家/经济学家/水文学家）都在观察"个体"——单个概念、单个任务、单个资源。流行病学家是第一个观察"群体关系"的视角。传染不是个体属性，是群体属性。bailian模型本身可能工作正常，但3个高负载任务同时运行耗尽了配额——这是**超传播事件**(superspreader event)。
+
+**与四学科框架的关系**：
+- 建筑师（拱顶）= 空间结构 → 流行病学家不关心空间，关心传播网络
+- 生态学家（承载力）= 能量上限 → 流行病学家关心的是"超过承载力时发生了什么"（疫情爆发）
+- 经济学家（央行）= 价格信号 → 流行病学家关心"价格信号失灵时发生了什么"（恐慌）
+- 水文学家（蓄水层）= 地下水位 → 流行病学家关心"水位变化如何影响蚊虫繁殖"（媒介传播）
+
+流行病学是四学科的元层——不是第五学科，是观察前四学科在极端压力下如何崩溃的透镜。
+
+**Invention**: 传染链阻断器 Transmission Chain Breaker ⭐ — 按模型分组分析失败传播模式，识别感染源、阻断传播路径、建立群体免疫。
+
+*Session 16 completed. Total sessions: 16*
+
+### Session 17 (2026-03-29T20:22:23+08:00)
+
+**Railway Dispatcher Survey**
+
+**[1: Observation]** 30 cron jobs running. Dimensional Theory Train2 consecutiveErrors=5 — crash cause: attempted to edit scripts/mirror-reflection-protocol.js failed. Training cron tried to write to non-training file, output-side contamination. Multiple tasks show simultaneous unningAtMs, indicating queuing — 30 tasks competing single API pipeline.
+
+**[2: Cross-domain]** Railway Scheduling. Core: one rail = one train. Dispatchers use timetables + track allocation to avoid collisions. Deadlock block: A waits for B's track, B waits for A's track — both stuck. Migration: 30 cron jobs = 30 trains, API channel = single rail, consecutiveErrors=3 = "derailment".
+
+**[3: Synthesis]** Cron Railway + Railway Scheduling = **Rail Scheduler**. Central dispatch assigns "tracks" (API execution slots). Conflicting schedules auto-stagger (like passing loops). Dimensional Theory train2's 5 errors = "train blocked by other trains at junction, edit operation executed at wrong timing".
+
+**[4: Experiment]** Minimal prototype: add execution mutex to 30 cron jobs — max N tasks in running state simultaneously. Validate: check if consecutiveErrors≥3 tasks have overlapping runningAtMs. Simple method: HEARTBEAT.md monitors runningAtMs distribution, >5 concurrent = "congestion alert".
+
+**[5: Breakthrough]** Original: how to fix Dimensional Theory train2's 5 errors? → Remove constraint: "fix individual task" → New question: if 30 tasks share one rail, does fixing one matter? → Redefine: don't fix trains on track, **add tracks**. Core insight: bottleneck isn't task logic, it's **execution capacity**. 30 tasks → 3 slots → actual throughput ≈ 10%, 90% = queuing+collision+retry. Invention: **Multi-Rail Executor** — allocate different execution slots by task type, like high-speed/regular trains on separate tracks.
+
+**Inventions**: Rail Scheduler (mutex+stagger) + Multi-Rail Executor (type-based rail allocation)
+
+*Session 17 completed. Total sessions: 17*

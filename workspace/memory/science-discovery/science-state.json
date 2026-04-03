@@ -1,8 +1,8 @@
 {
-  "totalSessions": 7,
-  "currentStreak": 7,
-  "lastSession": "2026-03-29T17:12:00+08:00",
-  "lastObservation": "集体智慧相变",
+  "totalSessions": 9,
+  "currentStreak": 9,
+  "lastSession": "2026-04-03T15:14:00+08:00",
+  "lastObservation": "备份与自动化系统的完整性幻觉",
   "theoriesDiscovered": [
     {
       "name": "Hierarchy Necessity Theory",
@@ -51,12 +51,28 @@
       "theorems": 3,
       "corollaries": 1,
       "file": "theories/collective-intelligence-phase-transition-law.md"
+    },
+    {
+      "name": "Optimal Learning Density Law (ODDL)",
+      "session": 8,
+      "theorems": 3,
+      "corollaries": 1,
+      "file": "theories/optimal-learning-density-law.md",
+      "status": "pending_validation"
+    },
+    {
+      "name": "Integrity Illusion in Automated Systems Theory (IIAST)",
+      "session": 9,
+      "theorems": 3,
+      "corollaries": 1,
+      "file": "theories/integrity-illusion-automated-systems-theory.md",
+      "status": "pending_validation"
     }
   ],
   "metrics": {
     "avgAxiomCount": 3.0,
-    "deductionChainLength": 3.3,
-    "theoryComplexity": 4.3,
-    "applicationAdoption": 0.94
+    "deductionChainLength": 3.33,
+    "theoryComplexity": 4.25,
+    "applicationAdoption": 0.89
   }
 }
