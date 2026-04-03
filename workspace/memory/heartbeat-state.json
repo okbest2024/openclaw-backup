@@ -48,6 +48,13 @@
     "overallHealth": 87,
     "weakestSubsystem": "goals"
   },
+  "dailyReflection": {
+    "lastRun": "2026-04-04T02:00:00+08:00",
+    "sessionRange": "748-761",
+    "keyInsight": "修水管即修行——诊断终结=行动开始",
+    "cronErrorFixed": 21,
+    "cronErrorRemaining": 0
+  },
   "bayesianTraining": {
     "lastRun": "2026-04-03T18:53:00+08:00",
     "runCount": 2,
