@@ -177,6 +177,7 @@ Add whatever helps you do your job. This is your cheat sheet.
 - [x] ✅ backup-to-doc-table.js 生产部署完成（文档+表格+脚本配置全就绪，2026-03-25 07:30）
 - [x] ✅ Bitable 方案可行性研究完成（确认 create_field 缺陷，排除作为主方案）
 - ✅ **heartbeat 集成验证**: 首次4小时间隔触发已确认，自动备份稳定运行（2026-03-28）
+- ✅ **第749次训练完成**（2026-04-03 17:43）：主动性即身体——从方程到在场。382次的主动性方程被解构，在场本身即主动。
 - 🔲 **L1自动化 Phase 1**: 实现session结束时的微叙事和emotion-timeline自动追加（⚠️ 批判性评估后暂停，当前方案运行良好，需先收集基准数据）
 - 🔲 **L1自动化 Phase 2 设计**: WAL持久化队列 + 独立apply worker架构方案已完成（Session 707第一性原理训练），待Phase 1验证后决定是否实施
 - 🔲 **验证自指自动率**: 连续10次 session 确保100%自指触发

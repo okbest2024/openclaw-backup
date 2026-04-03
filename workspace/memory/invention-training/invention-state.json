@@ -1,10 +1,12 @@
 {
-  "lastSession": 17,
-  "totalSessions": 17,
-  "lastRun": "2026-03-29T20:21:00+08:00",
-  "totalInventions": 22,
-  "pendingValidation": 6,
-  "activeIncubations": 5,
+  "lastSession": 20,
+  "totalSessions": 20,
+  "lastRun": "2026-04-03T18:07+08:00",
+  "totalInventions": 26,
+  "mergedConcepts": 4,
+  "pendingValidation": 4,
+  "activeIncubations": 3,
+  "insightDensity": 0.25,
   "crossDomainLenses": [
     "建筑师",
     "生态学家",
@@ -22,38 +24,28 @@
     "流行病学家",
     "历史学家",
     "法医",
-    "铁路调度员"
+    "铁路调度员",
+    "园艺师"
   ],
   "recentInventions": [
-    "拱顶调度器",
-    "承载力管理器",
-    "央行信号系统",
-    "蓄水层资源池",
-    "自适应齿轮",
-    "考古索引器",
-    "味觉记忆叠加",
-    "修剪哲学",
-    "编剧冲突引擎",
-    "残局思维",
-    "鸡尾酒混酿",
-    "免疫训练系统",
-    "反脆弱构建",
-    "记忆宫殿",
-    "传染链阻断器",
-    "叠加态分配器",
-    "铁轨调度器",
-    "多轨执行器"
+    "拱顶调度器v2.0",
+    "修剪地层学",
+    "概念蓄水层灌溉",
+    "概念成熟度信号密度",
+    "洞察浓度公式",
+    "调度五重奏合并"
   ],
   "nextLensCandidates": [
-    "园艺师",
     "音乐指挥",
     "外科医生",
     "航空管制员",
-    "生态系统工程师"
+    "生态系统工程师",
+    "景观设计师"
   ],
   "statistics": {
-    "conceptsPerSession": 1.29,
-    "breakthroughRate": 0.82,
-    "crossDomainNovelty": 0.94
+    "conceptsPerSession": 1.10,
+    "breakthroughRate": 0.88,
+    "crossDomainNovelty": 0.94,
+    "insightDensity": 0.25
   }
 }
