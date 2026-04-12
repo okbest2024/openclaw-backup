@@ -1,0 +1,12 @@
+const fs = require('fs');
+const f = 'C:/Users/Administrator/.openclaw/workspace/memory/heartbeat-state.json';
+let raw = fs.readFileSync(f, 'utf8');
+raw = raw.replace(/^\uFEFF/, '');
+let j = JSON.parse(raw);
+j.trainingSession = 766;
+j.nonzeroStreak = 734;
+j.preSessionData.nextSessionNumber = 767;
+j.preSessionData.nextNonzeroStreak = 734;
+j.moxieTraining.lastRun = new Date().toISOString();
+fs.writeFileSync(f, JSON.stringify(j, null, 2), 'utf8');
+console.log('OK');

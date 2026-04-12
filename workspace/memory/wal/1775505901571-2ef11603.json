@@ -1,0 +1,18 @@
+{
+  "txnId": "1775505901571-2ef11603",
+  "status": "applied",
+  "targetFile": "C:\\Users\\Administrator\\.openclaw\\workspace\\memory\\wal\\backup-log.json",
+  "operation": {
+    "type": "json-merge",
+    "data": {
+      "2026-04-06T20:05:01.571Z": {
+        "fileCount": 26,
+        "incremental": true,
+        "status": "started"
+      }
+    }
+  },
+  "checksum": "a42b1c906b0a0a2d",
+  "createdAt": "2026-04-06T20:05:01.572Z",
+  "appliedAt": "2026-04-06T20:05:01.581Z"
+}

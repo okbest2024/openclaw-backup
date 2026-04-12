@@ -1,6 +1,6 @@
 # USER.md - About Your Human
 
-- **Name:**
+- **Name:** 
 - **What to call them:** 主人
 - **Pronouns:** _(optional)_
 - **Timezone:** Asia/Shanghai
